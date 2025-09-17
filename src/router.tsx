@@ -1,12 +1,23 @@
-import { Route, Routes } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
+import Home from './pages/Home/Home';
 import App from './App';
+import Major from './pages/Major/Major';
 
-function Router() {
-  return (
-    <Routes>
-      <Route path="/" element={<App />} />
-    </Routes>
-  );
-}
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: 'major',
+        element: <Major />,
+      },
+    ],
+  },
+]);
 
-export default Router;
+export default router;
