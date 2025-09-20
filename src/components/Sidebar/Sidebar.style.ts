@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import DodumLogo from '@/assets/dodum-logo.svg';
+import { Link } from 'react-router';
 
 export const Container = styled.aside`
   display: flex;
@@ -16,19 +17,18 @@ export const Tabs = styled.div`
   margin-bottom: 16rem;
 `;
 
-export const Tab = styled.div`
+export const Tab = styled(Link)<{ $active?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 0.875rem;
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
-  &:active {
-    background-color: #26874e;
-    transition: background-color 0.2s ease, color 0.2s ease;
-  }
+  text-decoration: none;
+  color: ${({ $active }) => ($active ? 'white' : 'black')};
+  background-color: ${({ $active }) => ($active ? '#26874e' : 'transparent')};
   &:hover {
-    background-color: #34a061;
+    background-color: ${({ $active }) => ($active ? '#26874e' : '#34a061')};
     color: white;
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
