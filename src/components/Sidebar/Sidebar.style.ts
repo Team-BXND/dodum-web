@@ -25,10 +25,12 @@ export const Tab = styled(Link)<{ $active?: boolean }>`
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
   text-decoration: none;
-  color: ${({ $active }) => ($active ? 'white' : 'black')};
-  background-color: ${({ $active }) => ($active ? '#26874e' : 'transparent')};
+  color: ${(props) => (props.$active ? 'white' : props.theme.textPrimary)};
+  background-color: ${(props) =>
+    props.$active ? props.theme.btnPrimary : 'transparent'};
   &:hover {
-    background-color: ${({ $active }) => ($active ? '#26874e' : '#34a061')};
+    background-color: ${(props) =>
+      props.$active ? props.theme.btnPrimary : props.theme.btnSecondary};
     color: white;
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
