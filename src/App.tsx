@@ -1,5 +1,4 @@
-import { Outlet } from 'react-router-dom';
-import Sidebar from '@/components/Sidebar/Sidebar';
+import Layout from '@/components/Layout/Layout';
 import { GlobalStyle } from '@/styles/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from './styles/theme';
@@ -8,16 +7,7 @@ export default function App() {
   return (
     <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
-      <div
-        style={{
-          display: 'flex',
-          height: '100vh',
-          backgroundColor: lightTheme.bgSecondary,
-        }}
-      >
-        <Sidebar />
-        <Outlet />
-      </div>
+      <Layout />
     </ThemeProvider>
   );
 }

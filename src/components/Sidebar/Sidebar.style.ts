@@ -8,6 +8,9 @@ export const Container = styled.aside`
   justify-content: space-between;
   padding: 1rem 1.25rem;
   background-color: ${(props) => props.theme.bgPrimary};
+  height: 100vh;
+  width: 12rem;
+  overflow-y: hidden;
 `;
 
 export const Tabs = styled.div`
