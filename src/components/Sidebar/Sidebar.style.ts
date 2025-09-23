@@ -6,8 +6,8 @@ export const Container = styled.aside`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid gray;
   padding: 1rem 1.25rem;
+  background-color: ${(props) => props.theme.bgPrimary};
 `;
 
 export const Tabs = styled.div`

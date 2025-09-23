@@ -8,7 +8,13 @@ export default function App() {
   return (
     <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
-      <div style={{ display: 'flex', height: '100vh' }}>
+      <div
+        style={{
+          display: 'flex',
+          height: '100vh',
+          backgroundColor: lightTheme.bgSecondary,
+        }}
+      >
         <Sidebar />
         <Outlet />
       </div>

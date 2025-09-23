@@ -7,4 +7,6 @@ export const lightTheme: Theme = {
   textSecondary: '#ADADAD',
   btnPrimary: '#26874e',
   btnSecondary: '#34a061',
+  bgPrimary: '#FFFFFF',
+  bgSecondary: '#FAFAFA',
 };
