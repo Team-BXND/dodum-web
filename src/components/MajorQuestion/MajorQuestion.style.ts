@@ -9,8 +9,8 @@ export const Container = styled.div`
   gap: 1.5rem;
   background-color: ${(props) => props.theme.bgPrimary};
   border-radius: 1rem;
-  border-left: 1rem solid ${(props) => props.theme.mainColor};
-  box-shadow: 1px 1px 2px ${(props) => props.theme.mainColor};
+  border-left: 0.875rem solid ${(props) => props.theme.mainColor};
+  box-shadow: 1px 1px 2px ${(props) => props.theme.textSecondary};
 `;
 
 export const Title = styled.h2`
@@ -31,7 +31,7 @@ export const CircleBox = styled.div`
   justify-content: space-between;
 `;
 
-export const Circle = styled.input.attrs({ type: 'radio', name: 'major' })`
+export const Circle = styled.input.attrs({ type: 'radio' })`
   width: 2rem;
   height: 2rem;
   border-radius: 50%;

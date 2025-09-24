@@ -1,4 +1,4 @@
-export const majroQuestions = [
+export const majorQuestions = [
   {
     id: 1,
     question: '1. 나는 평소에 디자인에 관심이 있다.',
