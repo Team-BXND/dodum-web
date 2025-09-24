@@ -1,15 +1,16 @@
 import * as S from './MajorQuestion.style';
 import type { MajorQuestionProps } from '@/types/majorQuestions';
 
-function MajorQuestion({ question, id, register }: MajorQuestionProps) {
-  const circleComponents = [
-    S.OutCircle,
-    S.Circle,
-    S.MiddleCircle,
-    S.Circle,
-    S.OutCircle,
-  ];
+const circleComponents = [
+  S.OutCircle,
+  S.Circle,
+  S.MiddleCircle,
+  S.Circle,
+  S.OutCircle,
+];
+// 컴포넌트 외부에서 선언 시 불필요한 리렌더 방지
 
+function MajorQuestion({ question, id, register }: MajorQuestionProps) {
   return (
     <S.Container>
       <S.Title>{question}</S.Title>

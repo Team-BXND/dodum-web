@@ -44,7 +44,7 @@ export const Circle = styled.input.attrs({ type: 'radio' })`
     background-color: ${(props) => props.theme.mainColor};
   }
   &:focus-visible {
-    outline: 2px dotted #26874e;
+    outline: 2px dotted ${(props) => props.theme.mainColor};
     outline-offset: 2px;
   }
 `;
