@@ -1,13 +1,15 @@
-import { Outlet } from 'react-router-dom';
-import Sidebar from './components/Sidebar/Sidebar';
+import Layout from '@/components/Layout/Layout';
+import { GlobalStyle } from '@/styles/GlobalStyle';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme } from './styles/theme';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <Sidebar />
-      <Outlet />
-    </div>
+    <ThemeProvider theme={lightTheme}>
+      <GlobalStyle />
+      <Layout />
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
