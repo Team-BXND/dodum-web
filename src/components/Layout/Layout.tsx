@@ -2,7 +2,7 @@ import { Outlet } from 'react-router';
 import Sidebar from '../Sidebar/Sidebar';
 import * as S from './Layout.style';
 
-function Layout() {
+const Layout = () => {
   return (
     <S.Container>
       <Sidebar />
@@ -11,6 +11,6 @@ function Layout() {
       </S.Content>
     </S.Container>
   );
-}
+};
 
 export default Layout;

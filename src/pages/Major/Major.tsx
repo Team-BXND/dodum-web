@@ -4,7 +4,7 @@ import { majorQuestions } from '@/constants/major.constants';
 import type { MajorFormData } from '@/types/majorQuestions';
 import { useForm } from 'react-hook-form';
 
-function Major() {
+const Major = () => {
   const { register, handleSubmit } = useForm<MajorFormData>();
 
   const onSubmit = (data: MajorFormData) => {
@@ -27,6 +27,6 @@ function Major() {
       <S.Button type="submit">전공 추천 받기</S.Button>
     </S.Container>
   );
-}
+};
 
 export default Major;

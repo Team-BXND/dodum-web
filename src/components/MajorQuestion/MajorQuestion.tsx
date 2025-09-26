@@ -10,7 +10,7 @@ const circleComponents = [
 ];
 // 컴포넌트 외부에서 선언 시 불필요한 리렌더 방지
 
-function MajorQuestion({ question, id, register }: MajorQuestionProps) {
+const MajorQuestion = ({ question, id, register }: MajorQuestionProps) => {
   return (
     <S.Container>
       <S.Title>{question}</S.Title>
@@ -33,6 +33,6 @@ function MajorQuestion({ question, id, register }: MajorQuestionProps) {
       </S.ResWrapper>
     </S.Container>
   );
-}
+};
 
 export default MajorQuestion;

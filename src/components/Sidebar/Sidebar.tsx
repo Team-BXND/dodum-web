@@ -2,7 +2,7 @@ import * as S from './Sidebar.style.ts';
 import { tabList } from '@/constants/sidebar.constants.tsx';
 import { useLocation } from 'react-router';
 
-export default function Sidebar() {
+const Sidebar = () => {
   const location = useLocation();
   return (
     <S.Container>
@@ -35,4 +35,6 @@ export default function Sidebar() {
         ))}
     </S.Container>
   );
-}
+};
+
+export default Sidebar;
