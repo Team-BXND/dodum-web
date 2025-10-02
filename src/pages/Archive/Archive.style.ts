@@ -5,10 +5,10 @@ export const Container = styled.div`
     flex-direction: column;
     padding: calc(80px - 2rem) calc(70px - 2rem) 0px calc(70px - 2rem);
     width: 100%;
-    height: 100%
+    height: 100%;
 `;
 
-const TileContainer = styled.div`
+export const TileContainer = styled.div`
     display: flex;
     width: 100%;
     gap: 24px;

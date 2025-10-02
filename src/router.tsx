@@ -6,6 +6,7 @@ import MiniProject from './pages/Archive/pages/MiniProject';
 import Awards from './pages/Archive/pages/Awards';
 import Narsha from './pages/Archive/pages/Narsha';
 import Club from './pages/Archive/pages/Club';
+import Detail from './pages/Archive/pages/Detail';
 
 const router = createBrowserRouter([
   {
@@ -26,15 +27,31 @@ const router = createBrowserRouter([
           },
           {
             path: 'narsha',
-            element: <Narsha />
+            element: <Narsha />,
           },
           {
             path: 'awards',
-            element: <Awards />
+            element: <Awards />,
           },
           {
             path: 'mini-project',
-            element: <MiniProject />
+            element: <MiniProject />,
+          },
+          {
+            path: 'club/:postId',
+            element: <Detail/>
+          },
+          {
+            path: 'narsha/:postId',
+            element: <Detail/>
+          },
+          {
+            path: 'awards/:postId',
+            element: <Detail/>
+          },
+          {
+            path: 'mini-project/:postId',
+            element: <Detail/>
           },
         ]
       }

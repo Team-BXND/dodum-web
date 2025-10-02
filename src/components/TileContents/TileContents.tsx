@@ -6,7 +6,6 @@ import styled from "styled-components"
 const TileContainer = styled(Link)`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     padding: 20px;
     gap: 10px;
     width: 100%;
@@ -67,7 +66,7 @@ const Tile = (props: TileInterface) => {
                 <Title>{props.title? props.title : "도담도담"}</Title>
                 <Author>{props.author? props.author : "Team B1ND"}</Author>
             </TItleContainer>
-            <Body>{props.description? props.description: "도담도담은 외출/외박 신청, 심야 자습 신청, 급식 확인, 기숙사 아침 기상송 확인, 학교와 기숙사 상벌점 조회, 퇴사 버스 신청, 학교 일정 조회 기능을 제공합니다."}</Body>
+            <Body>{props.description?.slice(0, 120)}{(props.description?.length?? 0) > 120  ? "..." : null}</Body>
         </TileContainer>
     )
 }
