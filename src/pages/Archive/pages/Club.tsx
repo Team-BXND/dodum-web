@@ -55,7 +55,7 @@ function Club() {
 
     return (
         <S.TileContainer>
-            {posts.map((props: IPostsProps) => <Tile to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.author} description={props.description} />)}
+            {posts.map((props: IPostsProps) => <Tile key={props.id} to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.author} description={props.description} />)}
         </S.TileContainer>
     )
 }

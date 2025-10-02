@@ -3,7 +3,7 @@ import * as S from "../Archive.style";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-interface INarshaProps {
+interface IPostsProps {
     id: string,
     thumbnail?: string,
     title: string,
@@ -13,15 +13,15 @@ interface INarshaProps {
 
 function Narsha() {
     // API 호출
-    // const [narsha, setNarsha] = useState([])
+    // const [posts, setPosts] = useState([])
     
     // useEffect(() => {
     //     // axios get 함수에는 Body를 담을 수 없어 post Method로 요청
     //     axios.post('/archive/all', {
-    //         category: 'Narsha',
+    //         category: 'club',
     //     })
     //     .then(function (response) {
-    //         setNarsha(response.data)
+    //         setPosts(response.data)
     //     })
     //     .catch(function (error) {
     //         alert(error)
@@ -29,7 +29,7 @@ function Narsha() {
     // )}, [])
     
     //예시 오브젝트
-    const narsha = [
+    const posts = [
         {
             id: "1",
             thumbnail: "https://play-lh.googleusercontent.com/eM6yGP8pECXPCZ8xWA9aDkDY2rusnpuMl8WZiYUZ2fHdTd0Sj8QwPois6xhVsv-h3g",
@@ -55,7 +55,7 @@ function Narsha() {
 
     return (
         <S.TileContainer>
-            {narsha.map((props: INarshaProps) => <Tile to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.author} description={props.description} />)}
+            {posts.map((props: IPostsProps) => <Tile key={props.id} to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.author} description={props.description} />)}
         </S.TileContainer>
     )
 }

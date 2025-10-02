@@ -3,7 +3,7 @@ import * as S from "../Archive.style";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-interface IMiniProjectProps {
+interface IPostsProps {
     id: string,
     thumbnail?: string,
     title: string,
@@ -13,15 +13,15 @@ interface IMiniProjectProps {
 
 function MiniProject() {
     // API 호출
-    // const [miniProject, setMiniProject] = useState([])
+    // const [posts, setPosts] = useState([])
     
     // useEffect(() => {
     //     // axios get 함수에는 Body를 담을 수 없어 post Method로 요청
     //     axios.post('/archive/all', {
-    //         category: 'MiniProject',
+    //         category: 'club',
     //     })
     //     .then(function (response) {
-    //         setMiniProject(response.data)
+    //         setPosts(response.data)
     //     })
     //     .catch(function (error) {
     //         alert(error)
@@ -29,7 +29,7 @@ function MiniProject() {
     // )}, [])
     
     //예시 오브젝트
-    const miniProject = [
+    const posts = [
         {
             id: "1",
             thumbnail: "https://play-lh.googleusercontent.com/eM6yGP8pECXPCZ8xWA9aDkDY2rusnpuMl8WZiYUZ2fHdTd0Sj8QwPois6xhVsv-h3g",
@@ -55,7 +55,7 @@ function MiniProject() {
 
     return (
         <S.TileContainer>
-            {miniProject.map((props: IMiniProjectProps) => <Tile to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.author} description={props.description} />)}
+            {posts.map((props: IPostsProps) => <Tile key={props.id} to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.author} description={props.description} />)}
         </S.TileContainer>
     )
 }
