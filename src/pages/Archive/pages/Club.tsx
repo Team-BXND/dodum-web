@@ -2,7 +2,7 @@ import Tile from "@/components/TileContents/TileContents";
 
 function Club() {
     return (
-        <Tile />
+        <Tile to="1"/>
     )
 }
 

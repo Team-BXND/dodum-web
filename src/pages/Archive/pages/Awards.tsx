@@ -2,7 +2,7 @@ import Tile from "@/components/TileContents/TileContents";
 
 function Awards() {
     return (
-        <Tile />
+        <Tile to="1"/>
     )
 }
 

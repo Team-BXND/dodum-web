@@ -52,7 +52,7 @@ const Thumbnail = styled.img`
 `;
 
 interface TileInterface {
-    to?: string;
+    to: string;
     thumbnail?: string,
     title?: string,
     author?: string,
