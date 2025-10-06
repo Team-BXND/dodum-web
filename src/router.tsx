@@ -3,7 +3,7 @@ import Archive from '@/pages/Archive/Archive'
 import Major from '@/pages/Major/Major';
 import App from './App';
 import Detail from './pages/Archive/pages/Detail';
-import Posts from './pages/Archive/pages/Posts';
+import CategoryRoute from './pages/Archive/categoryRoute';
 
 const router = createBrowserRouter([
   {
@@ -23,36 +23,12 @@ const router = createBrowserRouter([
             element: <Navigate to="club" replace />,
           },
           {
-            path: 'club',
-            element: <Posts category='club' />,
+            path: ':category',
+            element: <CategoryRoute />,
           },
           {
-            path: 'narsha',
-            element: <Posts category='narsha' />,
-          },
-          {
-            path: 'awards',
-            element: <Posts category='awards' />,
-          },
-          {
-            path: 'mini-project',
-            element: <Posts category='mini-project' />,
-          },
-          {
-            path: 'club/:postId',
-            element: <Detail/>
-          },
-          {
-            path: 'narsha/:postId',
-            element: <Detail/>
-          },
-          {
-            path: 'awards/:postId',
-            element: <Detail/>
-          },
-          {
-            path: 'mini-project/:postId',
-            element: <Detail/>
+            path: ':category/:postId',
+            element: <Detail/>,
           },
         ]
       }
