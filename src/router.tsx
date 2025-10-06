@@ -1,12 +1,9 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, Navigate } from 'react-router';
 import Archive from '@/pages/Archive/Archive'
 import Major from '@/pages/Major/Major';
 import App from './App';
-import MiniProject from './pages/Archive/pages/MiniProject';
-import Awards from './pages/Archive/pages/Awards';
-import Narsha from './pages/Archive/pages/Narsha';
-import Club from './pages/Archive/pages/Club';
 import Detail from './pages/Archive/pages/Detail';
+import Posts from './pages/Archive/pages/Posts';
 
 const router = createBrowserRouter([
   {
@@ -22,20 +19,24 @@ const router = createBrowserRouter([
         element: <Archive />,
         children: [
           {
+            index: true,
+            element: <Navigate to="club" replace />,
+          },
+          {
             path: 'club',
-            element: <Club />,
+            element: <Posts category='club' />,
           },
           {
             path: 'narsha',
-            element: <Narsha />,
+            element: <Posts category='narsha' />,
           },
           {
             path: 'awards',
-            element: <Awards />,
+            element: <Posts category='awards' />,
           },
           {
             path: 'mini-project',
-            element: <MiniProject />,
+            element: <Posts category='mini-project' />,
           },
           {
             path: 'club/:postId',

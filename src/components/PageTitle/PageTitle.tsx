@@ -22,7 +22,7 @@ const Container = styled.div`
 
 interface PageTitleInterface {
     text: string,
-    path?: string
+    path?: string | null,
 }
 
 const PageTitle = (props: PageTitleInterface) => {
