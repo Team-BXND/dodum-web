@@ -11,6 +11,7 @@ function Archive() {
         <S.Container>
             <PageTitle text='아카이브' path={path.length == 4 ? path[2] : null}/>
             {(path.length) == 3 ? <Category/> : null}
+            <S.AddButton to="add">+</S.AddButton>
             <Outlet />
         </S.Container>
     );
