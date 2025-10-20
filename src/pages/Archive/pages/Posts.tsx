@@ -59,6 +59,7 @@ function Posts(props: IPageProps) {
 
     return (
         <S.TileContainer>
+            <S.AddButton to="add">+</S.AddButton>
             {posts.map((props: IPostsProps) => <Tile key={props.id} to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.author} description={props.description} />)}
         </S.TileContainer>
     )

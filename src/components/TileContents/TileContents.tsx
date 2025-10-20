@@ -16,6 +16,7 @@ const TileContainer = styled(Link)`
     max-width: 20rem;
     text-decoration: none;
     color: ${(props) => (props.theme.textPrimary)};
+    box-shadow: ${(props) => props.theme.shadowLight};
 `
 
 const TItleContainer = styled.div`

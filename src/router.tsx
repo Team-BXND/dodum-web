@@ -4,6 +4,7 @@ import Major from '@/pages/Major/Major';
 import App from './App';
 import Detail from './pages/Archive/pages/Detail';
 import CategoryRoute from './pages/Archive/categoryRoute';
+import AddPost from './pages/Archive/pages/AddArchive';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
           {
             path: ':category/:postId',
             element: <Detail/>,
+          },
+          {
+            path: ':category/add',
+            element: <AddPost/>,
           },
         ]
       }

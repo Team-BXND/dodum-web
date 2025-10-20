@@ -7,4 +7,5 @@ export interface Theme {
   btnSecondary: string;
   bgPrimary: string;
   bgSecondary: string;
+  shadowLight: string;
 }

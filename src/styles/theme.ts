@@ -9,4 +9,5 @@ export const lightTheme: Theme = {
   btnSecondary: '#34a061',
   bgPrimary: '#FFFFFF',
   bgSecondary: '#FAFAFA',
+  shadowLight: '0px 0px 5.43px rgba(0, 0, 0, 0.05), 0px 10.85px 21.71px rgba(0, 0, 0, 0.08);',
 };

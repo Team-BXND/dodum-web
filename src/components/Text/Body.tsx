@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { findColor } from "./findcolor";
+import { BodyStlye } from "./TextStyled";
 
-const Body = styled.h1<{ color?: "primary" | "secondary" | string }>`
-    font-size: 24px;
-    letter-spacing: -5%;
-    color: ${(props) => {return findColor(props)}};
+const Body = styled.p<{ color?: "primary" | "secondary" | string }>`
+    ${BodyStlye};
 `
 
 export default Body;
