@@ -78,9 +78,6 @@ export const QuillStyle = createGlobalStyle`
 
 export const QuillWrapper = styled.div`
     width: 100%;
-    min-height: 400px;
-
-    .ql-editor {
-        min-height: 300px;
-    }
+    min-height: 50vh;
+    height: 100%;
 `

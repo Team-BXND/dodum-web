@@ -1,14 +1,14 @@
 import ReactQuill from "react-quill-new";
 import 'react-quill-new/dist/quill.snow.css'
-import { QuillStyle, QuillWrapper } from "./Edirot.style";
+import { QuillStyle, QuillWrapper } from "./Editor.style";
 // import './editor.css'
 
-interface IPropsInterface {
-    value: string;
-    setValue: React.Dispatch<React.SetStateAction<string>>;
+interface IProps {
+    value?: string;
+    setValue?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function Editor({value, setValue}:IPropsInterface) {
+function Editor({value, setValue}:IProps) {
 
     const modules = {
     toolbar: [
