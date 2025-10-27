@@ -25,9 +25,6 @@ function Editor({value, setValue}:IProps) {
                 console.log("in");
                 const name = Date.now();
                 //image upload func
-                const upload = () => {
-
-                };
 
                 //placeholderImage
                 const imageUrl = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTpvRRub-ODLG5AAHLD4g1Hyx1X1RAbvUPuBpdM1whwQqdOOQiZzfSvuDtGrRgADTc-HMNwlumHxyAG4GFg7IKcs25oU0D2Qm9lWmwBpz0";
