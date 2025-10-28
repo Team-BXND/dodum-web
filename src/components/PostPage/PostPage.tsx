@@ -1,4 +1,4 @@
-import Body from "../Text/Body";
+import DOMPurify from "dompurify";
 import Caption from "../Text/Caption";
 import SubTitle from "../Text/SubTitle";
 import Title from "../Text/Title";
@@ -12,6 +12,7 @@ export interface IPostPageProps {
 }
 
 function PostPage(props: IPostPageProps) {
+    const sanitizedContent = DOMPurify.sanitize(props.body);
     return (
         <S.Container>
             <S.TitleContainer>
@@ -21,8 +22,7 @@ function PostPage(props: IPostPageProps) {
                     <Caption color="secondary">{props.createdAt}</Caption>
                 </S.InfoContainer>
                 <S.Body>
-                    <Body>{props.body}
-                    </Body>
+                    <div dangerouslySetInnerHTML={{__html: sanitizedContent}} />
                 </S.Body>
             </S.TitleContainer>
         </S.Container>

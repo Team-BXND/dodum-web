@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BodyStlye, SubTitleStyle, TitleStyle } from "../Text/TextStyled";
 
 export const Container = styled.div`
     display: flex;
@@ -37,6 +38,20 @@ export const Body = styled.div`
     padding: 32px 0px;
     gap: 8px;
     width: 100%;
+
+    h1 {
+        ${TitleStyle}
+    }
+
+    h2 {
+        ${SubTitleStyle}
+    }
+
+    p {
+        ${BodyStlye}
+    }
+
+
 `
 
 export const Image = styled.img`

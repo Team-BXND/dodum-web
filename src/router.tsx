@@ -3,7 +3,7 @@ import Archive from '@/pages/Archive/Archive'
 import Major from '@/pages/Major/Major';
 import App from './App';
 import Detail from './pages/Archive/pages/Detail';
-import CategoryRoute from './pages/Archive/categoryRoute';
+import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 
 const router = createBrowserRouter([
