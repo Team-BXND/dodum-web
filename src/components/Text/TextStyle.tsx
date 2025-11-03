@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 import { findColor } from "./findColor";
 
-export const BodyStlye = css`
+export const BodyStyle = css`
     font-size: 24px;
     letter-spacing: -5%;
     color: ${(props) => {return findColor(props)}};

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BodyStlye, SubTitleStyle, TitleStyle } from "../Text/TextStyled";
+import { BodyStyle, SubTitleStyle, TitleStyle } from "../Text/TextStyle";
 
 export const Container = styled.div`
     display: flex;
@@ -48,7 +48,7 @@ export const Body = styled.div`
     }
 
     p {
-        ${BodyStlye}
+        ${BodyStyle}
     }
 
 

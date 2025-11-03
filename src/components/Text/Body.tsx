@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { BodyStlye } from "./TextStyled";
+import { BodyStyle } from "./TextStyle";
 
 const Body = styled.p<{ color?: "primary" | "secondary" | string }>`
-    ${BodyStlye};
+    ${BodyStyle};
 `
 
 export default Body;

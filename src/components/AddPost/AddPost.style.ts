@@ -1,4 +1,4 @@
-import { SubTitleStyle, TitleStyle } from "@/components/Text/TextStyled";
+import { SubTitleStyle, TitleStyle } from "@/components/Text/TextStyle";
 import styled from "styled-components";
 
 export const Container = styled.div`

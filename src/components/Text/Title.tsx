@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TitleStyle } from "./TextStyled";
+import { TitleStyle } from "./TextStyle";
 
 const Title = styled.h1<{ color?: "primary" | "secondary" | string }>`
     ${TitleStyle};

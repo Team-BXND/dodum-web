@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { BodyStlye, SubTitleStyle, TitleStyle } from "../Text/TextStyled";
+import { BodyStyle, SubTitleStyle, TitleStyle } from "../Text/TextStyle";
 
 
 export const QuillStyle = createGlobalStyle`
@@ -65,7 +65,7 @@ export const QuillStyle = createGlobalStyle`
     }
 
     .ql-snow .ql-editor p {
-        ${BodyStlye}
+        ${BodyStyle}
     }
 
     .ql-snow .ql-editor * strong {
