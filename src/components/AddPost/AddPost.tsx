@@ -2,14 +2,12 @@ import { useRef, useState } from "react";
 import * as S from "./AddPost.style"
 import Editor from "@/components/AddPost/Editor";
 import Button from "@/components/Buttons/Button";
-import { useLocation } from "react-router-dom";
 
 interface IButtonsProps {
     submit: (() => void);
 }
 
 const Buttons = ({submit} : IButtonsProps) => {
-    const location = useLocation();
     return (
         <S.ButtonContainer>
             <Button text="게시" onClick={submit}/>
