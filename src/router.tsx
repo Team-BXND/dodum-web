@@ -1,3 +1,5 @@
+import Competition_info from './pages/competition_info/Competition_info';
+import Competition_info_add from './pages/competition_info/Competiton_info_add';
 import { createBrowserRouter, Navigate } from 'react-router';
 import Archive from './pages/Archive/Archive'
 import Major from './pages/Major/Major';
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
         element: <Major />,
       },
       {
+        path:"competition_info",
+        element:<Competition_info/>
+      },
+      {
+        path:"competition_info_add",
+        element:<Competition_info_add/>
+      },
+      {
         path: 'major/result',
         element: <MajorResult />,
       },
@@ -49,7 +59,7 @@ const router = createBrowserRouter([
         element: <OtherInfo />,
         children: [
           {
-            index: true, 
+            index: true,
             element: <Navigate to="all" replace />,
           },
           {
@@ -72,15 +82,15 @@ const router = createBrowserRouter([
             path: 'add',
             element: <AddEtcInfo />
           },
-          { 
-            path: 'edit/:postId', 
-            element: <EditArchive /> 
+          {
+            path: 'edit/:postId',
+            element: <EditArchive />
           },
         ]
       },
-      { 
+      {
         path: 'etc/:category/:postId',
-          element: <EtcDetail /> 
+          element: <EtcDetail />
       },
     ],
   },
