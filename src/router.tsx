@@ -1,6 +1,3 @@
-import Competition_info from './pages/competition_info/Competition_info';
-import Competition_info_add from './pages/competition_info/Competiton_info_add';
-import { createBrowserRouter, Navigate } from 'react-router';
 import Archive from './pages/Archive/Archive'
 import Major from './pages/Major/Major';
 import MajorResult from './pages/Major/Result/MajorResult';
@@ -11,12 +8,14 @@ import EditArchive from './pages/Archive/pages/EditArchive';
 
 // Info 페이지
 import Info from './pages/info/infoView';
+import { createBrowserRouter } from 'react-router';
 import App from './App';
 // OtherInfo (etc)
 import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
 import Posts from './pages/OtherInfo/pages/Posts';
 import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
 import EtcDetail from './pages/OtherInfo/pages/Detail';
+import {Navigate} from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -26,14 +25,6 @@ const router = createBrowserRouter([
       {
         path: 'major',
         element: <Major />,
-      },
-      {
-        path:"competition_info",
-        element:<Competition_info/>
-      },
-      {
-        path:"competition_info_add",
-        element:<Competition_info_add/>
       },
       {
         path: 'major/result',
