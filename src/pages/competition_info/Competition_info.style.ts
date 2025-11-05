@@ -131,3 +131,35 @@ export const ExceptButton=styled.button`
   border:none;
 
 `
+
+export const Comp_card=styled.div`
+  width:23vw;
+  height:43vh;
+  display:flex;
+  flex-direction:column;
+  gap:1vh;
+  background-color:#FFFFFF;
+`
+
+export const Card_top=styled.div`
+  width:23vw;
+  height:4.5vh;
+  background-color:#ffffff;
+`
+
+export const Tiletitle=styled.h1`
+  font-weight:700;
+  font-size:1.5vw;
+  color:#1B1B1B;
+`
+
+export const Tilebody=styled.h1`
+  font-weight:400;
+  font-size:1vw;
+
+`
+
+export const Cardcover=styled.div`
+display:flex;
+flex-direction:column;
+`
