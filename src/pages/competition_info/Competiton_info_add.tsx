@@ -16,6 +16,11 @@ const Competition_info_add=()=>{
         <S.SubTitle placeholder="이메일을 입력하세요"></S.SubTitle>
         <S.SubTitle placeholder="시간을 입력하세요"></S.SubTitle>
         </S.DetailCover>
+        <S.TextArea placeholder="본문을 입력하세요"></S.TextArea>
+        <S.ButtonCover>
+        <S.PostButton>게시</S.PostButton>
+        <S.ExceptButton>취소</S.ExceptButton>
+        </S.ButtonCover>
         </S.Card>
         </>
     )
