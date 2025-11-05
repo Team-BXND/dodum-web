@@ -33,6 +33,20 @@ export const SubTitle = styled(Title)`
     ${SubTitleStyle};
 `
 
+export const Category = styled.select`
+    width: 100%;
+    &:focus {
+        outline: none;
+    }
+    border: 0;
+    border-bottom: 1px solid ${(props) => props.theme.textSecondary};
+    padding: 8px 0px;
+    ${SubTitleStyle};
+    color: ${(props) => props.theme.textSecondary};
+    font-size: 1.35rem;
+    font-weight: bold;
+`
+
 export const ButtonContainer = styled.div`
     width: 100%;
     display: flex;

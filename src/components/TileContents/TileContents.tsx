@@ -57,7 +57,7 @@ interface TileInterface {
     title?: string,
     author?: string,
     description?: string,
-}
+}   
 
 const Tile = (props: TileInterface) => {
     return (
