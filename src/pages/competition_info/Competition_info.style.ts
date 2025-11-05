@@ -24,7 +24,7 @@ export const Navigator = styled.h1`
 
 export const Card = styled.div`
   width: 74vw;
-  height: 50vh;
+  height: auto;
   background-color: #ffffff;
   border-radius: 12px;
   display: flex;
@@ -84,4 +84,50 @@ export const DetailCover = styled.div`
   gap: 0.8vh;
 `;
 
+export const TextArea = styled.textarea`
+  width:66.2vw;
+  font-size:1.5vw;
+  margin-left:4vw;
+  height:auto;
+  min-height:40vh;
+  margin-top:0.8vh;
+  border:none;
+  &::placeholder {
+  color: #adadad;
+  }
 
+`
+
+export const PostButton=styled.button`
+  width:5vw;
+  height:3.5vh;
+  background-color:#26874E;
+  color:#FFFFFF;
+  font-weight:500;
+  font-size:1vw;
+  border-radius:8px;
+  margin-top:1.2vh;
+  margin-left:59vw;
+  margin-bottom:4vh;
+  border:none;
+
+`
+export const ButtonCover=styled.div`
+  display:flex;
+  flex-direction:row;
+`
+
+export const ExceptButton=styled.button`
+  width:5vw;
+  height:3.5vh;
+  background-color:#949494;
+  color:#FFFFFF;
+  font-weight:500;
+  font-size:1vw;
+  border-radius:8px;
+  margin-top:1.2vh;
+  margin-left:0.6vw;
+  margin-bottom:4vh;
+  border:none;
+
+`
