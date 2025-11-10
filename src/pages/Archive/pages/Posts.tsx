@@ -28,7 +28,7 @@ function Posts(props: IPageProps) {
             setPosts(response.data)
         })
         .catch(function (error) {
-            alert(error.status == 404? "게시물을 불러오지 못하였습니다.(404 에러)" : error.message);
+            alert(error.response?.status === 404? "게시물을 불러오지 못하였습니다.(404 에러)" : error.message);
         }
     )}, [props.category])
     

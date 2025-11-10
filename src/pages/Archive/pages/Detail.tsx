@@ -25,7 +25,7 @@ function Detail() {
             setPost(response.data);
         })
         .catch (function (error) {
-            alert(error.status == 404? "해당 게시물이 존재하지 않습니다." : error.message);
+            alert(error.response?.status == 404? "해당 게시물이 존재하지 않습니다." : error.message);
             navigate(-1);
         })
     }, [])

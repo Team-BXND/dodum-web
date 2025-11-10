@@ -2,12 +2,15 @@ import * as S from "./AddPost.style"
 import Editor from "@/components/AddPost/Editor";
 import Button from "@/components/Buttons/Button";
 import { useForm, Controller, type SubmitHandler, type ControllerFieldState, type ControllerRenderProps } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const Buttons = () => {
+    const navigator = useNavigate();
+
     return (
         <S.ButtonContainer>
             <Button text="게시" type="submit"/>
-            <Button text="취소" onClick={() => {}} isGray/>
+            <Button text="취소" onClick={() => {navigator(-1)}} isGray/>
         </S.ButtonContainer>
     )
 }
