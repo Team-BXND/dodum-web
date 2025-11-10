@@ -1,7 +1,7 @@
 import { SubTitleStyle, TitleStyle } from "@/components/Text/TextStyle";
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.form`
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -29,6 +29,11 @@ export const Title = styled.input`
     ${TitleStyle};
 `
 
+export const TagsContainer = styled.div`
+    display: flex;
+    gap: 12px;
+`
+
 export const SubTitle = styled(Title)`
     ${SubTitleStyle};
 `
@@ -42,9 +47,15 @@ export const Category = styled.select`
     border-bottom: 1px solid ${(props) => props.theme.textSecondary};
     padding: 8px 0px;
     ${SubTitleStyle};
-    color: ${(props) => props.theme.textSecondary};
     font-size: 1.35rem;
     font-weight: bold;
+    &:invalid {
+        color: ${(props) => props.theme.textSecondary};
+    }
+`
+
+export const Author = styled(SubTitle)`
+    font-size: 1.35rem;
 `
 
 export const ButtonContainer = styled.div`

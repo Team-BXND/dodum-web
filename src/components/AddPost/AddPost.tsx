@@ -1,44 +1,80 @@
-import { useRef, useState } from "react";
 import * as S from "./AddPost.style"
 import Editor from "@/components/AddPost/Editor";
 import Button from "@/components/Buttons/Button";
+import { useForm, Controller, type SubmitHandler, type ControllerFieldState, type ControllerRenderProps } from "react-hook-form";
 
-interface IButtonsProps {
-    submit: (() => void);
-}
-
-const Buttons = ({submit} : IButtonsProps) => {
+const Buttons = () => {
     return (
         <S.ButtonContainer>
-            <Button text="게시" onClick={submit}/>
+            <Button text="게시" type="submit"/>
             <Button text="취소" onClick={() => {}} isGray/>
         </S.ButtonContainer>
     )
 }
 
-interface IAddPostProps {
-    handleSubmit: ((titleRef: React.RefObject<HTMLInputElement | null>, subTitleRef: React.RefObject<HTMLInputElement | null>, categoryRef: React.RefObject<HTMLSelectElement | null>, value: string) => void);
+export const Category = {
+    club: "동아리",
+    narsha: "나르샤",
+    awards: "대회 수상작",
+    mini_project: "미니 프로젝트"
+} as const;
+
+export type Category = (typeof Category)[keyof typeof Category];
+
+export interface IFormInput {
+    title: String,
+    subTitle: string,
+    category: Category,
+    content: string,
+    author: string,
 }
 
-function AddPost({handleSubmit}: IAddPostProps) {
-    const [value, setValue] = useState('');
-    const titleRef = useRef<HTMLInputElement>(null);
-    const subTitleRef = useRef<HTMLInputElement>(null);
-    const CategoryRef = useRef<HTMLSelectElement>(null);
+interface IController {
+    field: ControllerRenderProps<IFormInput, "content">;
+    fieldState: ControllerFieldState;
+}
+
+function AddPost({onSubmit}: {onSubmit: SubmitHandler<IFormInput>}) {
+    const { control, register, handleSubmit } = useForm<IFormInput>({
+        defaultValues: {
+            title: "",
+            subTitle: "",
+            content: "",
+            author: ""
+        }
+    });
 
     return (
-        <S.Container>
-            <S.Title placeholder="제목을 입력하세요." ref={titleRef}/>
-            <S.SubTitle placeholder="부제목을 입력하세요." ref={subTitleRef}/>
-            <S.Category ref={CategoryRef} defaultValue="default">
-                <option disabled hidden value="default">카테고리를 선택하세요.</option>
-                <option value="동아리">동아리</option>
-                <option value="나르샤">나르샤</option>
-                <option value="대회 수상작">대회 수상작</option>
-                <option value="미니 프로젝트">미니 프로젝트</option>
-            </S.Category>
-            <Editor value={value} setValue={setValue}/>
-            <Buttons submit={() => {handleSubmit(titleRef, subTitleRef, CategoryRef, value)}}/>
+        <S.Container onSubmit={handleSubmit(onSubmit)}>
+            <S.Title placeholder="제목을 입력하세요." {...register("title")}/>
+            <S.SubTitle placeholder="부제목을 입력하세요." {...register("subTitle")}/>
+            <S.TagsContainer>
+                <S.Author placeholder="작성자를 입력하세요." {...register("author")}/>
+                <S.Category defaultValue="" {...register("category")} required>
+                    <option disabled hidden value="">카테고리를 선택하세요.</option>
+                    {Object.values(Category).map((value) => {
+                        return (
+                            <option key={value} value={value}>{value}</option>
+                        )
+                    })}
+                </S.Category>
+            </S.TagsContainer>
+            <Controller 
+                name="content"
+                control={control}
+                render={
+                    ({ field, fieldState }:IController) => {
+                        return (
+                        <>
+                            <Editor value={field.value} setValue={field.onChange}/>
+                            {fieldState.error && (
+                                <p>{fieldState.error?.message}</p>
+                            )}
+                        </>)
+                    }
+                } />
+                
+            <Buttons/>
         </S.Container>
     )
 }

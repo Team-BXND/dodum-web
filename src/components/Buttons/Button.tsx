@@ -1,9 +1,10 @@
 import styled from "styled-components"
 
-const ButtonMainColor = styled.div`
+const ButtonMainColor = styled.button`
     display: flex;
     padding: 8px 24px;
     border-radius: 8px;
+    border: 0;
     font-size: 16px;
     background-color: ${(props) => props.theme.btnPrimary};
     color: #fff;
@@ -19,10 +20,10 @@ const ButtonGray = styled(ButtonMainColor)`
     }
 `
 
-export default function Button({ text, isGray, onClick } : {text?: string, isGray?: boolean, onClick: () => void}) {
+export default function Button({ text, isGray, onClick, type="button" } : {text: string, isGray?: boolean, onClick?: () => void, type?: "button" | "submit" | "reset",}) {
     return isGray? (
-        <ButtonGray onClick={onClick}>{text}</ButtonGray>
+        <ButtonGray onClick={onClick} type={type}>{text}</ButtonGray>
     ) : (
-        <ButtonMainColor onClick={onClick}>{text}</ButtonMainColor>
+        <ButtonMainColor onClick={onClick} type={type}>{text}</ButtonMainColor>
     )
 }

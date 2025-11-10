@@ -1,15 +1,26 @@
-import AddPost from "../../../components/AddPost/AddPost";
+import axios from "axios";
+import AddPost, { type IFormInput } from "../../../components/AddPost/AddPost";
+import type { SubmitHandler } from "react-hook-form";
 
-const handleSubmit = (titleRef:React.RefObject<HTMLInputElement | null>, subTitleRef:React.RefObject<HTMLInputElement | null>, categoryRef:React.RefObject<HTMLSelectElement | null>, value:string) => {
-    console.log(titleRef.current!.value);
-    console.log(subTitleRef.current!.value);
-    console.log(categoryRef.current!.value)
-    console.log(value);
+const handleSubmit: SubmitHandler<IFormInput> = (data) => {
+    axios.post("api.url", {
+        title: data.title,
+        subTitle: data.subTitle,
+        category: data.category,
+        content: data.content,
+        author: data.author,
+    })
+    .then((response) => {
+        alert(response.data)
+    })
+    .catch((error) => {
+        alert(error.message)
+    })
 }
 
 function AddArchive() {
     return (
-        <AddPost handleSubmit={handleSubmit}/>
+        <AddPost onSubmit={handleSubmit}/>
     )
 }
 
