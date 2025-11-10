@@ -18,29 +18,18 @@ const router = createBrowserRouter([
         element: <Major />,
       },
       {
+        path: 'major/result',
+        element: <MajorResult />,
+      },
+      {
         path: 'archive',
         element: <Archive />,
         children: [
-          {
-            index: true,
-            element: <Navigate to="club" replace />,
-          },
-          {
-            path: ':category',
-            element: <CategoryRoute />,
-          },
-          {
-            path: ':category/:postId',
-            element: <Detail/>,
-          },
-          {
-            path: ':category/add',
-            element: <AddArchive/>,
-          },
-        ]
-      }
-        path: 'major/result',
-        element: <MajorResult />,
+          { index: true, element: <Navigate to="club" replace /> },
+          { path: ':category', element: <CategoryRoute /> },
+          { path: ':category/:postId', element: <Detail /> },
+          { path: ':category/add', element: <AddArchive /> },
+        ],
       },
       {
         path: 'info',
@@ -49,5 +38,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 
 export default router;
