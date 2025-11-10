@@ -1,8 +1,10 @@
 import axios from "axios";
 import AddPost, { type IFormInput } from "../../../components/AddPost/AddPost";
 import type { SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const handleSubmit: SubmitHandler<IFormInput> = (data) => {
+    const navigate = useNavigate();
     axios.post("api.url", {
         title: data.title,
         subTitle: data.subTitle,
@@ -12,6 +14,8 @@ const handleSubmit: SubmitHandler<IFormInput> = (data) => {
     })
     .then((response) => {
         alert(response.data)
+        navigate(-1);
+
     })
     .catch((error) => {
         alert(error.message)
