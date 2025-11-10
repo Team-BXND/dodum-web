@@ -17,7 +17,7 @@ interface IPageProps {
 
 function Posts(props: IPageProps) {
     // API 호출
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState<IPostsProps[]>([])
     
     useEffect(() => {
         // axios get 함수에는 Body를 담을 수 없어 post Method로 요청
@@ -33,7 +33,8 @@ function Posts(props: IPageProps) {
     )}, [props.category])
     
     //예시 오브젝트
-    // const posts = [
+    // useEffect(() => {
+    //     setPosts([
     //     {
     //         id: "1",
     //         thumbnail: "https://play-lh.googleusercontent.com/eM6yGP8pECXPCZ8xWA9aDkDY2rusnpuMl8WZiYUZ2fHdTd0Sj8QwPois6xhVsv-h3g",
@@ -55,12 +56,13 @@ function Posts(props: IPageProps) {
     //         author: "Team C0nnect",
     //         description: "온라인 출석 관리 - QR 코드 및 본인인증: 학생들은 개별적으로 부여된 QR코드를 스캔하여 출석을 체크하고, 본인인증을 통해 출석을 완료할 수 있습니다. - 출석 현황: 사감선생님은 웹에 접속시 기숙사 내 학생들의 출석 현황을 모니터링 할 수 있어 학생들의 위치 파악이 용이합니다."
     //     }
-    // ]
+    // ]);
+    // }, [])
 
     return (
         <S.TileContainer>
             <S.AddButton to="add">+</S.AddButton>
-            {posts.map((props: IPostsProps) => <Tile key={props.id} to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.author} description={props.description} />)}
+            {posts.length === 0 ? <h1>게시글이 없습니다.</h1> : (posts.map((props: IPostsProps) => <Tile key={props.id} to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.author} description={props.description} />))}
         </S.TileContainer>
     )
 }
