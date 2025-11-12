@@ -12,7 +12,6 @@ export interface InfoListProps {
   view: number;
   Image: string;
 }
-
 export interface InfoCommentProps {
   id: number;
   author: string;

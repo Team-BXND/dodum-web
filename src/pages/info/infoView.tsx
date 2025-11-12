@@ -13,6 +13,7 @@ const Info = () => {
     startIndex + pageSize
   );
   const totalPages = Math.ceil(infoItems[0].posts.length / pageSize);
+
   return (
     <>
       <S.Title>
@@ -21,6 +22,7 @@ const Info = () => {
       <S.SearchBox placeholder="검색어를 입력해주세요"></S.SearchBox>
       <S.Search />
       <S.Container>
+
         <S.List>
           {currentPages.map(
             ({
@@ -65,7 +67,6 @@ const Info = () => {
           ))}
         </S.Pagination>
       </S.Container>
-
       <S.AddButtonWrapper>
         <S.AddButton />
       </S.AddButtonWrapper>

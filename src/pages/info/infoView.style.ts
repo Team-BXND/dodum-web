@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import SearchIcon from '@/assets/info/search.svg';
 import AddIcon from '@/assets/info/AddButton.svg';
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -76,7 +75,6 @@ export const Box = styled.div`
 
 export const Titletext = styled.h1`
   /* 정보공유 */
-
   width: 200px;
   height: 38px;
   font-family: 'Pretendard Variable';
@@ -93,6 +91,7 @@ export const Titletext = styled.h1`
   order: 0;
   flex-grow: 0;
 `;
+
 export const Title = styled.div`
   /* Title */
 
