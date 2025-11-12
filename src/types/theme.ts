@@ -5,6 +5,9 @@ export interface Theme {
   textSecondary: string;
   btnPrimary: string;
   btnSecondary: string;
+  btnGrayPrimary: string;
+  btnGraySecondary: string;
   bgPrimary: string;
   bgSecondary: string;
+  shadowLight: string;
 }
