@@ -1,15 +1,16 @@
 import Archive from './pages/Archive/Archive'
-import Major from './pages/Major/Major';
-import MajorResult from './pages/Major/Result/MajorResult';
 import Detail from './pages/Archive/pages/Detail';
 import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 import EditArchive from './pages/Archive/pages/EditArchive';
 
 // Info 페이지
-import Info from './pages/info/infoView';
 import { createBrowserRouter } from 'react-router';
+import Major from '@/pages/Major/Major';
+import Info from '@/pages/info/infoView';
 import App from './App';
+import MajorResult from './pages/Major/Result/MajorResult';
+import InfoDetail from './pages/info/Detail/infoDetail.tsx'
 // OtherInfo (etc)
 import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
 import Posts from './pages/OtherInfo/pages/Posts';
@@ -25,6 +26,18 @@ const router = createBrowserRouter([
       {
         path: 'major',
         element: <Major />,
+      },
+      {
+        path: 'major/result',
+        element: <MajorResult />,
+      },
+      {
+        path: 'info',
+        element: <Info />,
+      },
+      {
+        path: 'info/:id',
+        element: <InfoDetail />,
       },
       {
         path: 'major/result',

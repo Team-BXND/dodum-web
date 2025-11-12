@@ -41,7 +41,7 @@ const MajorResult = () => {
             <S.FightingBox>즐거운 학교생활을 응원할게요!</S.FightingBox>
           </S.LeftDescriptionContainer>
           <S.RightDescriptionContainer>
-            <S.GraphContainer>
+            <S.GraphConatiner>
               <S.DescriptionInfo>전공별 적성 그래프</S.DescriptionInfo>
               <S.GraphBox>
                 {/* entries: [key, value] 쌍으로 이루어진 배열을 반환 */}
@@ -54,7 +54,7 @@ const MajorResult = () => {
                   );
                 })}
               </S.GraphBox>
-            </S.GraphContainer>
+            </S.GraphConatiner>
           </S.RightDescriptionContainer>
         </S.DescriptionContainer>
       </S.Container>

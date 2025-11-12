@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import FavoriteIcon from '@/assets/info/favorite.svg';
 import CommentIcon from '@/assets/info/comment.svg';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;

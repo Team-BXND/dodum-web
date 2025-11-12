@@ -1,42 +1,18 @@
 import * as S from './infoView.style';
 import InfoList from '@/components/InfoList/InfoList';
-import { infoItems } from '@/components/InfoList/InfoList';
-import { useState, useEffect, useRef } from 'react';
+import { infoItems } from '@/constants/info.constants';
+import { useState } from 'react';
 
 const Info = () => {
-  const [displayItems, setDisplayItems] = useState(
-    infoItems[0].posts.slice(0, 7)
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 7;
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const currentPages = infoItems[0].posts.slice(
+    startIndex,
+    startIndex + pageSize
   );
-  const listRef = useRef<HTMLDivElement>(null);
-  const itemsPerLoad = 7;
-  const loadMore = () => {
-    setDisplayItems((prev) => {
-      if (prev.length >= infoItems[0].posts.length) return prev;
-      const nextItems = infoItems[0].posts.slice(
-        prev.length,
-        prev.length + itemsPerLoad
-      );
-      return [...prev, ...nextItems];
-    });
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const list = listRef.current;
-      if (!list) return;
-
-      // 리스트가 스크롤 끝에 도달하면 loadMore
-      if (list.scrollTop + list.clientHeight >= list.scrollHeight - 50) {
-        loadMore();
-      }
-    };
-
-    const list = listRef.current;
-    list?.addEventListener('scroll', handleScroll);
-
-    return () => list?.removeEventListener('scroll', handleScroll);
-  }, []);
-
+  const totalPages = Math.ceil(infoItems[0].posts.length / pageSize);
   return (
     <>
       <S.Title>
@@ -45,37 +21,51 @@ const Info = () => {
       <S.SearchBox placeholder="검색어를 입력해주세요"></S.SearchBox>
       <S.Search />
       <S.Container>
-        <S.List ref={listRef}>
-          {displayItems.map(
+        <S.List>
+          {currentPages.map(
             ({
               id,
               title,
+              name,
               content,
               author,
               category,
               createdAt,
-              like,
+              likes,
               comment,
               view,
-              img,
+              Image,
             }) => (
               <InfoList
                 key={id}
                 id={id}
                 title={title}
+                name={name}
                 content={content}
                 author={author}
                 category={category}
                 createdAt={createdAt}
-                like={like}
+                likes={likes}
                 comment={comment}
                 view={view}
-                img={img}
+                Image={Image}
               />
             )
           )}
         </S.List>
+        <S.Pagination>
+          {[...Array(totalPages)].map((_, i) => (
+            <S.PageBtn
+              key={i}
+              $active={currentPage === i + 1}
+              onClick={() => setCurrentPage(i + 1)}
+            >
+              {i + 1}
+            </S.PageBtn>
+          ))}
+        </S.Pagination>
       </S.Container>
+
       <S.AddButtonWrapper>
         <S.AddButton />
       </S.AddButtonWrapper>

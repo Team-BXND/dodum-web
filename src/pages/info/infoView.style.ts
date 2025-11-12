@@ -4,10 +4,14 @@ import AddIcon from '@/assets/info/AddButton.svg';
 
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
   position: absolute;
   width: 1114px;
-  height: 607px;
-  left: 328px;
+  height: 657px;
+  left: 300px;
   top: 127px;
 
   background: #ffffff;
@@ -28,7 +32,7 @@ export const SearchBox = styled.input`
   left: 1195px;
   top: 75px;
 
-  ::placeholder {
+  &::placeholder {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -74,7 +78,7 @@ export const Box = styled.div`
 export const Titletext = styled.h1`
   /* 정보공유 */
 
-  width: 106px;
+  width: 200px;
   height: 38px;
   font-family: 'Pretendard Variable';
   font-style: normal;
@@ -115,10 +119,29 @@ export const AddButtonWrapper = styled.button`
   height: 72px;
   width: 72px;
   border: none;
-  background-color: #FAFAFA;
   left: 1370px;
   top: 750px;
 `;
 export const AddButton = styled(AddIcon)`
   position: absolute;
+`;
+
+export const Pagination = styled.div`
+  display: block;
+  margin-top: 25px;
+  height: 29px;
+`;
+
+export const PageBtn = styled.button<{ $active: boolean }>`
+  background: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  border: none;
+  color: ${({ $active }) => ($active ? '#1b1b1b' : '#adadad')};
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  cursor: pointer;
 `;
