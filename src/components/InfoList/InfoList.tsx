@@ -1,6 +1,7 @@
 import type { InfoListProps } from '@/types/infoList';
 import * as S from './InfoList.style';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const InfoList = ({
   id,
@@ -11,10 +12,11 @@ const InfoList = ({
   category,
   createdAt,
   likes,
-  comment,
-  view,
-  Image,
+  comments,
+  views,
+  imageUrls,
 }: InfoListProps) => {
+  const [lookEditor, setLookEditor] = useState(false);
   const navigate = useNavigate();
   const parentProps = {
     id,
@@ -25,9 +27,8 @@ const InfoList = ({
     category,
     createdAt,
     likes,
-    comment,
-    view,
-    Image,
+    comments,
+    views,
   };
   return (
     <S.Container
@@ -43,18 +44,19 @@ const InfoList = ({
         </S.Bullet>
         <S.MainInfo>
           <h2>{title}</h2>
-          <h4>{name}</h4>
+          <h4>{author}</h4>
         </S.MainInfo>
         <S.SubInfo>
           <S.Favorite></S.Favorite>
           <h3>{likes}</h3>
           <S.Comment></S.Comment>
-          <h4>{comment}</h4>
-          <h5>조회 {view}</h5>
+          <h4>{comments}</h4>
+          <h5>조회 {views}</h5>
         </S.SubInfo>
         <S.ImgContainer>
-          <img src={Image} alt="미리보기"></img>
+          <img src={imageUrls} alt="미리보기"></img>
         </S.ImgContainer>
+        <S.Etc></S.Etc>
       </S.InfoItem>
     </S.Container>
   );

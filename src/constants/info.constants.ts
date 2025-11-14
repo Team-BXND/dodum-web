@@ -1,4 +1,4 @@
-import testImg from '@/assets/info/test.png';
+import testImg from '@/aArrets/info/test.png';
 
 export const infoItems = [
   {
@@ -12,10 +12,10 @@ export const infoItems = [
         category: 'React',
         createdAt: '2025-10-22T23:00:00Z',
         likes: 2025,
-        comment: 2025,
+        comments: 2025,
         view: 2025,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+1',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+1',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -44,10 +44,10 @@ Next.js 프로젝트를 생성하는 방법을 알아봅니다.
         category: 'Next.js',
         createdAt: '2025-10-21T12:30:00Z',
         likes: 120,
-        comment: 30,
+        comments: 30,
         view: 450,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+2',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+2',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -76,10 +76,10 @@ TypeScript를 왜 사용해야 하는지 알아봅니다.`,
         category: 'TypeScript',
         createdAt: '2025-10-20T10:00:00Z',
         likes: 95,
-        comment: 12,
+        comments: 12,
         view: 300,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+3',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+3',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -98,20 +98,20 @@ TypeScript를 왜 사용해야 하는지 알아봅니다.`,
         id: 4,
         title: 'Styled-components 활용법',
         name: '1313최민수',
-        content: `CSS-in-JS 방식으로 스타일링하는 방법을 알아봅니다.
+        content: `CArr-in-JS 방식으로 스타일링하는 방법을 알아봅니다.
 Styled-components 라이브러리 설치 방법을 알아봅니다.
 컴포넌트 기반 스타일링 기법을 배웁니다.
 Props를 활용하여 동적으로 스타일을 변경합니다.
 전역 스타일(Global Styles) 설정 방법을 익힙니다.
-기존 CSS-in-JS 방식과의 차이점을 비교합니다.`,
+기존 CArr-in-JS 방식과의 차이점을 비교합니다.`,
         author: '최민수',
         category: 'React',
         createdAt: '2025-10-19T09:20:00Z',
         likes: 180,
-        comment: 45,
+        comments: 45,
         view: 600,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+4',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+4',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -140,10 +140,10 @@ React + TypeScript 템플릿을 선택합니다.
         category: 'Vite',
         createdAt: '2025-10-18T15:10:00Z',
         likes: 80,
-        comment: 15,
+        comments: 15,
         view: 220,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+5',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+5',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -172,10 +172,10 @@ URL 파라미터(params)를 설정하고 읽어옵니다.
         category: 'React',
         createdAt: '2025-10-17T08:50:00Z',
         likes: 140,
-        comment: 20,
+        comments: 20,
         view: 400,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+6',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+6',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -204,10 +204,10 @@ Redux나 Recoil과의 차이점을 간단히 비교합니다.`,
         category: 'React',
         createdAt: '2025-10-16T14:00:00Z',
         likes: 110,
-        comment: 18,
+        comments: 18,
         view: 350,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+7',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+7',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -236,10 +236,10 @@ Redux나 Recoil과의 차이점을 간단히 비교합니다.`,
         category: 'React',
         createdAt: '2025-10-15T11:40:00Z',
         likes: 210,
-        comment: 50,
+        comments: 50,
         view: 700,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+8',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+8',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -268,10 +268,10 @@ React의 렌더링 과정을 이해합니다.
         category: 'React',
         createdAt: '2025-10-14T16:30:00Z',
         likes: 130,
-        comment: 25,
+        comments: 25,
         view: 500,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+9',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+9',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -300,10 +300,10 @@ Props에 대한 인터페이스를 정의하고 적용합니다.
         category: 'React',
         createdAt: '2025-10-13T13:15:00Z',
         likes: 170,
-        comment: 35,
+        comments: 35,
         view: 600,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+10',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+10',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -332,10 +332,10 @@ Formik 라이브러리의 장단점을 살펴봅니다.
         category: 'React',
         createdAt: '2025-10-12T09:00:00Z',
         likes: 90,
-        comment: 12,
+        comments: 12,
         view: 280,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+11',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+11',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -364,10 +364,10 @@ Netlify의 드래그 앤 드롭 배포 방법을 알아봅니다.
         category: 'React',
         createdAt: '2025-10-11T17:45:00Z',
         likes: 200,
-        comment: 48,
+        comments: 48,
         view: 720,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+12',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+12',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -384,21 +384,21 @@ Netlify의 드래그 앤 드롭 배포 방법을 알아봅니다.
       },
       {
         id: 13,
-        title: 'React와 TailwindCSS',
+        title: 'React와 TailwindCArr',
         name: '1313김민정',
         content: `유틸리티 클래스 기반 스타일링을 배웁니다.
-TailwindCSS 설치 및 React 프로젝트 설정 방법을 익힙니다.
+TailwindCArr 설치 및 React 프로젝트 설정 방법을 익힙니다.
 'tailwind.config.js' 파일의 역할을 이해합니다.
 유틸리티 우선(Utility-First) 접근 방식을 알아봅니다.
 반응형 디자인을 위한 클래스 사용법을 배웁니다.
-CSS-in-JS와의 차이점을 비교 분석합니다.`,
+CArr-in-JS와의 차이점을 비교 분석합니다.`,
         author: '김민정',
         category: 'React',
         createdAt: '2025-10-10T10:10:00Z',
         likes: 150,
-        comment: 28,
+        comments: 28,
         view: 520,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+13',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+13',
       },
       {
         id: 14,
@@ -409,14 +409,14 @@ CSS-in-JS와의 차이점을 비교 분석합니다.`,
 기능별(feature-based) 구조와 도메인별 구조를 비교합니다.
 'components' 폴더와 'pages' 폴더의 역할을 구분합니다.
 공용 컴포넌트(shared/common) 관리 방법을 배웁니다.
-스타일 파일(CSS, SASS)을 관리하는 전략을 살펴봅니다.`,
+스타일 파일(CArr, SAArr)을 관리하는 전략을 살펴봅니다.`,
         author: '이하늘',
         category: 'React',
         createdAt: '2025-10-09T12:20:00Z',
         likes: 100,
-        comment: 20,
+        comments: 20,
         view: 350,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+14',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+14',
       },
       {
         id: 15,
@@ -432,9 +432,9 @@ Redux Toolkit을 사용한 간편한 Redux 설정을 실습합니다.
         category: 'React',
         createdAt: '2025-10-08T14:50:00Z',
         likes: 180,
-        comment: 40,
+        comments: 40,
         view: 650,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+15',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+15',
       },
       {
         id: 16,
@@ -450,10 +450,10 @@ React Router v5와의 주요 변경점을 비교합니다.
         category: 'React',
         createdAt: '2025-10-07T09:30:00Z',
         likes: 140,
-        comment: 22,
+        comments: 22,
         view: 450,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+16',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+16',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -482,9 +482,9 @@ React Router v5와의 주요 변경점을 비교합니다.
         category: 'React',
         createdAt: '2025-10-06T15:00:00Z',
         likes: 160,
-        comment: 30,
+        comments: 30,
         view: 520,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+17',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+17',
       },
       {
         id: 18,
@@ -500,9 +500,9 @@ RTL을 사용하여 컴포넌트 통합 테스트를 작성합니다.
         category: 'React',
         createdAt: '2025-10-05T11:20:00Z',
         likes: 120,
-        comment: 18,
+        comments: 18,
         view: 400,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+18',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+18',
       },
       {
         id: 19,
@@ -518,9 +518,9 @@ Custom Hook을 통해 코드의 재사용성과 가독성을 높입니다.`,
         category: 'React',
         createdAt: '2025-10-04T16:45:00Z',
         likes: 130,
-        comment: 20,
+        comments: 20,
         view: 430,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+19',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+19',
       },
       {
         id: 20,
@@ -536,10 +536,10 @@ axios 라이브러리 설치 및 사용법을 익힙니다.
         category: 'React',
         createdAt: '2025-10-03T13:10:00Z',
         likes: 200,
-        comment: 50,
+        comments: 50,
         view: 700,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+20',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+20',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',
@@ -568,9 +568,9 @@ Recoil, Zustand 등 최신 상태 관리 라이브러리를 소개합니다.
         category: 'React',
         createdAt: '2025-10-02T10:50:00Z',
         likes: 140,
-        comment: 28,
+        comments: 28,
         view: 480,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+21',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+21',
       },
       {
         id: 22,
@@ -586,16 +586,16 @@ Chart.js 라이브러리를 React 프로젝트에 설치합니다.
         category: 'React',
         createdAt: '2025-10-01T15:30:00Z',
         likes: 160,
-        comment: 32,
+        comments: 32,
         view: 520,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+22',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+22',
       },
       {
         id: 23,
         title: 'React 애니메이션',
         name: '1313이예준',
-        content: `Framer Motion과 CSS transition을 다룹니다.
-CSS의 'transition'과 'animation' 속성을 복습합니다.
+        content: `Framer Motion과 CArr transition을 다룹니다.
+CArr의 'transition'과 'animation' 속성을 복습합니다.
 'react-transition-group' 라이브러리의 기본 사용법을 알아봅니다.
 Framer Motion 라이브러리를 설치하고 기본 설정을 합니다.
 'motion' 컴포넌트와 'animate' prop을 사용해봅니다.
@@ -604,9 +604,9 @@ Framer Motion 라이브러리를 설치하고 기본 설정을 합니다.
         category: 'React',
         createdAt: '2025-09-30T12:40:00Z',
         likes: 180,
-        comment: 40,
+        comments: 40,
         view: 600,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+23',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+23',
       },
       {
         id: 24,
@@ -622,27 +622,27 @@ Vercel과 Netlify의 깃허브 연동 자동 배포 기능을 활용합니다.
         category: 'React',
         createdAt: '2025-09-29T11:20:00Z',
         likes: 190,
-        comment: 45,
+        comments: 45,
         view: 650,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+24',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+24',
       },
       {
         id: 25,
         title: 'React와 SEO 최적화',
         name: '1313한지후',
-        content: `Meta 태그와 서버 사이드 렌더링(SSR)을 다룹니다.
+        content: `Meta 태그와 서버 사이드 렌더링(ArrR)을 다룹니다.
 SPA(Single Page Application)의 SEO 한계를 이해합니다.
 'react-helmet' 라이브러리를 사용하여 Meta 태그를 동적으로 관리합니다.
-서버 사이드 렌더링(SSR)의 개념과 필요성을 알아봅니다.
-Next.js를 활용한 SSR 구현 방법을 간단히 살펴봅니다.
-정적 사이트 생성(SSG)과의 차이점을 비교합니다.`,
+서버 사이드 렌더링(ArrR)의 개념과 필요성을 알아봅니다.
+Next.js를 활용한 ArrR 구현 방법을 간단히 살펴봅니다.
+정적 사이트 생성(ArrG)과의 차이점을 비교합니다.`,
         author: '한지후',
         category: 'React',
         createdAt: '2025-09-28T09:00:00Z',
         likes: 210,
-        comment: 50,
+        comments: 50,
         view: 720,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+25',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+25',
       },
       {
         id: 26,
@@ -658,9 +658,9 @@ Props와 State의 차이점을 심도 있게 배웁니다.
         category: 'React',
         createdAt: '2025-10-22T23:00:00Z',
         likes: 2025,
-        comment: 2025,
+        comments: 2025,
         view: 2025,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+26',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+26',
       },
       {
         id: 27,
@@ -676,9 +676,9 @@ App Router와 Pages Router의 차이점을 이해합니다.
         category: 'Next.js',
         createdAt: '2025-10-21T12:30:00Z',
         likes: 120,
-        comment: 30,
+        comments: 30,
         view: 450,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+27',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+27',
       },
       {
         id: 28,
@@ -694,15 +694,15 @@ TypeScript가 어떻게 JavaScript의 버그를 줄여주는지 알아봅니다.
         category: 'TypeScript',
         createdAt: '2025-10-20T10:00:00Z',
         likes: 95,
-        comment: 12,
+        comments: 12,
         view: 300,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+28',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+28',
       },
       {
         id: 29,
         title: 'Styled-components 활용법 (복제)',
         name: '1313최민수',
-        content: `CSS-in-JS 방식으로 스타일링하는 심화 방법입니다.
+        content: `CArr-in-JS 방식으로 스타일링하는 심화 방법입니다.
 Styled-components 라이브러리의 고급 기능을 알아봅니다.
 컴포넌트 기반 스타일링의 장점을 극대화합니다.
 Props를 활용하여 테마(Theming)를 적용합니다.
@@ -712,9 +712,9 @@ Props를 활용하여 테마(Theming)를 적용합니다.
         category: 'React',
         createdAt: '2025-10-19T09:20:00Z',
         likes: 180,
-        comment: 45,
+        comments: 45,
         view: 600,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+29',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+29',
       },
       {
         id: 30,
@@ -730,9 +730,9 @@ React + SWC (Speedy Web Compiler) 설정을 알아봅니다.
         category: 'Vite',
         createdAt: '2025-10-18T15:10:00Z',
         likes: 80,
-        comment: 15,
+        comments: 15,
         view: 220,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+30',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+30',
       },
       {
         id: 31,
@@ -748,9 +748,9 @@ URL 파라미터(params)와 쿼리 스트링(query string)을 다룹니다.
         category: 'React',
         createdAt: '2025-10-17T08:50:00Z',
         likes: 140,
-        comment: 20,
+        comments: 20,
         view: 400,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+31',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+31',
       },
       {
         id: 32,
@@ -766,9 +766,9 @@ Context API의 성능 이슈와 해결책을 간단히 비교합니다.`,
         category: 'React',
         createdAt: '2025-10-16T14:00:00Z',
         likes: 110,
-        comment: 18,
+        comments: 18,
         view: 350,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+32',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+32',
       },
       {
         id: 33,
@@ -784,9 +784,9 @@ Context API의 성능 이슈와 해결책을 간단히 비교합니다.`,
         category: 'React',
         createdAt: '2025-10-15T11:40:00Z',
         likes: 210,
-        comment: 50,
+        comments: 50,
         view: 700,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+33',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+33',
       },
       {
         id: 34,
@@ -802,9 +802,9 @@ React 렌더링 최적화의 중요성을 다시 한번 강조합니다.
         category: 'React',
         createdAt: '2025-10-14T16:30:00Z',
         likes: 130,
-        comment: 25,
+        comments: 25,
         view: 500,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+34',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+34',
       },
       {
         id: 35,
@@ -820,9 +820,9 @@ Third-party 라이브러리 타입 정의(@types) 사용법을 익힙니다.`,
         category: 'React',
         createdAt: '2025-10-13T13:15:00Z',
         likes: 170,
-        comment: 35,
+        comments: 35,
         view: 600,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+35',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+35',
       },
       {
         id: 36,
@@ -830,7 +830,7 @@ Third-party 라이브러리 타입 정의(@types) 사용법을 익힙니다.`,
         name: '1313강민호',
         content: `Formik과 React Hook Form 심층 비교입니다.
 React Hook Form을 사용한 복잡한 폼 유효성 검사(validation)를 실습합니다.
-Formik의 'Field', 'Form', 'ErrorMessage' 컴포넌트를 활용합니다.
+Formik의 'Field', 'Form', 'ErrorMeArrage' 컴포넌트를 활용합니다.
 비제어 컴포넌트(Uncontrolled Component) 방식의 장단점을 알아봅니다.
 Zod나 Yup과 같은 스키마 기반 유효성 검사 라이브러리와 연동합니다.
 프로젝트 요구사항에 맞는 폼 라이브러리 선택 기준을 제시합니다.`,
@@ -838,9 +838,9 @@ Zod나 Yup과 같은 스키마 기반 유효성 검사 라이브러리와 연동
         category: 'React',
         createdAt: '2025-10-12T09:00:00Z',
         likes: 90,
-        comment: 12,
+        comments: 12,
         view: 280,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+36',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+36',
       },
       {
         id: 37,
@@ -848,7 +848,7 @@ Zod나 Yup과 같은 스키마 기반 유효성 검사 라이브러리와 연동
         name: '1313박서준',
         content: `Vercel과 Netlify를 활용한 고급 배포 전략입니다.
 React 프로젝트 빌드 최적화('webpack', 'vite')를 알아봅니다.
-Vercel의 Serverless Functions를 활용해봅니다.
+Vercel의 ServerleArr Functions를 활용해봅니다.
 Netlify의 Forms, Identity 등 부가 기능을 살펴봅니다.
 환경 변수(.env)를 배포 환경에 설정하는 방법을 배웁니다.
 커스텀 도메인(Custom Domain)을 연결하는 과정을 실습합니다.`,
@@ -856,27 +856,27 @@ Netlify의 Forms, Identity 등 부가 기능을 살펴봅니다.
         category: 'React',
         createdAt: '2025-10-11T17:45:00Z',
         likes: 200,
-        comment: 48,
+        comments: 48,
         view: 720,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+37',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+37',
       },
       {
         id: 38,
-        title: 'React와 TailwindCSS (복제)',
+        title: 'React와 TailwindCArr (복제)',
         name: '1313김민정',
         content: `유틸리티 클래스 기반 스타일링 심화 학습입니다.
-TailwindCSS의 JIT(Just-in-Time) 모드를 이해합니다.
+TailwindCArr의 JIT(Just-in-Time) 모드를 이해합니다.
 'tailwind.config.js' 파일을 커스터마이징하여 디자인 시스템을 구축합니다.
 '@apply' 지시어를 사용하여 중복되는 클래스를 추상화합니다.
 다크 모드(Dark Mode)를 손쉽게 구현하는 방법을 배웁니다.
-Headless UI와 같은 라이브러리와의 조합을 살펴봅니다.`,
+HeadleArr UI와 같은 라이브러리와의 조합을 살펴봅니다.`,
         author: '김민정',
         category: 'React',
         createdAt: '2025-10-10T10:10:00Z',
         likes: 150,
-        comment: 28,
+        comments: 28,
         view: 520,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+38',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+38',
       },
       {
         id: 39,
@@ -892,9 +892,9 @@ API 호출 로직을 분리하는 'services' 또는 'api' 레이어를 설계합
         category: 'React',
         createdAt: '2025-10-09T12:20:00Z',
         likes: 100,
-        comment: 20,
+        comments: 20,
         view: 350,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+39',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+39',
       },
       {
         id: 40,
@@ -910,9 +910,9 @@ RTK Query를 사용한 데이터 페칭 및 캐싱을 살펴봅니다.`,
         category: 'React',
         createdAt: '2025-10-08T14:50:00Z',
         likes: 180,
-        comment: 40,
+        comments: 40,
         view: 650,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+40',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+40',
       },
       {
         id: 41,
@@ -928,9 +928,9 @@ React Router v6의 라우트 보호(Protected Routes) 구현 방법을 배웁니
         category: 'React',
         createdAt: '2025-10-07T09:30:00Z',
         likes: 140,
-        comment: 22,
+        comments: 22,
         view: 450,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+41',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+41',
       },
       {
         id: 42,
@@ -946,9 +946,9 @@ React Router v6의 라우트 보호(Protected Routes) 구현 방법을 배웁니
         category: 'React',
         createdAt: '2025-10-06T15:00:00Z',
         likes: 160,
-        comment: 30,
+        comments: 30,
         view: 520,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+42',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+42',
       },
       {
         id: 43,
@@ -959,14 +959,14 @@ TDD(Test-Driven Development) 방식으로 React 컴포넌트를 개발해봅니�
 Jest의 'mock' 함수를 사용하여 API 호출을 모의(mocking)합니다.
 React Testing Library(RTL)의 'user-event'를 사용한 사용자 상호작용을 테스트합니다.
 Context API나 Redux를 사용하는 컴포넌트의 테스트 방법을 배웁니다.
-E2E 테스트(Cypress, Playwright)의 필요성을 알아봅니다.`,
+E2E 테스트(CypreArr, Playwright)의 필요성을 알아봅니다.`,
         author: '이수빈',
         category: 'React',
         createdAt: '2025-10-05T11:20:00Z',
         likes: 120,
-        comment: 18,
+        comments: 18,
         view: 400,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+43',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+43',
       },
       {
         id: 44,
@@ -982,9 +982,9 @@ Custom Hook을 테스트하는 방법을 익힙니다.`,
         category: 'React',
         createdAt: '2025-10-04T16:45:00Z',
         likes: 130,
-        comment: 20,
+        comments: 20,
         view: 430,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+44',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+44',
       },
       {
         id: 45,
@@ -1000,9 +1000,9 @@ axios 인터셉터(interceptor)를 사용하여 요청/응답을 전역적으로
         category: 'React',
         createdAt: '2025-10-03T13:10:00Z',
         likes: 200,
-        comment: 50,
+        comments: 50,
         view: 700,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+45',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+45',
       },
       {
         id: 46,
@@ -1018,9 +1018,9 @@ Recoil, Zustand, Jotai 등 아토믹(Atomic) 상태 관리의 개념을 배웁�
         category: 'React',
         createdAt: '2025-10-02T10:50:00Z',
         likes: 140,
-        comment: 28,
+        comments: 28,
         view: 480,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+46',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+46',
       },
       {
         id: 47,
@@ -1036,16 +1036,16 @@ D3.js와 같은 다른 차트 라이브러리와의 차이점을 비교합니다
         category: 'React',
         createdAt: '2025-10-01T15:30:00Z',
         likes: 160,
-        comment: 32,
+        comments: 32,
         view: 520,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+47',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+47',
       },
       {
         id: 48,
         title: 'React 애니메이션 (복제)',
         name: '1313이예준',
-        content: `Framer Motion과 CSS transition 심화 활용입니다.
-CSS 'animation'과 '@keyframes'를 React 컴포넌트에 적용합니다.
+        content: `Framer Motion과 CArr transition 심화 활용입니다.
+CArr 'animation'과 '@keyframes'를 React 컴포넌트에 적용합니다.
 Framer Motion의 'variants'를 사용하여 복잡한 애니메이션 시퀀스를 정의합니다.
 'whileHover', 'whileTap' 등 제스처 애니메이션을 구현합니다.
 'AnimatePresence'를 사용하여 컴포넌트의 등장/퇴장 애니메이션을 처리합니다.
@@ -1054,9 +1054,9 @@ Framer Motion의 'variants'를 사용하여 복잡한 애니메이션 시퀀스�
         category: 'React',
         createdAt: '2025-09-30T12:40:00Z',
         likes: 180,
-        comment: 40,
+        comments: 40,
         view: 600,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+48',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+48',
       },
       {
         id: 49,
@@ -1072,17 +1072,17 @@ AWS S3/CloudFront나 Firebase Hosting 등 다른 배포 옵션을 살펴봅니�
         category: 'React',
         createdAt: '2025-09-29T11:20:00Z',
         likes: 190,
-        comment: 45,
+        comments: 45,
         view: 650,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+49',
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+49',
       },
       {
         id: 50,
         title: 'React와 SEO 최적화 (복제)',
         name: '1313한지후',
-        content: `Meta 태그와 SSR을 통한 완벽한 SEO 최적화입니다.
+        content: `Meta 태그와 ArrR을 통한 완벽한 SEO 최적화입니다.
 'react-helmet-async'를 사용하여 비동기 환경에서도 Meta 태그를 관리합니다.
-Next.js의 'getStaticProps'(SSG)와 'getServerSideProps'(SSR)를 심층 분석합니다.
+Next.js의 'getStaticProps'(ArrG)와 'getServerSideProps'(ArrR)를 심층 분석합니다.
 'robots.txt'와 'sitemap.xml'을 생성하고 관리하는 방법을 배웁니다.
 Open Graph(OG) 태그와 Twitter 카드를 설정하여 소셜 미디어 공유를 최적화합니다.
 Lighthouse 점수를 확인하고 성능을 개선하는 방법을 알아봅니다.`,
@@ -1090,10 +1090,10 @@ Lighthouse 점수를 확인하고 성능을 개선하는 방법을 알아봅니�
         category: 'React',
         createdAt: '2025-09-28T09:00:00Z',
         likes: 210,
-        comment: 50,
+        comments: 50,
         view: 720,
-        Image: 'https://placehold.co/600x400/eee/aaa?text=Image+50',
-        comments: [
+        imageUrls: 'https://placehold.co/600x400/eee/aaa?text=imageUrls+50',
+        commentArr: [
           {
             id: 1,
             author: '1313홍길동',

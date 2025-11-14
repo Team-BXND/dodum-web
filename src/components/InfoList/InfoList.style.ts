@@ -25,7 +25,6 @@ export const MainInfo = styled.div`
   flex-direction: column;
   text-align: left;
   h2 {
-    /* padding-top: 0.533em; */
     font-size: 24px;
   }
   h4 {
@@ -36,11 +35,11 @@ export const MainInfo = styled.div`
     letter-spacing: -0.05em;
     line-height: 19px;
   }
-  flex: 9.5;
+  flex: 13;
 `;
 export const SubInfo = styled.div`
   display: flex;
-  flex: 10.5;
+  flex: 8.5;
   align-items: flex-end;
   > * {
     bottom: 0.4em;
@@ -73,9 +72,9 @@ export const Bullet = styled.ul`
   height: 1.4em;
 
   li::before {
-    content: '•'; /* '•' 특수문자 또는 이미지 */
-    color: #ff7531; /* 원하던 주황색 */
-    font-size: 3em; /* 크기 조절 */
+    content: '•';
+    color: #ff7531;
+    font-size: 3em;
     position: absolute;
     left: 0;
     bottom: -0.7em;
@@ -85,9 +84,9 @@ export const Bullet = styled.ul`
   /* text-align: right; */
   flex: 0 0 2.7em;
   li {
-    list-style: none; /* 점 없애기 */
-    padding-left: 0; /* li의 기본 패딩도 초기화 */
-    position: relative; /* ::before를 배치할 기준점 */
+    list-style: none;
+    padding-left: 0;
+    position: relative;
   }
 `;
 
@@ -116,3 +115,8 @@ export const ImgContainer = styled.div`
     border-radius: 12px;
   }
 `;
+
+export const Etc = styled.button`
+  z-index: 50;
+`;
+

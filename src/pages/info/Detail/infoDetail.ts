@@ -59,7 +59,7 @@ export const ProfileInfo = styled.div`
 export const ProfileName = styled.h2`
   font-size: 16px;
   color: #1b1b1b;
-  width: 100px;
+  width: 300px;
   height: 19px;
 `;
 export const ProfileDate = styled.h3`

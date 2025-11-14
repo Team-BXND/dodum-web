@@ -10,6 +10,8 @@ import Detail from './pages/Archive/pages/Detail';
 import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 import MajorResult from './pages/Major/Result/MajorResult';
+import { PageProvider } from './pages/info/Context/InfoPageContext.tsx';
+import AddInfo from './pages/info/Add/AddInfo.tsx';
 import InfoDetail from './pages/info/Detail/infoDetail.tsx'
 
 // OtherInfo (etc)
@@ -33,11 +35,18 @@ const router = createBrowserRouter([
       },
       {
         path: 'info',
-        element: <Info />,
+        element:
+        <PageProvider>
+          <Info/>
+        </PageProvider>
       },
       {
         path: 'info/:id',
         element: <InfoDetail />,
+      },
+      {
+        path: 'info/add',
+        element: <AddInfo />
       },
       {
         path: 'major/result',

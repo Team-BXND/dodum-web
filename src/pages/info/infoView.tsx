@@ -1,18 +1,39 @@
 import * as S from './infoView.style';
-import InfoList from '@/components/InfoList/InfoList';
+import { useContext, useEffect, useState } from 'react';
+import { PageContext } from './Context/InfoPageContext';
+import InfoPost from './infoPost';
+import type { InfoListProps } from '@/types/infoList';
+import axios from 'axios';
+import { AddButton } from '../Archive/Archive.style';
 import { infoItems } from '@/constants/info.constants';
-import { useState } from 'react';
 
 const Info = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 7;
+  const { currentPage, setCurrentPage } = useContext(PageContext);
+  const [posts, setPosts] = useState<InfoListProps[]>([]);
+  const [totalPages, setTotalPages] = useState(0);
+  const POSTS_PER_PAGE = 10;
+  const [grade, setGrade] = useState(2);
 
-  const startIndex = (currentPage - 1) * pageSize;
-  const currentPages = infoItems[0].posts.slice(
-    startIndex,
-    startIndex + pageSize
-  );
-  const totalPages = Math.ceil(infoItems[0].posts.length / pageSize);
+  useEffect(() => {
+    axios
+      .get('/info-api/info', {
+        params: { page: currentPage - 1 },
+        headers: { 'ngrok-skip-browser-warning': 'true' },
+      })
+      .then((res) => {
+        const fetchedPosts = res.data.data;
+        if (currentPage === 1 && totalPages === 0 && fetchedPosts.length > 0) {
+          const totalElements = fetchedPosts[0].id;
+          setTotalPages(Math.ceil(totalElements / POSTS_PER_PAGE));
+        }
+        setPosts(fetchedPosts);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+        alert('게시물을 불러오지 못했습니다.');
+      });
+  }, [currentPage]);
   return (
     <>
       <S.Title>
@@ -22,39 +43,10 @@ const Info = () => {
       <S.Search />
       <S.Container>
         <S.List>
-          {currentPages.map(
-            ({
-              id,
-              title,
-              name,
-              content,
-              author,
-              category,
-              createdAt,
-              likes,
-              comment,
-              view,
-              Image,
-            }) => (
-              <InfoList
-                key={id}
-                id={id}
-                title={title}
-                name={name}
-                content={content}
-                author={author}
-                category={category}
-                createdAt={createdAt}
-                likes={likes}
-                comment={comment}
-                view={view}
-                Image={Image}
-              />
-            )
-          )}
+          <InfoPost posts={posts} />
         </S.List>
         <S.Pagination>
-          {[...Array(totalPages)].map((_, i) => (
+          {Array.from({ length: totalPages }, (_, i) => (
             <S.PageBtn
               key={i}
               $active={currentPage === i + 1}
@@ -65,10 +57,14 @@ const Info = () => {
           ))}
         </S.Pagination>
       </S.Container>
-
-      <S.AddButtonWrapper>
-        <S.AddButton />
-      </S.AddButtonWrapper>
+      <AddButton
+        style={{
+          visibility: grade === 2 || grade === 3 ? 'visible' : 'hidden',
+        }}
+        to="add"
+      >
+        +
+      </AddButton>
     </>
   );
 };
