@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate } from 'react-router';
-import Archive from '@/pages/Archive/Archive'
+import Archive from '@/pages/Archive/Archive';
 import Major from '@/pages/Major/Major';
 import Info from '@/pages/info/infoView';
 import App from './App';
@@ -7,6 +7,9 @@ import Detail from './pages/Archive/pages/Detail';
 import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 import MajorResult from './pages/Major/Result/MajorResult';
+import InfoDetail from './pages/info/Detail/infoDetail.tsx';
+import { PageProvider } from './pages/info/Context/InfoPageContext.tsx';
+import AddInfo from './pages/info/Add/AddInfo.tsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +25,21 @@ const router = createBrowserRouter([
         element: <MajorResult />,
       },
       {
+        path: 'info',
+        element:
+        <PageProvider>
+          <Info/>
+        </PageProvider>
+      },
+      {
+        path: 'info/:id',
+        element: <InfoDetail />,
+      },
+      {
+        path: 'info/add',
+        element: <AddInfo />
+      },
+      {
         path: 'archive',
         element: <Archive />,
         children: [
@@ -31,13 +49,8 @@ const router = createBrowserRouter([
           { path: ':category/add', element: <AddArchive /> },
         ],
       },
-      {
-        path: 'info',
-        element: <Info />,
-      },
     ],
   },
 ]);
-
 
 export default router;

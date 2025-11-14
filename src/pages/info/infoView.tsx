@@ -1,42 +1,52 @@
 import * as S from './infoView.style';
-import InfoList from '@/components/InfoList/InfoList';
-import { infoItems } from '@/components/InfoList/InfoList';
-import { useState, useEffect, useRef } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { PageContext } from './Context/InfoPageContext';
+import InfoPost from './infoPost';
+import type { InfoListProps } from '@/types/infoList';
+import axios from 'axios';
+import { AddButton } from '../Archive/Archive.style';
+import { infoItems } from '@/constants/info.constants';
+import { InfoItem } from '@/components/InfoList/InfoList.style';
 
 const Info = () => {
-  const [displayItems, setDisplayItems] = useState(
-    infoItems[0].posts.slice(0, 7)
-  );
-  const listRef = useRef<HTMLDivElement>(null);
-  const itemsPerLoad = 7;
-  const loadMore = () => {
-    setDisplayItems((prev) => {
-      if (prev.length >= infoItems[0].posts.length) return prev;
-      const nextItems = infoItems[0].posts.slice(
-        prev.length,
-        prev.length + itemsPerLoad
-      );
-      return [...prev, ...nextItems];
-    });
-  };
+  const { currentPage, setCurrentPage } = useContext(PageContext);
+  const [posts, setPosts] = useState<InfoListProps[]>([]);
+  const [totalPages, setTotalPages] = useState(0);
+  const POSTS_PER_PAGE = 10;
+  const [grade, setGrade] = useState(2);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const list = listRef.current;
-      if (!list) return;
+  // useEffect(() => {
+  //   axios
+  //     .get('/info-api/info', {
+  //       params: { page: currentPage - 1 },
+  //       headers: { 'ngrok-skip-browser-warning': 'true' },
+  //     })
+  //     .then((res) => {
+  //       const fetchedPosts = res.data.data;
+  //       if (currentPage === 1 && totalPages === 0 && fetchedPosts.length > 0) {
+  //         const totalElements = fetchedPosts[0].id;
 
-      // 리스트가 스크롤 끝에 도달하면 loadMore
-      if (list.scrollTop + list.clientHeight >= list.scrollHeight - 50) {
-        loadMore();
-      }
-    };
+  //         setTotalPages(Math.ceil(totalElements / POSTS_PER_PAGE));
+  //       }
+  //       setPosts(fetchedPosts);
+  //       console.log(res);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //       alert('게시물을 불러오지 못했습니다.');
+  //     });
+  // }, [currentPage]);
+  //서버가 닫혀있어서 임시로 더미데이터 쓰겠습니다
+useEffect(() => {
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
 
-    const list = listRef.current;
-    list?.addEventListener('scroll', handleScroll);
+  const slicedPosts = infoItems[0].posts.slice(startIndex, endIndex);
 
-    return () => list?.removeEventListener('scroll', handleScroll);
-  }, []);
+  setPosts(slicedPosts);
 
+  setTotalPages(Math.ceil(infoItems[0].posts.length / POSTS_PER_PAGE));
+}, [currentPage]);
   return (
     <>
       <S.Title>
@@ -45,40 +55,29 @@ const Info = () => {
       <S.SearchBox placeholder="검색어를 입력해주세요"></S.SearchBox>
       <S.Search />
       <S.Container>
-        <S.List ref={listRef}>
-          {displayItems.map(
-            ({
-              id,
-              title,
-              content,
-              author,
-              category,
-              createdAt,
-              like,
-              comment,
-              view,
-              img,
-            }) => (
-              <InfoList
-                key={id}
-                id={id}
-                title={title}
-                content={content}
-                author={author}
-                category={category}
-                createdAt={createdAt}
-                like={like}
-                comment={comment}
-                view={view}
-                img={img}
-              />
-            )
-          )}
+        <S.List>
+          <InfoPost posts={posts} />
         </S.List>
+        <S.Pagination>
+          {Array.from({ length: totalPages }, (_, i) => (
+            <S.PageBtn
+              key={i}
+              $active={currentPage === i + 1}
+              onClick={() => setCurrentPage(i + 1)}
+            >
+              {i + 1}
+            </S.PageBtn>
+          ))}
+        </S.Pagination>
       </S.Container>
-      <S.AddButtonWrapper>
-        <S.AddButton />
-      </S.AddButtonWrapper>
+      <AddButton
+        style={{
+          visibility: grade === 2 || grade === 3 ? 'visible' : 'hidden',
+        }}
+        to="add"
+      >
+        +
+      </AddButton>
     </>
   );
 };

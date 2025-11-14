@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import SearchIcon from '@/assets/info/search.svg';
-import AddIcon from '@/assets/info/AddButton.svg';
-
-
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
   position: absolute;
   width: 1114px;
-  height: 607px;
-  left: 328px;
+  height: 570px;
+  left: 300px;
   top: 127px;
 
   background: #ffffff;
@@ -25,10 +26,10 @@ export const SearchBox = styled.input`
   position: absolute;
   width: 236px;
   height: 39px;
-  left: 1195px;
+  left: 1165px;
   top: 75px;
 
-  ::placeholder {
+  &::placeholder {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -43,7 +44,7 @@ export const SearchBox = styled.input`
 
 export const Search = styled(SearchIcon)`
   position: absolute;
-  left: 1205px;
+  left: 1175px;
   top: 85px;
 `;
 
@@ -73,8 +74,7 @@ export const Box = styled.div`
 
 export const Titletext = styled.h1`
   /* 정보공유 */
-
-  width: 106px;
+  width: 200px;
   height: 38px;
   font-family: 'Pretendard Variable';
   font-style: normal;
@@ -90,6 +90,7 @@ export const Titletext = styled.h1`
   order: 0;
   flex-grow: 0;
 `;
+
 export const Title = styled.div`
   /* Title */
 
@@ -115,10 +116,27 @@ export const AddButtonWrapper = styled.button`
   height: 72px;
   width: 72px;
   border: none;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   left: 1370px;
   top: 750px;
 `;
-export const AddButton = styled(AddIcon)`
-  position: absolute;
+
+export const Pagination = styled.div`
+  display: block;
+  margin-top: 25px;
+  height: 29px;
+`;
+
+export const PageBtn = styled.button<{ $active: boolean }>`
+  background: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  border: none;
+  color: ${({ $active }) => ($active ? '#1b1b1b' : '#adadad')};
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  cursor: pointer;
 `;
