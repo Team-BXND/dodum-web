@@ -22,4 +22,16 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    proxy: {
+      '/info-api': {
+        target: 'https://heptagonal-king-subpleural.ngrok-free.dev',
+        changeOrigin: true,
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+        },
+        rewrite: (path) => path.replace(/^\/info-api/, ''),
+      },
+    },
+  },
 });

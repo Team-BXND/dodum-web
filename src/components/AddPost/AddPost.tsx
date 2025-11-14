@@ -25,7 +25,7 @@ export const Category = {
 export type Category = (typeof Category)[keyof typeof Category];
 
 export interface IFormInput {
-    title: String,
+    title: string,
     subTitle: string,
     category: Category,
     content: string,

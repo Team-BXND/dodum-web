@@ -1,7 +1,7 @@
 import * as S from './InfoCommentList.style';
 import type { InfoCommentProps } from '@/types/infoList';
 import { ProfileImage } from '@/pages/info/Detail/infoDetail';
-import ProfileImg from '@/assets/info/ProfileImg.png';
+import ProfileImg from '@/assets/info/test.png';
 
 const InfoCommentList = ({ id, author, text, createdAt }: InfoCommentProps) => {
   const date = new Date(createdAt);

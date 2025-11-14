@@ -1,16 +1,16 @@
 export interface InfoListProps {
-  id: number;
-  title: string;
-  name: string;
-  content: string;
-  author: string;
-  category: string;
-  createdAt: string;
-  likes: number;
-  comment: number;
-  comments?: Comment[];
-  view: number;
-  Image: string;
+  id?: number;
+  title?: string;
+  name?: string;
+  content?: string;
+  author?: string;
+  category?: string;
+  createdAt?: string;
+  likes?: number;
+  comments?: number;
+  commented?: Comment[];
+  views?: number;
+  imageUrls: string;
 }
 export interface InfoCommentProps {
   id: number;

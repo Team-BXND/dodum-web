@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import SearchIcon from '@/assets/info/search.svg';
-import AddIcon from '@/assets/info/AddButton.svg';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   position: absolute;
   width: 1114px;
-  height: 657px;
+  height: 570px;
   left: 300px;
   top: 127px;
 
@@ -27,7 +26,7 @@ export const SearchBox = styled.input`
   position: absolute;
   width: 236px;
   height: 39px;
-  left: 1195px;
+  left: 1165px;
   top: 75px;
 
   &::placeholder {
@@ -45,7 +44,7 @@ export const SearchBox = styled.input`
 
 export const Search = styled(SearchIcon)`
   position: absolute;
-  left: 1205px;
+  left: 1175px;
   top: 85px;
 `;
 
@@ -120,9 +119,6 @@ export const AddButtonWrapper = styled.button`
   background-color: #fafafa;
   left: 1370px;
   top: 750px;
-`;
-export const AddButton = styled(AddIcon)`
-  position: absolute;
 `;
 
 export const Pagination = styled.div`

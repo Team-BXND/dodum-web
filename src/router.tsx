@@ -8,6 +8,8 @@ import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 import MajorResult from './pages/Major/Result/MajorResult';
 import InfoDetail from './pages/info/Detail/infoDetail.tsx';
+import { PageProvider } from './pages/info/Context/InfoPageContext.tsx';
+import AddInfo from './pages/info/Add/AddInfo.tsx';
 
 const router = createBrowserRouter([
   {
@@ -24,11 +26,18 @@ const router = createBrowserRouter([
       },
       {
         path: 'info',
-        element: <Info />,
+        element:
+        <PageProvider>
+          <Info/>
+        </PageProvider>
       },
       {
         path: 'info/:id',
         element: <InfoDetail />,
+      },
+      {
+        path: 'info/add',
+        element: <AddInfo />
       },
       {
         path: 'archive',
@@ -39,10 +48,6 @@ const router = createBrowserRouter([
           { path: ':category/:postId', element: <Detail /> },
           { path: ':category/add', element: <AddArchive /> },
         ],
-      },
-      {
-        path: 'info',
-        element: <Info />,
       },
     ],
   },
