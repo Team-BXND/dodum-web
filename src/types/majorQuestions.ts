@@ -1,4 +1,4 @@
-import type { UseFormRegister } from 'react-hook-form';
+import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 
 export interface MajorFormData {
   // Record<key, value>객체 형태 타입 { "1": 3, "2": 5 }
@@ -10,4 +10,6 @@ export interface MajorQuestionProps {
   question: string;
   id: number;
   register: UseFormRegister<MajorFormData>;
+  errors: FieldErrors<MajorFormData>;
+  isSubmitted: boolean;
 }

@@ -14,9 +14,13 @@ const MajorQuestionObject = ({
   question,
   id,
   register,
+  errors,
+  isSubmitted,
 }: MajorQuestionProps) => {
+  const hasError = isSubmitted && !!errors.object?.[id];
+
   return (
-    <S.Container>
+    <S.Container $hasError={hasError}>
       <S.Title>{question}</S.Title>
       <S.ResWrapper>
         <S.SubTitle>매우 그렇지 않다</S.SubTitle>
@@ -31,7 +35,6 @@ const MajorQuestionObject = ({
                   required: true,
                   valueAsNumber: true,
                 })}
-                name={`object.${id}`}
               />
             );
           })}
