@@ -3,7 +3,6 @@ import MajorQuestionObject from '@/components/MajorQuestion/Object/MajorQuestion
 import MajorQuestionSubject from '@/components/MajorQuestion/Subject/MajorQuestionSubject';
 import ProgressCircle from '@/components/ProgressCircle/ProgressCircle';
 import type { MajorFormData } from '@/types/majorQuestions';
-import { formatMajorFormData } from '@/utils/formatMajorFormData';
 import { getRandomObjectMajorQuestions, getRandomSubjectQuestions } from '@/utils/getRandomMajorQuestions';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -17,23 +16,15 @@ const Major = () => {
       subject: {},
     },
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const randomMajorQuestions = getRandomObjectMajorQuestions();
   const randomSubjectQuestions = getRandomSubjectQuestions();
 
   const onSubmit = async (data: MajorFormData) => {
     setIsSubmitting(true);
 
-    const selectedObjectIds = randomMajorQuestions.map((q) => q.id);
-    const selectedSubjectIds = randomSubjectQuestions.map((q) => q.id);
-    const formattedData = formatMajorFormData(
-      data,
-      selectedObjectIds,
-      selectedSubjectIds,
-    );
-
     // 서버 연동 전 임시 로딩
-    console.log(formattedData);
+    console.log(data);
     await new Promise((resolve) => setTimeout(resolve, 3000));
 
     navigate('/major/result');
@@ -47,17 +38,17 @@ const Major = () => {
         <S.Title>
           <S.SubTitle>MBTI</S.SubTitle> 기반 전공 추천 서비스
         </S.Title>
-        {randomMajorQuestions.map(({ id, question }, index) => (
+        {randomMajorQuestions.map(({ id, question }) => (
           <MajorQuestionObject
-            id={index + 1}
+            id={id}
             key={id}
             question={question}
             register={register}
           />
         ))}
-        {randomSubjectQuestions.map(({ id, question }, index) => (
+        {randomSubjectQuestions.map(({ id, question }) => (
           <MajorQuestionSubject
-            id={index + 1}
+            id={id}
             key={id}
             question={question}
             register={register}
