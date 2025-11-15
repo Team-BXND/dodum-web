@@ -1,4 +1,4 @@
-export const majorQuestions = [
+export const objectMajorQuestions = [
   {
     id: 1,
     question: '나는 평소에 디자인에 관심이 있다.',
@@ -192,5 +192,48 @@ export const majorQuestions = [
   {
     id: 48,
     question: '나는 VR/AR 콘텐츠와 메타버스 기술에 흥미를 느낀다.',
+  },
+];
+
+export const subjectMajorQuestions = [
+  {
+    id: 1,
+    question: '지금까지의 활동 중 가장 재미있었던 것은 무엇이었나요?',
+  },
+  {
+    id: 2,
+    question: '앞으로 해보고 싶은 활동이나 프로젝트가 있나요?',
+  },
+  {
+    id: 3,
+    question: '어떤 분야에서 자신의 역량을 발휘하고 싶나요?',
+  },
+  {
+    id: 4,
+    question: '가장 자신 있는 기술이나 능력은 무엇인가요?',
+  },
+  {
+    id: 5,
+    question: '10년 후 어떤 모습의 개발자가 되고 싶나요?',
+  },
+  {
+    id: 6,
+    question: '협업 프로젝트에서 주로 맡았던 역할은 무엇인가요?',
+  },
+  {
+    id: 7,
+    question: '새로운 기술을 배울 때 가장 흥미를 느끼는 부분은?',
+  },
+  {
+    id: 8,
+    question: '프로그래밍을 처음 시작하게 된 계기는 무엇인가요?',
+  },
+  {
+    id: 9,
+    question: '가장 기억에 남는 프로젝트와 그 이유는?',
+  },
+  {
+    id: 10,
+    question: '개발자로서 어떤 가치를 가장 중요하게 생각하나요?',
   },
 ];
