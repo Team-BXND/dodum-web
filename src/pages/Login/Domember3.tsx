@@ -1,0 +1,104 @@
+import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/dodum-web-login/src/pages/Login/Login.style.ts"
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+const Domember3=() => {
+    const [value,setValue]=useState([0,0,0]);
+    const [data, setData] = useState(null);
+    useEffect(() => {
+        axios
+          .get("https://heptagonal-king-subpleural.ngrok-free.dev/")
+          .then((response) => {
+            setData(response.data);
+          })
+          .catch((error) => {
+            console.error("에러 발생:", error);
+          });
+      }, []);
+    const { register, handleSubmit, formState: { errors },setError,watch } = useForm();
+    const navigate=useNavigate();
+    const onValid=(data:any)=>{
+        if(data.password!==data.passwordcheck){
+            setError("passwordcheck",{message:"비밀번호가 일치하지 않아요."})
+        }
+
+    }
+    const onChangeValue=(index:number,event:any)=>{
+        const newValue=[...value];
+        newValue[index]=event.target.value;
+        setValue(newValue);
+    }
+    axios.post("https://heptagonal-king-subpleural.ngrok-free.dev/",{
+        username:watch("username"),
+        email:watch("email"),
+        grade_no:value[0],
+        class_no:value[1],
+        number:value[2],
+        phone:watch("phone")
+    })
+    return<S.Background>
+        <S.Card onSubmit={handleSubmit(onValid)} $height="40.5rem">
+            <S.TitleCover>
+            <S.Dodum src="src/assets/image.png" alt="Dodum Logo"/>
+            <S.Title>환영합니다!</S.Title>
+            </S.TitleCover>
+            <S.InputCover>
+                <S.InputTitle>이메일 주소</S.InputTitle>
+                <S.ErrorCover>
+                <S.Input type="text" placeholder="이메일 주소를 입력해주세요." {...register("email",{required:"이메일 주소를 작성하여 주세요"})} style={errors.email?.message ? { borderColor: "#FF3E3E" } : {borderColor:"#9B9B9B"}} $placeholderColor={errors.email?.message ? "#FF3E3E":undefined}/>
+                <S.ErrorMessage>{errors.email?.message?.toString()}</S.ErrorMessage>
+                </S.ErrorCover>
+                <S.InputTitle>학번</S.InputTitle>
+                <S.SelectCover>
+                    <S.Select onChange={(event)=>onChangeValue(0,event)}>
+                        <option>학년</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </S.Select>
+                    <S.Select onChange={(event)=>onChangeValue(1,event)}>
+                        <option>반</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </S.Select>
+                    <S.Select onChange={(event)=>onChangeValue(2,event)}>
+                        <option>번호</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                    </S.Select>
+                </S.SelectCover>
+                <S.InputTitle>전화번호</S.InputTitle>
+                <S.ErrorCover>
+                <S.Input type="text" placeholder="전화번호를 입력하세요." {...register("phone",{required:"전화번호를 작성하여 주세요"})} style={errors.phone?.message ? { borderColor: "#FF3E3E" } : {borderColor:"#9B9B9B"}} $placeholderColor={errors.phone?.message ? "#FF3E3E":undefined}/>
+                <S.ErrorMessage>{errors.phone?.message?.toString()}</S.ErrorMessage>
+                </S.ErrorCover>
+            </S.InputCover>
+            <S.ButtonCover>
+            <S.Button type="submit">로그인</S.Button>
+            <S.Button $bgColor="#747474" onClick={()=>navigate(-1)} type="button">뒤로가기</S.Button>
+            </S.ButtonCover>
+        </S.Card>
+    </S.Background>
+}
+
+export default Domember3;
