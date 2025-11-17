@@ -10,4 +10,5 @@ export interface Theme {
   bgPrimary: string;
   bgSecondary: string;
   shadowLight: string;
+  boxShadow: string;
 }

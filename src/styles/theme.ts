@@ -12,4 +12,5 @@ export const lightTheme: Theme = {
   bgPrimary: '#FFFFFF',
   bgSecondary: '#FAFAFA',
   shadowLight: '0px 0px 5.43px rgba(0, 0, 0, 0.05), 0px 10.85px 21.71px rgba(0, 0, 0, 0.08);',
+  boxShadow: '0px 0px 5.43px 0px rgba(0, 0, 0, 0.05), 0px 2.71px 5.43px 0px rgba(0, 0, 0, 0.05)',
 };

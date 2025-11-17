@@ -19,6 +19,22 @@ const TileContainer = styled(Link)`
     box-shadow: ${(props) => props.theme.shadowLight};
 `
 
+const MiniTileContainer = styled(Link)`
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    width: 100%;
+    height: 200px;
+    background-color: ${(props) => (props.theme.bgPrimary)};
+    border-radius: 8px;
+    min-width: 200px;
+    max-width: 20rem;
+    text-decoration: none;
+    color: ${(props) => (props.theme.textPrimary)};
+    box-shadow: ${(props) => props.theme.shadowLight};
+`
+
 const TItleContainer = styled.div`
     display: flex;
     width: 100%;
@@ -51,6 +67,13 @@ const Thumbnail = styled.img`
     object-fit: cover;
 `;
 
+const MiniThumbnail = styled.img`
+    width: 100%;
+    height: 150px;
+    border-radius: 4px;
+    object-fit: cover;
+`;
+
 interface TileInterface {
     to: string;
     thumbnail?: string,
@@ -69,6 +92,18 @@ const Tile = (props: TileInterface) => {
             </TItleContainer>
             <Body>{props.description?.slice(0, 120)}{(props.description?.length?? 0) > 120  ? "..." : null}</Body>
         </TileContainer>
+    )
+}
+
+export const MiniTile = (props: TileInterface) => {
+    return (
+        <MiniTileContainer to={props.to}>
+            <MiniThumbnail src={props.thumbnail ? props.thumbnail : 'https://play-lh.googleusercontent.com/eM6yGP8pECXPCZ8xWA9aDkDY2rusnpuMl8WZiYUZ2fHdTd0Sj8QwPois6xhVsv-h3g'} />
+            <TItleContainer>
+                <Title>{props.title? props.title : "도담도담"}</Title>
+                <Author>{props.author? props.author : "Team B1ND"}</Author>
+            </TItleContainer>
+        </MiniTileContainer>
     )
 }
 

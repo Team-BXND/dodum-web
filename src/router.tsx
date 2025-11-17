@@ -7,6 +7,7 @@ import Detail from './pages/Archive/pages/Detail';
 import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 import MajorResult from './pages/Major/Result/MajorResult';
+import Profile from './pages/Profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         path: 'info',
         element: <Info />,
       },
+      {
+        path: 'profile',
+        element: <Profile />
+      }
     ],
   },
 ]);

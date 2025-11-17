@@ -23,3 +23,8 @@ export const TitleStyle = css`
     font-weight: bold;
     color: ${(props) => {return findColor(props)}};
 `
+export const TileTitleStyle = css`
+    font-size: 24px;
+    letter-spacing: -5%;
+    font-weight: bold;
+`
