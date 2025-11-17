@@ -79,16 +79,17 @@ interface TileInterface {
     thumbnail?: string,
     title?: string,
     author?: string,
+    date?: string,
     description?: string,
-}   
+}
 
 const Tile = (props: TileInterface) => {
     return (
         <TileContainer to={props.to}>
             <Thumbnail src={props.thumbnail ? props.thumbnail : 'https://play-lh.googleusercontent.com/eM6yGP8pECXPCZ8xWA9aDkDY2rusnpuMl8WZiYUZ2fHdTd0Sj8QwPois6xhVsv-h3g'} />
             <TItleContainer>
-                <Title>{props.title? props.title : "도담도담"}</Title>
-                <Author>{props.author? props.author : "Team B1ND"}</Author>
+                <Title>{props.title? props.title : "로딩중.."}</Title>
+                <Author>{props.author? props.author : "로딩중.."}</Author>
             </TItleContainer>
             <Body>{props.description?.slice(0, 120)}{(props.description?.length?? 0) > 120  ? "..." : null}</Body>
         </TileContainer>
@@ -100,8 +101,8 @@ export const MiniTile = (props: TileInterface) => {
         <MiniTileContainer to={props.to}>
             <MiniThumbnail src={props.thumbnail ? props.thumbnail : 'https://play-lh.googleusercontent.com/eM6yGP8pECXPCZ8xWA9aDkDY2rusnpuMl8WZiYUZ2fHdTd0Sj8QwPois6xhVsv-h3g'} />
             <TItleContainer>
-                <Title>{props.title? props.title : "도담도담"}</Title>
-                <Author>{props.author? props.author : "Team B1ND"}</Author>
+                <Title>{props.title? props.title : "로딩중.."}</Title>
+                <Author>{props.date? props.date : "로딩중.."}</Author>
             </TItleContainer>
         </MiniTileContainer>
     )
