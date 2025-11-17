@@ -22,7 +22,6 @@ export const Background=styled.div`
 export const Dodum=styled.img`
     width:9rem;
     height:2.75rem;
-    margin-bottom:1rem;
 `
 
 export const Title=styled.h1`
@@ -35,6 +34,13 @@ export const TitleCover=styled.div`
     display:flex;
     flex-direction:column;
     align-items:center;
+    gap:0.75rem;
+`
+
+export const welcomeMessage=styled.h1`
+    font-size:1.5rem;
+    font-weight:400;
+    color:#ADADAD;
 `
 
 export const Caption=styled.h1`

@@ -1,20 +1,8 @@
 import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/dodum-web-login/src/pages/Login/Login.style.ts"
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import axios from "axios";
 const Domember2=() => {
-    const [data, setData] = useState(null);
-    useEffect(() => {
-        axios
-          .get("https://heptagonal-king-subpleural.ngrok-free.dev/")
-          .then((response) => {
-            setData(response.data);
-          })
-          .catch((error) => {
-            console.error("에러 발생:", error);
-          });
-      }, []);
     const { register, handleSubmit, formState: { errors },setError,watch } = useForm();
     const navigate=useNavigate();
     const onValid=(data:any)=>{
@@ -22,13 +10,13 @@ const Domember2=() => {
             setError("passwordcheck",{message:"비밀번호가 일치하지 않아요."})
         }
         else{
+            axios.post("https://heptagonal-king-subpleural.ngrok-free.dev/",{
+                username:watch("username"),
+                password:watch("Password")
+              }).then((response)=>{})
             navigate("/domember3");
         }
     }
-    axios.post("https://heptagonal-king-subpleural.ngrok-free.dev/",{
-        username:watch("username"),
-        password:watch("Password")
-      })
     return<S.Background>
         <S.Card onSubmit={handleSubmit(onValid)} $height="40.5rem">
             <S.TitleCover>

@@ -1,12 +1,28 @@
 import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/dodum-web-login/src/pages/Login/Login.style.ts"
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const PWChange1=()=>{
+    const navigate=useNavigate();
+    let isCertified=false;
     const { register, handleSubmit, formState: { errors },watch } = useForm();
-    const onValid=()=>{
-        axios.post("https://heptagonal-king-subpleural.ngrok-free.dev/",{
 
+    const onClick=()=>{
+        axios.post("https://heptagonal-king-subpleural.ngrok-free.dev/",{
+            email:watch("email")
+        }).then((response)=>{
+            if(response.data.success){
+                isCertified=true;
+            }
         })
+    }
+
+    const onValid=(response: any)=>{
+        if(isCertified){
+            if(response.data.code === watch("certification")){
+                navigate("/pwchange2");
+            }
+        }
     }
     return<S.Background>
         <S.Card $height="33.3rem" onSubmit={handleSubmit(onValid)}>
@@ -23,7 +39,7 @@ const PWChange1=()=>{
             <S.InputTitle>인증번호</S.InputTitle>
             <S.ErrorCover>
             <S.Input type="text" placeholder="인증번호를 입력하세요."></S.Input>
-            <S.certifi_Button>인증번호 발송</S.certifi_Button>
+            <S.certifi_Button onClick={onClick}>인증번호 발송</S.certifi_Button>
             <S.ErrorMessage></S.ErrorMessage>
             </S.ErrorCover>
         </S.InputCover>

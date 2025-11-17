@@ -2,41 +2,21 @@ import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/dodum-web-logi
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import axios from "axios";
 const Login=() => {
-    const { register, handleSubmit, formState: { errors },watch } = useForm();
-    interface UserData {
-        username: string;
-        Password: string;
-    }
-    const [data, setData] = useState<UserData | null>(null);
-      axios.post("https://heptagonal-king-subpleural.ngrok-free.dev/",{
-        username:watch("username"),
-        Password:watch("Password")
-      })
+    const { register, handleSubmit, formState: { errors },watch,setError} = useForm();
       const navigate=useNavigate();
     const onValid=()=>{
-        useEffect(() => {
-            axios
-              .get("https://heptagonal-king-subpleural.ngrok-free.dev/")
-              .then((response) => {
-                setData(response.data);
-              })
-              .catch((error) => {
-                console.error("에러 발생:", error);
-              });
-          }, []);
-          axios.post("https://heptagonal-king-subpleural.ngrok-free.dev/login",{
-            username:watch("username"),
-            Password:watch("Password")
-          }).then((response)=>{
-            if(response.data.success){
-            } else {
-                alert("아이디 또는 비밀번호가 일치하지 않습니다.");
-            }
-          })
-    }
+      axios.post("https://heptagonal-king-subpleural.ngrok-free.dev/login",{
+        username:watch("username"),
+        Password:watch("Password")
+      }).then((response)=>{
+        if(response.data.success){
+        } else {
+            setError("Password",{message:"아이디 또는 비밀번호가 일치하지 않습니다."})
+            setError("username",{message:""})
+        }
+      })}
     return<S.Background>
         <S.Card onSubmit={handleSubmit(onValid)}>
             <S.TitleCover>
