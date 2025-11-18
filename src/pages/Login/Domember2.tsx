@@ -6,7 +6,7 @@ const Domember2=() => {
     const { register, handleSubmit, formState: { errors },setError,watch } = useForm();
     const navigate=useNavigate();
     const onValid=(data:any)=>{
-        if(data.password!==data.passwordcheck){
+        if(data.Password!==data.Passwordcheck){
             setError("passwordcheck",{message:"비밀번호가 일치하지 않아요."})
         }
         else{
@@ -36,8 +36,8 @@ const Domember2=() => {
                 </S.ErrorCover>
                 <S.InputTitle>비밀번호 확인</S.InputTitle>
                 <S.ErrorCover>
-                <S.Input type="text" placeholder="비밀번호를 입력해주세요." {...register("passwordcheck",{required:"비밀번호를 작성하여 주세요"})} style={errors.passwordcheck?.message ? { borderColor: "#FF3E3E" } : {borderColor:"#9B9B9B"}} $placeholderColor={errors.passwordcheck?.message ? "#FF3E3E":undefined}/>
-                <S.ErrorMessage>{errors.passwordcheck?.message?.toString()}</S.ErrorMessage>
+                <S.Input type="text" placeholder="비밀번호를 입력해주세요." {...register("Passwordcheck",{required:"비밀번호를 작성하여 주세요"})} style={errors.Passwordcheck?.message ? { borderColor: "#FF3E3E" } : {borderColor:"#9B9B9B"}} $placeholderColor={errors.Passwordcheck?.message ? "#FF3E3E":undefined}/>
+                <S.ErrorMessage>{errors.Passwordcheck?.message?.toString()}</S.ErrorMessage>
                 </S.ErrorCover>
             </S.InputCover>
             <S.Button type="submit">다음으로</S.Button>

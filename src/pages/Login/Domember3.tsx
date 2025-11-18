@@ -20,9 +20,8 @@ const Domember3=() => {
             number:value[2],
             phone:watch("phone")
         }).then((response)=>{
-            
+            navigate("/domember4",{state:{code:response.data.code}});
         })
-        navigate("/domember4",{state:{code:data.code}});
 
     }
     const onChangeValue=(index:number,event:any)=>{

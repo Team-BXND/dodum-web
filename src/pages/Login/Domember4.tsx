@@ -12,13 +12,13 @@ const Domember4 = () => {
         setValue(newValue);
       }
     
-    const { register, handleSubmit, formState: { errors },setError } = useForm();
+    const { register, handleSubmit, formState: { errors },setError,control } = useForm();
     const navigate = useNavigate();
     const onValid = () => {
         if(value.join("")===String(location.state.code)){
             navigate("/login")
         } else {
-            setError("certification",{message:"인증번호가 일치하지 않습니다."});
+            setError("certification1",{message:"인증번호가 일치하지 않습니다."});
         }
     };
 
@@ -33,12 +33,12 @@ const Domember4 = () => {
             <S.InputTitle>인증번호</S.InputTitle>
         <S.ErrorCover>
         <S.NumberCover>
-            <S.Number {...register("certification",{required:"인증번호를 작성해주세요"})} style={errors.certification?.message ? {borderColor:"#FF3E3E"}:{}} onChange={(event) => onChangeValue(0, event)}></S.Number>
-            <S.Number {...register("certification",{required:"인증번호를 작성해주세요"})} style={errors.certification?.message ? {borderColor:"#FF3E3E"}:{}} onChange={(event) => onChangeValue(1, event)}></S.Number>
-            <S.Number {...register("certification",{required:"인증번호를 작성해주세요"})} style={errors.certification?.message ? {borderColor:"#FF3E3E"}:{}} onChange={(event) => onChangeValue(2, event)}></S.Number>
-            <S.Number {...register("certification",{required:"인증번호를 작성해주세요"})} style={errors.certification?.message ? {borderColor:"#FF3E3E"}:{}} onChange={(event) => onChangeValue(3, event)}></S.Number>
+            <S.Number {...register("certification1",{required:"인증번호를 작성해주세요", onChange: (e) => onChangeValue(0, e)})} style={errors.certification1?.message ? {borderColor:"#FF3E3E"}:{}} maxLength={1}></S.Number>
+            <S.Number {...register("certification2",{required:"인증번호를 작성해주세요", onChange: (e) => onChangeValue(1, e)})} style={errors.certification1?.message ? {borderColor:"#FF3E3E"}:{}} maxLength={1}></S.Number>
+            <S.Number {...register("certification3",{required:"인증번호를 작성해주세요",onChange: (e) => onChangeValue(2, e)})} style={errors.certification1?.message ? {borderColor:"#FF3E3E"}:{}} maxLength={1}></S.Number>
+            <S.Number {...register("certification4",{required:"인증번호를 작성해주세요",onChange: (e) => onChangeValue(3, e)})} style={errors.certification1?.message ? {borderColor:"#FF3E3E"}:{}} maxLength={1}></S.Number>
         </S.NumberCover>
-        <S.ErrorMessage>{errors.certification?.message?.toString()}</S.ErrorMessage>
+        <S.ErrorMessage>{errors.certification1?.message?.toString()}</S.ErrorMessage>
         </S.ErrorCover>
         </S.InputCover>
         <S.ButtonCover>
