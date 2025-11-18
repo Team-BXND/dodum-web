@@ -22,7 +22,7 @@ const CLUB = {
 	NONE: "NONE"
 } as const
 
-interface IUserInfo {
+export interface IUserInfo {
 	username: string;
 	phone: string;
 	email: string;
@@ -36,6 +36,12 @@ interface IPosts {
 	title: string;
 	Date: string;
 	Image: string;
+}
+
+export const ProfileImage = () => {
+	return (
+		<S.ProfileImage src={Placeholder} />
+	)
 }
 
 function Profile() {
@@ -77,7 +83,7 @@ function Profile() {
 			<S.Body>
 				<S.UserInfo>
 					<S.Profile>
-						<S.ProfileImage src={Placeholder} />
+						<ProfileImage />
 						<S.ProfileText>
 							<SubTitle>{userInfo?.username || "로딩중.."}</SubTitle>
 							<S.Info>

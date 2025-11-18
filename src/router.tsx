@@ -8,6 +8,7 @@ import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 import MajorResult from './pages/Major/Result/MajorResult';
 import Profile from './pages/Profile/Profile';
+import ProfileDetail from './pages/Profile/ProfileDetail';
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'profile',
-        element: <Profile />
+        element: <Profile />,
+      },
+      {
+        path: 'profile/detail',
+        element: <ProfileDetail />
       }
     ],
   },
