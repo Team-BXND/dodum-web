@@ -2,17 +2,15 @@ import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/dodum-web-logi
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import {useState } from "react";
-import axios from "axios";
+import { api } from "./api";
 
 const Domember3=() => {
+    const Server_address="https://heptagonal-king-subpleural.ngrok-free.dev/"
     const [value,setValue]=useState([0,0,0]);
     const { register, handleSubmit, formState: { errors },setError,watch } = useForm();
     const navigate=useNavigate();
     const onValid=(data:any)=>{
-        if(data.password!==data.passwordcheck){
-            setError("passwordcheck",{message:"비밀번호가 일치하지 않아요."})
-        }
-        axios.post("https://heptagonal-king-subpleural.ngrok-free.dev/",{
+        api.post(Server_address,{
             username:watch("username"),
             email:watch("email"),
             grade_no:value[0],
@@ -85,7 +83,7 @@ const Domember3=() => {
                 </S.ErrorCover>
             </S.InputCover>
             <S.ButtonCover>
-            <S.Button type="submit">로그인</S.Button>
+            <S.Button type="submit">다음으로</S.Button>
             <S.Button $bgColor="#747474" onClick={()=>navigate(-1)} type="button">뒤로가기</S.Button>
             </S.ButtonCover>
         </S.Card>

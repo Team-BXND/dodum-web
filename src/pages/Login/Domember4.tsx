@@ -4,7 +4,13 @@ import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 const Domember4 = () => {
+    const navigate = useNavigate();
     const location=useLocation();
+    const state = location.state as { code?: string } | null;
+    if (!state?.code) {
+        navigate("/domember3");
+        return;
+      }
     const [value,setValue]=useState([0,0,0,0]);
       const onChangeValue=(index:number,event:any)=>{
         const newValue=[...value];
@@ -13,7 +19,6 @@ const Domember4 = () => {
       }
     
     const { register, handleSubmit, formState: { errors },setError,control } = useForm();
-    const navigate = useNavigate();
     const onValid = () => {
         if(value.join("")===String(location.state.code)){
             navigate("/login")
