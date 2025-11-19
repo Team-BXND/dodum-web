@@ -50,16 +50,7 @@ function ProfileEdit() {
   }
 
   useEffect(() => {
-    // GetUserInfo();
-    setUserInfo({
-      username: "정대원",
-      grade: 1,
-      class_no: 4,
-      student_no: 16,
-      phone: "01025952248",
-      email: "2595daewon@gmail.com",
-      club: "BIND"
-    })
+    GetUserInfo();
   }, [])
 
   const {
@@ -84,8 +75,6 @@ function ProfileEdit() {
         <S.Profile>
           <ProfileImage />
           <SubTitle>{userInfo?.username}</SubTitle>
-          {/* <S.ShortInput defaultValue={userInfo?.username} {...register("username", {required: true})} />
-          {errors.username && <S.ErrorMsg>이 필드는 필수 입력 필드입니다.</S.ErrorMsg>} */}
         </S.Profile>
         <S.InfoContainer>
           <S.Info>
