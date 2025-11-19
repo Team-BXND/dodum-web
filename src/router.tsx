@@ -9,6 +9,7 @@ import AddArchive from './pages/Archive/pages/AddArchive';
 import MajorResult from './pages/Major/Result/MajorResult';
 import Profile from './pages/Profile/Profile';
 import ProfileDetail from './pages/Profile/ProfileDetail';
+import ProfileEdit from './pages/Profile/ProfileEdit';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: 'profile/detail',
         element: <ProfileDetail />
+      },
+      {
+        path: 'profile/edit',
+        element: <ProfileEdit />
       }
     ],
   },

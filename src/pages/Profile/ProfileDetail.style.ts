@@ -1,7 +1,8 @@
+import Caption from "@/components/Text/Caption";
 import SubTitle from "@/components/Text/SubTitle";
 import { styled } from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.form`
     width: 100%;
     height: 100%;
     flex-direction: column;
@@ -46,7 +47,7 @@ export const InfoContainer = styled.div`
 export const Info = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 12px;
 `
 
 export const Buttons = styled.div`
@@ -55,4 +56,40 @@ export const Buttons = styled.div`
     display: flex;
     gap: 16px;
     padding: 0px 0px 40px 24px;
+`
+
+export const Input = styled.input`
+    width: 100%;
+    font-size: 20px;
+    background-color: #00000000;
+    border: 0;
+    border-bottom: 1px solid #000;
+    padding: 4px;
+`
+
+export const ShortInput = styled(Input)`
+    width: 60px;
+`
+
+export const InputRow = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+`
+
+export const StudentNumberContainer = styled.div`
+    display: flex;
+    gap: 10px;
+`
+
+export const Row = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+`
+
+export const ErrorMsg = styled(Caption)`
+    color: #ff3535ff;
+    font-size: 12px;
+    padding: 2px 0px 8px 0px;
 `
