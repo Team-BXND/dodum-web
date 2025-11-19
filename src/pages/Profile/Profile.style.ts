@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -21,7 +22,8 @@ export const Body = styled.div`
     gap: 12px;
 `
 
-export const UserInfo = styled.div`
+export const UserInfo = styled(Link)`
+    text-decoration: none;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -29,6 +31,9 @@ export const UserInfo = styled.div`
     border-radius: 24px;
     box-shadow: ${(props) => props.theme.boxShadow};
     background-color: ${(props) => props.theme.bgPrimary};
+    &:hover {
+        background-color: ${(props) => props.theme.bgSecondary};
+    }
 `
 
 export const Profile = styled.div`

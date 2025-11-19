@@ -8,6 +8,7 @@ import { useForm, type SubmitHandler } from "react-hook-form"
 import Body from "@/components/Text/Body"
 import { club } from "@/constants/club.constants"
 import SubTitle from "@/components/Text/SubTitle"
+import { useNavigate } from "react-router-dom"
 
 type EditForm = {
   // username: string,
@@ -21,6 +22,7 @@ type EditForm = {
 
 function ProfileEdit() {
   const [userInfo, setUserInfo] = useState<IUserInfo>();
+  const navigator = useNavigate();
 
   const GetUserInfo = () => {
 		axios.get("/api")
@@ -146,7 +148,7 @@ function ProfileEdit() {
       </S.ProfileContainer>
       <S.Buttons>
         <Button text="수정 완료" type="submit" />
-        <Button text="취소" isGray />
+        <Button text="취소" isGray onClick={() => navigator("/profile/detail")} />
       </S.Buttons>
     </S.Container>
   )

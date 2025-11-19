@@ -81,7 +81,7 @@ function Profile() {
 				{userInfo?.username}님의 프로필
 			</S.Title>
 			<S.Body>
-				<S.UserInfo>
+				<S.UserInfo to="detail">
 					<S.Profile>
 						<ProfileImage />
 						<S.ProfileText>

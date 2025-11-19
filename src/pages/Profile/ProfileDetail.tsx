@@ -5,9 +5,11 @@ import Caption from "@/components/Text/Caption"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Button from "@/components/Buttons/Button"
+import { useNavigate } from "react-router-dom"
 
 function Detail() {
   const [userInfo, setUserInfo] = useState<IUserInfo>();
+  const navigator = useNavigate();
 
   const GetUserInfo = () => {
 		axios.get("/api")
@@ -45,8 +47,8 @@ function Detail() {
         </S.InfoContainer>
       </S.ProfileContainer>
       <S.Buttons>
-        <Button text="정보 수정" />
-        <Button text="뒤로가기" isGray />
+        <Button text="정보 수정" onClick={() => navigator("/profile/edit")}/>
+        <Button text="뒤로가기" isGray onClick={() => navigator("/profile")}/>
       </S.Buttons>
     </S.Container>
   )
