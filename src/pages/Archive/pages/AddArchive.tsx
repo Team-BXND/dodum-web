@@ -3,7 +3,7 @@ import AddPost, { type IFormInput } from "../../../components/AddPost/AddPost";
 import type { SubmitHandler } from "react-hook-form";
 
 const handleSubmit: SubmitHandler<IFormInput> = (data) => {
-    axios.post("api.url", {
+    axios.post("/api", {
         title: data.title,
         subTitle: data.subTitle,
         category: data.category,
@@ -15,7 +15,7 @@ const handleSubmit: SubmitHandler<IFormInput> = (data) => {
 
     })
     .catch((error) => {
-        alert(error.message)
+        alert(`데이터를 불러오는데 실패했습니다. (${error.response.status})`)
     })
 }
 

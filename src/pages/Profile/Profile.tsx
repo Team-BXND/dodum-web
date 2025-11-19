@@ -55,7 +55,7 @@ function Profile() {
 			setUserInfo(response.data)
 		})
 		.catch((error) => {
-			alert(error.response)
+			alert(`데이터를 불러오는데 실패했습니다. (${error.response.status})`)
 		})
 	}
 
@@ -66,7 +66,7 @@ function Profile() {
 				setPosts(response.data);
 		})
 		.catch((error) => {
-			alert(error.response)
+			alert(`작성글 데이터를 불러오는데 실패했습니다. (${error.response.status})`)
 		})
 	}
 
