@@ -7,9 +7,10 @@ import Detail from './pages/Archive/pages/Detail';
 import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 import MajorResult from './pages/Major/Result/MajorResult';
-import Profile from './pages/Profile/Profile';
-import ProfileDetail from './pages/Profile/ProfileDetail';
-import ProfileEdit from './pages/Profile/ProfileEdit';
+import Profile from './pages/Profile/Pages/Profile';
+import ProfileDetail from './pages/Profile/Pages/ProfileDetail';
+import ProfileEdit from './pages/Profile/Pages/ProfileEdit';
+import Posts from './pages/Profile/Pages/Posts';
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,11 @@ const router = createBrowserRouter([
       {
         path: 'profile/edit',
         element: <ProfileEdit />
-      }
+      },
+      {
+        path: 'profile/posts',
+        element: <Posts />
+      },
     ],
   },
 ]);

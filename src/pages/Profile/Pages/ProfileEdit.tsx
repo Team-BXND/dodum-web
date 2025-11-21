@@ -1,5 +1,5 @@
 import { ProfileImage, type IUserInfo } from "./Profile"
-import * as S from "./ProfileDetail.style"
+import * as S from "../styles/ProfileDetail.style"
 import Caption from "@/components/Text/Caption"
 import axios from "axios"
 import { useEffect, useState } from "react"

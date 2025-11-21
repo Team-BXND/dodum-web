@@ -1,5 +1,5 @@
 import SubTitle from "@/components/Text/SubTitle";
-import * as S from "./Profile.style"
+import * as S from "../styles/Profile.style"
 import Caption from "@/components/Text/Caption";
 import TileTitle from "@/components/Text/TileTItle";
 import Arrow from "@/assets/Profile/Arrow.svg"
@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { MiniTile } from "@/components/TileContents/TileContents";
 import Placeholder from "@/assets/Profile/Placeholder.png"
 import Archive from "@/assets/Profile/archive.svg"
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactElement } from "react";
 import axios from "axios";
 import Button from "@/components/Buttons/Button";
 
@@ -33,7 +33,7 @@ export interface IUserInfo {
 	club: typeof CLUB[keyof typeof CLUB];
 }
 
-interface IPosts {
+export interface IPosts {
 	title: string;
 	Date: string;
 	Image: string;
@@ -43,6 +43,35 @@ export const ProfileImage = () => {
 	return (
 		<S.ProfileImage src={Placeholder} />
 	)
+}
+
+export const MyPosts = ({posts} : {posts: IPosts[]}) => {
+	return (
+		<S.PostContainer>
+			<S.PostHeader>
+				<TileTitle>작성한 글</TileTitle>
+				<Link to="/profile/posts"><Arrow /></Link>
+			</S.PostHeader>
+			<S.Posts>
+				{posts.length > 0 ? posts.map((elem) => {
+					return (
+						<MiniTile to="" title={elem.title} date={elem.Date} thumbnail={elem.Image} />
+					)
+				}) : "작성글이 없습니다."}
+			</S.Posts>
+		</S.PostContainer>
+	)
+}
+
+export const GetPosts = (setPosts: React.Dispatch<React.SetStateAction<IPosts[]>>) => {
+	axios.get("/api")
+	.then((response) => {
+		if(Array.isArray(response))
+			setPosts(response.data);
+	})
+	.catch((error) => {
+		alert(`작성글 데이터를 불러오는데 실패했습니다. (${error.response.status})`)
+	})
 }
 
 function Profile() {
@@ -60,20 +89,9 @@ function Profile() {
 		})
 	}
 
-	const GetPosts = () => {
-		axios.get("/api")
-		.then((response) => {
-			if(Array.isArray(response))
-				setPosts(response.data);
-		})
-		.catch((error) => {
-			alert(`작성글 데이터를 불러오는데 실패했습니다. (${error.response.status})`)
-		})
-	}
-
 	useEffect(() => {
 		GetUserInfo();
-		GetPosts();
+		GetPosts(setPosts);
 	}, [])
 
 	return (
@@ -103,19 +121,7 @@ function Profile() {
 						</S.Activity>
 					</S.ActivityContainer>
 				</S.UserInfo>
-				<S.PostContainer>
-					<S.PostHeader>
-						<TileTitle>작성한 글</TileTitle>
-						<Link to=""><Arrow /></Link>
-					</S.PostHeader>
-					<S.Posts>
-						{posts.length > 0 ? posts.map((elem) => {
-							return (
-								<MiniTile to="" title={elem.title} date={elem.Date} thumbnail={elem.Image} />
-							)
-						}) : "작성글이 없습니다."}
-					</S.Posts>
-				</S.PostContainer>
+				<MyPosts posts={posts}/>
 			</S.Body>
 			<S.Buttons>
 				<Button text="상세 정보" onClick={() => navigator("/profile/detail")}/>

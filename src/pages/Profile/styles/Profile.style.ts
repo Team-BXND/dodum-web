@@ -15,6 +15,7 @@ export const Title = styled.h1`
 
 export const Body = styled.div`
     width: 100%;
+    height: 80vh;
     padding: 24px 0px;
     display: flex;
     flex-direction: column;
@@ -86,6 +87,7 @@ export const VLine = styled.div`
 
 export const PostContainer = styled.div`
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -103,7 +105,6 @@ export const PostHeader = styled.div`
 
 export const Posts = styled.div`
     width: 100%;
-    height: 50vh;
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
