@@ -20,10 +20,10 @@ const ButtonGray = styled(ButtonMainColor)`
     }
 `
 
-export default function Button({ text, isGray, onClick, type="button" } : {text: string, isGray?: boolean, onClick?: () => void, type?: "button" | "submit" | "reset",}) {
+export default function Button({ text, isGray, onClick, type="button", className } : {text: string, isGray?: boolean, onClick?: () => void, type?: "button" | "submit" | "reset", className?: string}) {
     return isGray? (
-        <ButtonGray onClick={onClick} type={type}>{text}</ButtonGray>
+        <ButtonGray onClick={onClick} type={type} className={className}>{text}</ButtonGray>
     ) : (
-        <ButtonMainColor onClick={onClick} type={type}>{text}</ButtonMainColor>
+        <ButtonMainColor onClick={onClick} type={type} className={className}>{text}</ButtonMainColor>
     )
 }

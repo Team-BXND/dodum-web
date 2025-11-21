@@ -120,7 +120,7 @@ function Profile() {
 			<S.Buttons>
 				<Button text="상세 정보" onClick={() => navigator("/profile/detail")}/>
 				<Button text="정보 수정" onClick={() => navigator("/profile/edit")}/>
-				<Button text="뒤로가기" isGray onClick={() => navigator("/profile")}/>
+				<S.LogoutButton text="로그아웃" onClick={() => navigator("/logout")}/>
 			</S.Buttons>
 		</S.Container>
 	)
