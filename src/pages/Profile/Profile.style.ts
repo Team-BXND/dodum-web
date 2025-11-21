@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
     height: 100%;
-    padding: 82px 70px 0px 70px;
+    padding: 40px 70px 0px 70px;
 `
 
 export const Title = styled.h1`
@@ -15,14 +14,13 @@ export const Title = styled.h1`
 
 export const Body = styled.div`
     width: 100%;
-    height: 100%;
     padding: 24px 0px;
     display: flex;
     flex-direction: column;
     gap: 12px;
 `
 
-export const UserInfo = styled(Link)`
+export const UserInfo = styled.div`
     text-decoration: none;
     width: 100%;
     display: flex;
@@ -31,9 +29,9 @@ export const UserInfo = styled(Link)`
     border-radius: 24px;
     box-shadow: ${(props) => props.theme.boxShadow};
     background-color: ${(props) => props.theme.bgPrimary};
-    &:hover {
+    /* &:hover {
         background-color: ${(props) => props.theme.bgSecondary};
-    }
+    } */
 `
 
 export const Profile = styled.div`
@@ -110,4 +108,12 @@ export const Posts = styled.div`
     flex-wrap: wrap;
     padding: 0px 12px;
     overflow: scroll;
+`
+
+export const Buttons = styled.div`
+    width: 100%;
+    justify-content: right;
+    display: flex;
+    gap: 16px;
+    padding: 0px 0px 40px 24px;
 `

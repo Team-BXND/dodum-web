@@ -5,7 +5,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import Button from "@/components/Buttons/Button"
 import { useForm, type SubmitHandler } from "react-hook-form"
-import Body from "@/components/Text/Body"
+import * as studentNumber from "@/constants/student-number.constants"
 import { club } from "@/constants/club.constants"
 import SubTitle from "@/components/Text/SubTitle"
 import { useNavigate } from "react-router-dom"
@@ -84,24 +84,48 @@ function ProfileEdit() {
           <S.Info>
             <S.Row>
               <Caption>{"이메일"}</Caption>
-              <S.Input defaultValue={userInfo?.email} {...register("email", {required: true})} />
+              <S.Input placeholder="이메일을 입력하세요." defaultValue={userInfo?.email} {...register("email", {required: true})} />
               {errors.email && <S.ErrorMsg>이 필드는 필수 입력 필드입니다.</S.ErrorMsg>}
             </S.Row>
             <S.Row>
               <Caption>{"학번"}</Caption>
               <S.StudentNumberContainer>
-                <S.InputRow>
-                  <S.ShortInput defaultValue={userInfo?.grade} {...register("grade", {required: true, pattern: /^[0-9]*$/, maxLength: 1})} />
-                  <Body>학년</Body>
-                </S.InputRow>
-                <S.InputRow>
-                  <S.ShortInput defaultValue={userInfo?.class_no} {...register("class_no", {required: true, pattern: /^[0-9]*$/, maxLength: 1})} />
-                  <Body>반</Body>
-                </S.InputRow>
-                <S.InputRow>
-                  <S.ShortInput defaultValue={userInfo?.student_no} {...register("student_no", {required: true, pattern: /^[0-9]*$/, maxLength: 2})} />
-                  <Body>번호</Body>
-                </S.InputRow>
+                  <S.ShortInput as="select" defaultValue={userInfo?.grade} {...register("grade", {required: true})}>
+                    {studentNumber.grade.map((elem) => {
+                      if (userInfo?.grade === elem.value) {
+                        return (
+                          <option selected key={elem.value} value={elem.value}>{elem.value}</option>
+                        )
+                      }
+                      return (
+                        <option key={elem.value} value={elem.value}>{elem.value}</option>
+                      )
+                    })}
+                  </S.ShortInput>
+                  <S.ShortInput as="select" defaultValue={userInfo?.class_no} {...register("class_no", {required: true})}>
+                    {studentNumber.class_no.map((elem) => {
+                      if (userInfo?.class_no === elem.value) {
+                        return (
+                          <option selected key={elem.value} value={elem.value}>{elem.value}</option>
+                        )
+                      }
+                      return (
+                        <option key={elem.value} value={elem.value}>{elem.value}</option>
+                      )
+                    })}
+                  </S.ShortInput>
+                  <S.ShortInput as="select" defaultValue={userInfo?.student_no} {...register("student_no", {required: true})}>
+                    {studentNumber.student_no.map((elem) => {
+                      if (userInfo?.student_no === elem.value) {
+                        return (
+                          <option selected key={elem.value} value={elem.value}>{elem.value}</option>
+                        )
+                      }
+                      return (
+                        <option key={elem.value} value={elem.value}>{elem.value}</option>
+                      )
+                    })}
+                  </S.ShortInput>
               </S.StudentNumberContainer>
               {(errors.grade?.type === "required" || errors.class_no?.type === "required" || errors.student_no?.type === "required") && <S.ErrorMsg>이 필드는 필수 입력 필드입니다.</S.ErrorMsg>}
               {(
@@ -117,7 +141,7 @@ function ProfileEdit() {
             </S.Row>
             <S.Row>
               <Caption>{"전화번호"}</Caption>
-              <S.Input defaultValue={userInfo?.phone} {...register("phone", {required: true, pattern: /^[0-9]*$/, minLength: 10})} />
+              <S.Input placeholder="전화번호를 입력하세요." defaultValue={userInfo?.phone} {...register("phone", {required: true, pattern: /^[0-9]*$/, minLength: 10})} />
               {errors.phone?.type === "required" && <S.ErrorMsg>이 필드는 필수 입력 필드입니다.</S.ErrorMsg>}
               {(errors.phone?.type === "minLength" || errors.phone?.type === "pattern") && <S.ErrorMsg>유효한 전화번호를 입력하세요.</S.ErrorMsg>}
             </S.Row>
@@ -126,11 +150,11 @@ function ProfileEdit() {
               <S.Input as="select" defaultValue={userInfo?.club} {...register("club", {required: true, 
                 validate: (value) => {
                   if (value === "none") {
-                    return "동아리를 선택해주세요.";
+                    return "이 필드는 필수 선택 필드입니다.";
                   }
                   return true;
                 },})}>
-                <option hidden value="none">동아리를 선택해주세요.</option>
+                <option hidden value="none">동아리를 선택하세요.</option>
                 {club.map((elem) => {
                   if (userInfo?.club == elem.name) {
                     return (

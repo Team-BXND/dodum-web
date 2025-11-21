@@ -3,12 +3,13 @@ import * as S from "./Profile.style"
 import Caption from "@/components/Text/Caption";
 import TileTitle from "@/components/Text/TileTItle";
 import Arrow from "@/assets/Profile/Arrow.svg"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MiniTile } from "@/components/TileContents/TileContents";
 import Placeholder from "@/assets/Profile/Placeholder.png"
 import Archive from "@/assets/Profile/archive.svg"
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Button from "@/components/Buttons/Button";
 
 const CLUB = {
 	BIND: "BIND",
@@ -45,7 +46,7 @@ export const ProfileImage = () => {
 }
 
 function Profile() {
-
+	const navigator = useNavigate();
 	const [userInfo, setUserInfo] = useState<IUserInfo>()
 	const [posts, setPosts] = useState<IPosts[]>([])
 
@@ -78,10 +79,10 @@ function Profile() {
 	return (
 		<S.Container>
 			<S.Title>
-				{userInfo?.username}님의 프로필
+				내 정보
 			</S.Title>
 			<S.Body>
-				<S.UserInfo to="detail">
+				<S.UserInfo>
 					<S.Profile>
 						<ProfileImage />
 						<S.ProfileText>
@@ -116,6 +117,11 @@ function Profile() {
 					</S.Posts>
 				</S.PostContainer>
 			</S.Body>
+			<S.Buttons>
+				<Button text="상세 정보" onClick={() => navigator("/profile/detail")}/>
+				<Button text="정보 수정" onClick={() => navigator("/profile/edit")}/>
+				<Button text="뒤로가기" isGray onClick={() => navigator("/profile")}/>
+			</S.Buttons>
 		</S.Container>
 	)
 }

@@ -5,6 +5,7 @@ import { styled } from "styled-components";
 export const Container = styled.form`
     width: 100%;
     height: 100%;
+    gap: 40px;
     flex-direction: column;
     display: flex;
     justify-content: center;
@@ -40,6 +41,7 @@ export const Image = styled.img`
 
 export const InfoContainer = styled.div`
     display: flex;
+    width: 680px;
     flex-direction: column;
     gap: 5px;
 `
@@ -63,19 +65,16 @@ export const Input = styled.input`
     font-size: 20px;
     background-color: #00000000;
     border: 0;
-    border-bottom: 1px solid #000;
-    padding: 4px;
+    border: 1px solid ${(props) => props.theme.btnGraySecondary};
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
 `
 
 export const ShortInput = styled(Input)`
-    width: 60px;
+    width: 100%;
 `
 
-export const InputRow = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 10px;
-`
 
 export const StudentNumberContainer = styled.div`
     display: flex;
