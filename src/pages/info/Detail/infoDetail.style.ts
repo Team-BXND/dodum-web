@@ -23,7 +23,7 @@ export const MainDetail = styled.div`
   box-shadow: 4px 4px 4px rgba(38, 135, 78, 0.1);
   border-radius: 12px 12px 0px 0px;
   > h1 {
-    font-family: 'Pretendard Variable';
+    font-family: 'Pretendard';
     font-style: normal;
     font-weight: 600;
     font-size: 44px;
