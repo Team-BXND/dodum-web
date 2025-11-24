@@ -84,8 +84,11 @@ function ProfileEdit() {
           <S.Info>
             <S.Row>
               <Caption>{"이메일"}</Caption>
-              <S.Input placeholder="이메일을 입력하세요." defaultValue={userInfo?.email} {...register("email", {required: true})} />
-              {errors.email && <S.ErrorMsg>이 필드는 필수 입력 필드입니다.</S.ErrorMsg>}
+              <S.Input placeholder="이메일을 입력하세요." defaultValue={userInfo?.email} {...register("email", {required: "이 필드는 필수 입력 필드입니다.", pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "올바른 이메일 형식이 아닙니다.",
+              },})} />
+              {errors.email && <S.ErrorMsg>{errors.email.message}</S.ErrorMsg>}
             </S.Row>
             <S.Row>
               <Caption>{"학번"}</Caption>
@@ -141,9 +144,15 @@ function ProfileEdit() {
             </S.Row>
             <S.Row>
               <Caption>{"전화번호"}</Caption>
-              <S.Input placeholder="전화번호를 입력하세요." defaultValue={userInfo?.phone} {...register("phone", {required: true, pattern: /^[0-9]*$/, minLength: 10})} />
-              {errors.phone?.type === "required" && <S.ErrorMsg>이 필드는 필수 입력 필드입니다.</S.ErrorMsg>}
-              {(errors.phone?.type === "minLength" || errors.phone?.type === "pattern") && <S.ErrorMsg>유효한 전화번호를 입력하세요.</S.ErrorMsg>}
+              <S.Input placeholder="전화번호를 입력하세요." defaultValue={userInfo?.phone} {...register("phone", {required: "이 필드는 필수 선택 필드입니다.", 
+              pattern: {
+                value: /^[0-9]*$/,
+                message: "유효한 전화번호를 입력하세요."}, 
+                minLength: {
+                  value: 10,
+                  message: "유효한 전화번호를 입력하세요."
+                }})} />
+              {errors.phone && <S.ErrorMsg>{errors.phone.message}</S.ErrorMsg>}
             </S.Row>
             <S.Row>
               <Caption>{"동아리"}</Caption>
