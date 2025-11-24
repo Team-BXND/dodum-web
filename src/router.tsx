@@ -11,7 +11,6 @@ import Profile from './pages/Profile/Pages/Profile';
 import ProfileDetail from './pages/Profile/Pages/ProfileDetail';
 import ProfileEdit from './pages/Profile/Pages/ProfileEdit';
 import Posts from './pages/Profile/Pages/Posts';
-import ResetPassword from './pages/Profile/Pages/ResetPassword';
 
 const router = createBrowserRouter([
   {
@@ -51,10 +50,6 @@ const router = createBrowserRouter([
       {
         path: 'profile/edit',
         element: <ProfileEdit />
-      },
-      {
-        path: 'profile/password',
-        element: <ResetPassword />
       },
       {
         path: 'profile/posts',

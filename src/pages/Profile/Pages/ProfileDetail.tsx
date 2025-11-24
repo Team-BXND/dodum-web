@@ -47,7 +47,6 @@ function Detail() {
         </S.InfoContainer>
       </S.ProfileContainer>
       <S.Buttons>
-        <Button text="비밀번호 변경" onClick={() => navigator("/profile/password")}/>
         <Button text="정보 수정" onClick={() => navigator("/profile/edit")}/>
         <Button text="뒤로가기" isGray onClick={() => navigator("/profile")}/>
       </S.Buttons>
