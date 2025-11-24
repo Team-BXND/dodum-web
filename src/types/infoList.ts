@@ -1,7 +1,6 @@
 export interface InfoListProps {
   id?: number;
   title?: string;
-  name?: string;
   content?: string;
   author?: string;
   category?: string;
@@ -11,6 +10,7 @@ export interface InfoListProps {
   commented?: Comment[];
   views?: number;
   imageUrls: string;
+  isApproved?: boolean
 }
 export interface InfoCommentProps {
   id: number;

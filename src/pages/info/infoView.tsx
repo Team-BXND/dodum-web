@@ -1,25 +1,27 @@
 import * as S from './infoView.style';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useMemo } from 'react';
 import { PageContext } from './Context/InfoPageContext';
 import InfoPost from './infoPost';
 import type { InfoListProps } from '@/types/infoList';
-import axios from 'axios';
 import { AddButton } from '../Archive/Archive.style';
 import { infoItems } from '@/constants/info.constants';
-import { InfoItem } from '@/components/InfoList/InfoList.style';
 
 const Info = () => {
   const { currentPage, setCurrentPage } = useContext(PageContext);
   const [posts, setPosts] = useState<InfoListProps[]>([]);
   const [totalPages, setTotalPages] = useState(0);
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const [allowFilter, setAllowFilter] = useState<'allowed' | 'notAllowed'>(
+    'allowed'
+  );
   const POSTS_PER_PAGE = 10;
-  const [grade, setGrade] = useState(2);
-
+  const grade = 2;
+  // const endpoint = allowFilter === 'notAllowed' ? 'info/false' : 'info';
   // useEffect(() => {
   //   axios
-  //     .get('/info-api/info', {
+  //     .get(`/info-api/${endpoint}`, {
   //       params: { page: currentPage - 1 },
-  //       headers: { 'ngrok-skip-browser-warning': 'true' },
+  //       headers: { 'ngrok': 'true' },
   //     })
   //     .then((res) => {
   //       const fetchedPosts = res.data.data;
@@ -33,30 +35,59 @@ const Info = () => {
   //     })
   //     .catch((err) => {
   //       console.error(err);
-  //       alert('게시물을 불러오지 못했습니다.');
   //     });
-  // }, [currentPage]);
+  // }, [currentPage, allowFilter]);
   //서버가 닫혀있어서 임시로 더미데이터 쓰겠습니다
-useEffect(() => {
-  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-  const endIndex = startIndex + POSTS_PER_PAGE;
 
-  const slicedPosts = infoItems[0].posts.slice(startIndex, endIndex);
+  // 더미 데이터 사용
+  useEffect(() => {
+    const filteredAllPosts = infoItems[0].posts.filter((post) =>
+      allowFilter === 'allowed' ? post.isApproved : !post.isApproved
+    );
 
-  setPosts(slicedPosts);
+    setTotalPages(Math.ceil(filteredAllPosts.length / POSTS_PER_PAGE));
 
-  setTotalPages(Math.ceil(infoItems[0].posts.length / POSTS_PER_PAGE));
-}, [currentPage]);
+    const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+    const endIndex = startIndex + POSTS_PER_PAGE;
+
+    setPosts(filteredAllPosts.slice(startIndex, endIndex));
+  }, [currentPage, allowFilter]);
+
+  const filteredPosts = useMemo(() => {
+    return posts.filter((post) =>
+      searchKeyword.trim()
+        ? post.title?.toLowerCase().includes(searchKeyword.toLowerCase())
+        : true
+    );
+  }, [posts, searchKeyword]);
   return (
     <>
       <S.Title>
-        <S.Titletext>정보공유</S.Titletext>
+        <h1>정보공유</h1>
       </S.Title>
-      <S.SearchBox placeholder="검색어를 입력해주세요"></S.SearchBox>
+      <S.AllowBox>
+        <S.AllowButton
+          $active={allowFilter === 'allowed'}
+          onClick={() => setAllowFilter('allowed')}
+        >
+          승인
+        </S.AllowButton>
+        <S.AllowButton
+          $active={allowFilter === 'notAllowed'}
+          onClick={() => setAllowFilter('notAllowed')}
+        >
+          미승인
+        </S.AllowButton>
+      </S.AllowBox>
+      <S.SearchBox
+        placeholder="검색어를 입력해주세요"
+        value={searchKeyword}
+        onChange={(e) => setSearchKeyword(e.target.value)}
+      ></S.SearchBox>
       <S.Search />
       <S.Container>
         <S.List>
-          <InfoPost posts={posts} />
+          <InfoPost posts={filteredPosts} />
         </S.List>
         <S.Pagination>
           {Array.from({ length: totalPages }, (_, i) => (
