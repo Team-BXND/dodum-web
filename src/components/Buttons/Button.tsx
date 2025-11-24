@@ -18,5 +18,5 @@ const ButtonMainColor = styled.button<IButtonProps>`
 `
 
 export default function Button({ text, isGray, onClick, type="button", className } : {text: string, isGray?: boolean, onClick?: () => void, type?: "button" | "submit" | "reset", className?: string}) {
-    <ButtonMainColor isGray={isGray} onClick={onClick} type={type} className={className}>{text}</ButtonMainColor>
+    return <ButtonMainColor isGray={isGray} onClick={onClick} type={type} className={className}>{text}</ButtonMainColor>
 }
