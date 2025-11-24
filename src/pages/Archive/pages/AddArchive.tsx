@@ -2,7 +2,8 @@ import axios from "axios";
 import AddPost, { type IFormInput } from "../../../components/AddPost/AddPost";
 import type { SubmitHandler } from "react-hook-form";
 
-const handleSubmit: SubmitHandler<IFormInput> = (data) => {
+function AddArchive() {
+    const handleSubmit: SubmitHandler<IFormInput> = (data) => {
     axios.post("/api", {
         title: data.title,
         subTitle: data.subTitle,
@@ -19,7 +20,6 @@ const handleSubmit: SubmitHandler<IFormInput> = (data) => {
     })
 }
 
-function AddArchive() {
     return (
         <AddPost onSubmit={handleSubmit}/>
     )

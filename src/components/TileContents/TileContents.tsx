@@ -101,8 +101,8 @@ export const MiniTile = (props: TileInterface) => {
         <MiniTileContainer to={props.to}>
             <MiniThumbnail src={props.thumbnail ? props.thumbnail : 'https://play-lh.googleusercontent.com/eM6yGP8pECXPCZ8xWA9aDkDY2rusnpuMl8WZiYUZ2fHdTd0Sj8QwPois6xhVsv-h3g'} />
             <TItleContainer>
-                <Title>{props.title? props.title : "로딩중.."}</Title>
-                <Author>{props.date? props.date : "로딩중.."}</Author>
+                <Title>{props.title?? props.title}</Title>
+                <Author>{props.date?? props.date}</Author>
             </TItleContainer>
         </MiniTileContainer>
     )
