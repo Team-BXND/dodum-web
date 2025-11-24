@@ -39,12 +39,6 @@ export interface IPosts {
 	Image: string;
 }
 
-export const ProfileImage = () => {
-	return (
-		<S.ProfileImage src={Placeholder} />
-	)
-}
-
 export const MyPosts = ({posts} : {posts: IPosts[]}) => {
 	return (
 		<S.PostContainer>
@@ -102,7 +96,7 @@ function Profile() {
 			<S.Body>
 				<S.UserInfo>
 					<S.Profile>
-						<ProfileImage />
+						<S.ProfileImage src={Placeholder} />
 						<S.ProfileText>
 							<SubTitle>{userInfo?.username || "로딩중.."}</SubTitle>
 							<S.Info>

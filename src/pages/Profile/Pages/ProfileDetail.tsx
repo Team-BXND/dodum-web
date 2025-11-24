@@ -1,11 +1,13 @@
 import SubTitle from "@/components/Text/SubTitle"
-import { ProfileImage, type IUserInfo } from "./Profile"
+import { type IUserInfo } from "./Profile"
 import * as S from "../styles/ProfileDetail.style"
 import Caption from "@/components/Text/Caption"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Button from "@/components/Buttons/Button"
 import { useNavigate } from "react-router-dom"
+import { ProfileImage } from "../styles/Profile.style"
+import Placeholder from "@/assets/Profile/Placeholder.png"
 
 function Detail() {
   const [userInfo, setUserInfo] = useState<IUserInfo>();
@@ -30,7 +32,7 @@ function Detail() {
       <S.Title>세부정보</S.Title>
       <S.ProfileContainer>
         <S.Profile>
-          <ProfileImage />
+          <ProfileImage src={Placeholder} />
           <SubTitle>{userInfo?.username}</SubTitle>
         </S.Profile>
         <S.InfoContainer>
