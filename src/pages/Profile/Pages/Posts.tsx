@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { MyPosts } from "./Profile"
-import { IPosts } from "./Profile"
+import type { IPosts } from "./Profile"
 import { GetPosts } from "./Profile"
 
 function Posts() {
