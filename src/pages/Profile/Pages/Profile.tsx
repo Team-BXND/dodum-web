@@ -63,7 +63,7 @@ export const MyPosts = ({posts} : {posts: IPosts[]}) => {
 	)
 }
 
-export const GetPosts = (setPosts: React.Dispatch<React.SetStateAction<IPosts[]>>) => {
+export const getPosts = (setPosts: React.Dispatch<React.SetStateAction<IPosts[]>>) => {
 	axios.get("/api")
 	.then((response) => {
 		if(Array.isArray(response))
@@ -91,7 +91,7 @@ function Profile() {
 
 	useEffect(() => {
 		GetUserInfo();
-		GetPosts(setPosts);
+		getPosts(setPosts);
 	}, [])
 
 	return (

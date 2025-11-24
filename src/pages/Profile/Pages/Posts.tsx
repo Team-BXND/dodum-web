@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { MyPosts } from "./Profile"
 import type { IPosts } from "./Profile"
-import { GetPosts } from "./Profile"
+import { getPosts } from "./Profile"
 
 function Posts() {
   const [posts, setPosts] = useState<IPosts[]>([])
 
   useEffect(() => {
-    GetPosts(setPosts)
+    getPosts(setPosts)
   })
 
   return (
