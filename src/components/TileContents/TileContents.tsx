@@ -30,7 +30,6 @@ const MiniTileContainer = styled(Link)`
     border-radius: 8px;
     min-width: 200px;
     max-width: 20rem;
-    text-decoration: none;
     color: ${(props) => (props.theme.textPrimary)};
     box-shadow: ${(props) => props.theme.shadowLight};
 `
