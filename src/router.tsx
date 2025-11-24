@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'info/add',
-        element: <AddInfo />
+        element: <AddInfo/>
       },
       {
         path: 'major/result',

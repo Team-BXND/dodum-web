@@ -1,22 +1,25 @@
 import * as S from './infoView.style';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useMemo } from 'react';
 import { PageContext } from './Context/InfoPageContext';
 import InfoPost from './infoPost';
+import axios from "axios";
 import type { InfoListProps } from '@/types/infoList';
-import axios from 'axios';
 import { AddButton } from '../Archive/Archive.style';
-import { infoItems } from '@/constants/info.constants';
 
 const Info = () => {
   const { currentPage, setCurrentPage } = useContext(PageContext);
   const [posts, setPosts] = useState<InfoListProps[]>([]);
   const [totalPages, setTotalPages] = useState(0);
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const [allowFilter, setAllowFilter] = useState<'allowed' | 'notAllowed'>(
+    'allowed'
+  );
   const POSTS_PER_PAGE = 10;
   const [grade, setGrade] = useState(2);
 
   useEffect(() => {
     axios
-      .get('/info-api/info', {
+      .get(`${import.meta.env.VITE_SERVER_URL}/info-api/info`, {
         params: { page: currentPage - 1 },
         headers: { 'ngrok-skip-browser-warning': 'true' },
       })
@@ -34,16 +37,42 @@ const Info = () => {
         alert('게시물을 불러오지 못했습니다.');
       });
   }, [currentPage]);
+
+  const filteredPosts = useMemo(() => {
+      return posts.filter((post) =>
+          searchKeyword.trim()
+              ? post.title?.toLowerCase().includes(searchKeyword.toLowerCase())
+              : true
+      );
+  }, [posts, searchKeyword]);
   return (
     <>
       <S.Title>
         <S.Titletext>정보공유</S.Titletext>
       </S.Title>
-      <S.SearchBox placeholder="검색어를 입력해주세요"></S.SearchBox>
+      <S.AllowBox>
+        <S.AllowButton
+          $active={allowFilter === 'allowed'}
+          onClick={() => setAllowFilter('allowed')}
+        >
+          승인
+        </S.AllowButton>
+        <S.AllowButton
+          $active={allowFilter === 'notAllowed'}
+          onClick={() => setAllowFilter('notAllowed')}
+        >
+          미승인
+        </S.AllowButton>
+      </S.AllowBox>
+      <S.SearchBox
+        placeholder="검색어를 입력해주세요"
+        value={searchKeyword}
+        onChange={(e) => setSearchKeyword(e.target.value)}
+      ></S.SearchBox>
       <S.Search />
       <S.Container>
         <S.List>
-          <InfoPost posts={posts} />
+          <InfoPost posts={filteredPosts} />
         </S.List>
         <S.Pagination>
           {Array.from({ length: totalPages }, (_, i) => (
