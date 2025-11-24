@@ -10,10 +10,10 @@ const ButtonMainColor = styled.button<IButtonProps>`
     border-radius: 8px;
     border: 0;
     font-size: 16px;
-    background-color: ${(props) => props.isGray ? props.theme.btnPrimary : props.theme.btnGrayPrimary};
+    background-color: ${(props) => props.isGray ? props.theme.btnGrayPrimary : props.theme.btnPrimary};
     color: #fff;
     &:hover {
-        background-color: ${(props) => props.isGray ? props.theme.btnSecondary : props.theme.btnGraySecondary};
+        background-color: ${(props) => props.isGray ? props.theme.btnGraySecondary : props.theme.btnSecondary};
     }
 `
 
