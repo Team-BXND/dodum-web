@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { MiniTile } from "@/components/TileContents/TileContents";
 import Placeholder from "@/assets/Profile/Placeholder.png"
 import Archive from "@/assets/Profile/archive.svg"
-import { useEffect, useState, type ReactElement } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "@/components/Buttons/Button";
 
