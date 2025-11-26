@@ -1,7 +1,7 @@
 import axios from "axios";
-const Server_address="https://heptagonal-king-subpleural.ngrok-free.dev/"
+const SERVER_ADDRESS="http://43.201.30.141"
 export const api=axios.create({
-    baseURL:Server_address
+    baseURL:SERVER_ADDRESS
 })
 
 api.interceptors.request.use((config)=>{

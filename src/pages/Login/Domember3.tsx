@@ -1,26 +1,28 @@
-import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/dodum-web-login/src/pages/Login/Login.style.ts"
+import * as S from "@/pages/Login/Login.style.ts"
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import {useState } from "react";
 import { api } from "./api";
+import { useSignupStore } from "./SignupStore";
 
 const Domember3=() => {
-    const Server_address="https://heptagonal-king-subpleural.ngrok-free.dev/"
+    const {username,email,grade,class_no,phone,setSignup}=useSignupStore();
     const [value,setValue]=useState([0,0,0]);
     const { register, handleSubmit, formState: { errors },setError,watch } = useForm();
     const navigate=useNavigate();
     const onValid=(data:any)=>{
-        api.post(Server_address,{
+        setSignup({
             username:watch("username"),
             email:watch("email"),
-            grade_no:value[0],
+            grade:value[0],
             class_no:value[1],
-            number:value[2],
-            phone:watch("phone")
-        }).then((response)=>{
-            navigate("/domember4",{state:{code:response.data.code}});
-        })
-
+            student_no:value[2],
+            phone:watch("phone")})
+            api.post("/auth/email/send",{
+                email:watch("email"),
+            }).then((response)=>{
+                navigate("/domember4",{state:{code:response.data.code,email:watch("email")}});
+            })
     }
     const onChangeValue=(index:number,event:any)=>{
         const newValue=[...value];
@@ -30,7 +32,7 @@ const Domember3=() => {
     return<S.Background>
         <S.Card onSubmit={handleSubmit(onValid)} $height="40.5rem">
             <S.TitleCover>
-            <S.Dodum src="src/assets/image.png" alt="Dodum Logo"/>
+            <S.Dodum src="@/assets/image.png" alt="Dodum Logo"/>
             <S.Title>환영합니다!</S.Title>
             </S.TitleCover>
             <S.InputCover>

@@ -63,10 +63,11 @@ export const InputTitle=styled.h1`
     color:black;
 `
 
-export const Input=styled.input<{ $placeholderColor?: string }>`
+export const Input=styled.input<{ $placeholderColor?: string,$Color?:string }>`
     width:21.875rem;
     height:2.7rem;
     border:1px solid #9B9B9B;
+    borderColor:${(props)=>props.$Color || '#9B9B9B'};
     border-radius:8px;
     font-size:1rem;
     font-weight:400;

@@ -1,4 +1,4 @@
-import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/dodum-web-login/src/pages/Login/Login.style.ts"
+import * as S from "@/pages/Login/Login.style.ts"
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ const Login=() => {
     const { register, handleSubmit, formState: { errors },watch,setError} = useForm();
       const navigate=useNavigate();
     const onValid=()=>{
-      api.post("https://heptagonal-king-subpleural.ngrok-free.dev/login",{
+      api.post("auth/signin",{
         username:watch("username"),
         Password:watch("Password")
       }).then((response)=>{

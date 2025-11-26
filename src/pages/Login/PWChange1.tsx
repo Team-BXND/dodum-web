@@ -1,10 +1,9 @@
-import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/dodum-web-login/src/pages/Login/Login.style.ts"
+import * as S from "@/pages/Login/Login.style.ts"
 import {useForm } from "react-hook-form";
 import { api } from "./api";
 import { useNavigate } from "react-router-dom";
 import {useState } from "react";
 const PWChange1=()=>{
-    const Server_address="https://heptagonal-king-subpleural.ngrok-free.dev/"
     const navigate=useNavigate();
     const [isCertified, setIsCertified] = useState(false);
     const [code, setCode] = useState("");
@@ -15,7 +14,7 @@ const PWChange1=()=>{
             setError("email",{message:"이메일을 입력해 주세요"});
             return;
         }
-        api.post(Server_address,{
+        api.post("/auth/email/send",{
             email:watch("email")
         }).then((response)=>{
             if(response.data.success){
@@ -28,7 +27,7 @@ const PWChange1=()=>{
     const onValid=()=>{
         if(isCertified){
             if(code === watch("certification")){
-                navigate("/pwchange2");
+                navigate("/pwchange2", { state: { email: watch("email") } });
             }
             else{
                 setError("certification",{message:"인증번호가 일치하지 않습니다."});

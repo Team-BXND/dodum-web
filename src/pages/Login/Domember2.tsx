@@ -1,28 +1,30 @@
-import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/dodum-web-login/src/pages/Login/Login.style.ts"
+import * as S from "@/pages/Login/Login.style.ts";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { api } from "./api";
+import { useSignupStore } from "@/pages/Login/SignupStore.tsx";
 const Domember2=() => {
-    const Server_address="https://heptagonal-king-subpleural.ngrok-free.dev/"
-    const { register, handleSubmit, formState: { errors },setError,watch } = useForm();
+    const {username,Password,setSignup}=useSignupStore();
+    interface FormData {
+        username: string;
+        Password: string;
+        Passwordcheck: string;
+    }
+    const { register, handleSubmit, formState: { errors },setError,watch } = useForm<FormData>();
     const navigate=useNavigate();
-    const onValid=(data:any)=>{
+    const onValid=(data: { Password: string; Passwordcheck: string })=>{
         if(data.Password!==data.Passwordcheck){
             setError("Passwordcheck",{message:"비밀번호가 일치하지 않아요."})
             return
         }
         else{
-            api.post(Server_address,{
-                username:watch("username"),
-                password:watch("Password")
-              }).then((response)=>{})
+            setSignup({username:watch("username"),Password:watch("Password")});
             navigate("/domember3");
         }
     }
     return<S.Background>
         <S.Card onSubmit={handleSubmit(onValid)} $height="40.5rem">
             <S.TitleCover>
-            <S.Dodum src="src/assets/image.png" alt="Dodum Logo"/>
+            <S.Dodum src="@/assets/image.png" alt="Dodum Logo"/>
             <S.Title>환영합니다!</S.Title>
             </S.TitleCover>
             <S.InputCover>

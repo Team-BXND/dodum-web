@@ -1,9 +1,33 @@
-import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/dodum-web-login/src/pages/Login/Login.style.ts"
+import * as S from "@/pages/Login/Login.style.ts"
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import { api } from "./api";
+import { useSignupStore } from "./SignupStore";
 const Domember4 = () => {
+    const {username,
+        Password,
+        grade,
+        class_no,
+        student_no,
+        phone,
+        email,
+        major,
+        history,}=useSignupStore();
+        
+    const SignupData={
+        username,
+        Password,
+        grade,
+        class_no,
+        student_no,
+        phone,
+        email,
+        major,
+        history,
+    }
+
     const navigate = useNavigate();
     const location=useLocation();
     const state = location.state as { code?: string } | null;
@@ -21,7 +45,12 @@ const Domember4 = () => {
     const { register, handleSubmit, formState: { errors },setError,control } = useForm();
     const onValid = () => {
         if(value.join("")===String(location.state.code)){
+            api.post("/auth/email/check",{
+                email:location.state.email,
+                authNum:location.state.code
+            })
             navigate("/login")
+        api.post("/auth/signup",SignupData)
         } else {
             setError("certification1",{message:"인증번호가 일치하지 않습니다."});
         }
@@ -31,7 +60,7 @@ const Domember4 = () => {
         <S.Background>
     <S.Card $height="32.5rem" onSubmit={handleSubmit(onValid)}>
         <S.TitleCover>
-            <S.Dodum src="src/assets/image.png" alt="Dodum Logo"/>
+            <S.Dodum src="@/assets/image.png" alt="Dodum Logo"/>
             <S.Title>이메일 인증</S.Title>
         </S.TitleCover>
         <S.InputCover>

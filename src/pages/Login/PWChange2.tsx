@@ -1,15 +1,17 @@
-import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/dodum-web-login/src/pages/Login/Login.style.ts"
+import * as S from "@/pages/Login/Login.style.ts"
 import {useForm } from "react-hook-form";
 import { api } from "./api";
+import { useLocation } from "react-router-dom";
 const PWChange2=()=>{
-    const Server_address="https://heptagonal-king-subpleural.ngrok-free.dev/"
+    const location=useLocation();
     const { register, handleSubmit, formState: { errors },watch,setError } = useForm();
     const onValid=()=>{
         if (watch("pw")!==watch("pwcheck")){
             setError("pwcheck",{message:"비밀번호가 일치하지 않아요."})
             return;
         }
-        api.post(Server_address,{
+        api.post("/auth/pwchage",{
+            email:location.state.email,
             new_password:watch("pw"),
             passwordCheck:watch("pwcheck")
         })
