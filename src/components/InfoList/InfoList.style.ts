@@ -41,7 +41,6 @@ export const MainInfo = styled.div`
     padding: 0.533em 0;
     font-size: 16px;
     color: ${(props) => props.theme.btnGraySecondary};
-    font-family: 'Pretendard';
     letter-spacing: -0.05em;
     line-height: 19px;
   }
@@ -193,7 +192,6 @@ export const AllowCheckBox = styled.div`
   top: 5px;
 
   > p {
-    font-family: 'Pretendard';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;

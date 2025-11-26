@@ -3,6 +3,10 @@ import FavoriteIcon from '@/assets/info/favorite.svg';
 import ActiveFavoriteIcon from '@/assets/info/ReactionFavorite.svg';
 import CommentIconImg from '@/assets/info/comment.svg';
 
+interface ApprovalBoxProps {
+  $visible?: boolean;
+}
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,7 +19,7 @@ export const MainDetail = styled.div`
   width: 1114px;
   min-height: 670px;
   max-height: max-content;
-  margin-top: 4.5056dvh;
+  margin-top: 3.5056dvh;
   margin-left: 4.11dvw;
   padding-left: 3.306878dvw;
   background-color: #ffffff;
@@ -23,7 +27,6 @@ export const MainDetail = styled.div`
   box-shadow: 4px 4px 4px rgba(38, 135, 78, 0.1);
   border-radius: 12px 12px 0px 0px;
   > h1 {
-    font-family: 'Pretendard';
     font-style: normal;
     font-weight: 600;
     font-size: 44px;
@@ -86,7 +89,6 @@ export const Content = styled.p`
   padding-left: 10px;
   padding-top: 10px;
   height: auto;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -139,4 +141,36 @@ export const CommentBox = styled.div`
   background: ${(props) => props.theme.bgPrimary};
   box-shadow: 4px 4px 4px rgba(38, 135, 78, 0.1);
   border-radius: 0px 0px 12px 12px;
+`;
+
+export const ApprovalButton = styled.button`
+  width: 131px;
+  height: 40px;
+  background-color: ${(props) => props.theme.mainColor};
+  border-radius: 8px;
+  text-align: center;
+  line-height: 40px;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+`;
+
+export const RefuseButton = styled.button`
+  width: 131px;
+  height: 40px;
+  background-color: #d80000;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 40px;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+`;
+
+export const ApprovalBox = styled.div<ApprovalBoxProps>`
+  display: flex;
+  gap: 25px;
+  width: 1188px;
+  justify-content: flex-end;
+  visibility: ${(props) => (props.$visible ? 'visible' : 'hidden')};
 `;

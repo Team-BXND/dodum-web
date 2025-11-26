@@ -4,7 +4,7 @@ import type { SubmitHandler } from 'react-hook-form';
 
 const handleSubmit: SubmitHandler<IFormInput> = (data) => {
   axios
-    .post('api.url', {
+    .post(`/info-api/info`, {
       title: data.title,
       subTitle: data.subTitle,
       content: data.content,
@@ -16,7 +16,6 @@ const handleSubmit: SubmitHandler<IFormInput> = (data) => {
     .catch((error) => {
       alert(error.message);
     });
-  console.log('test')
 };
 
 function AddInfo() {

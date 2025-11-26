@@ -86,7 +86,6 @@ export const Title = styled.div`
   > h1 {
     width: 200px;
     height: 38px;
-    font-family: 'Pretendard';
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
@@ -124,7 +123,6 @@ export const PageBtn = styled.button<{ $active: boolean }>`
   padding: 4px 12px;
   border: none;
   color: ${({ theme, $active }) => ($active ? theme.textPrimary : theme.btnGraySecondary)};
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
