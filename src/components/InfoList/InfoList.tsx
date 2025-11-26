@@ -5,44 +5,17 @@ import { useState } from 'react';
 import axios from 'axios';
 import SubTitle from '../Text/SubTitle';
 import Caption from '../Text/Caption';
-const InfoList = ({
-  id,
-  title,
-  content,
-  author,
-  category,
-  createdAt,
-  likes,
-  comments,
-  views,
-  imageUrls,
-  isApproved,
-}: InfoListProps) => {
+
+const InfoList = (props: InfoListProps) => {
   const navigate = useNavigate();
-  const parentProps = {
-    title,
-    content,
-    author,
-    category,
-    createdAt,
-    likes,
-    comments,
-    views,
-    isApproved,
-  };
+  const parentProps = { ...props };
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
 
     if (!window.confirm('정말 삭제하시겠습니까?')) return;
 
     try {
-      const token = localStorage.getItem('accessToken');
-
-      const response = await axios.delete(`/info-api/info/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.delete(`/info-api/info/${props.id}`, {});
 
       if (response.status === 200) {
         alert(response.data);
@@ -58,7 +31,7 @@ const InfoList = ({
     <S.Container>
       <S.InfoItem
         onClick={() => {
-          navigate(`/info/${id}`, {
+          navigate(`/info/${props.id}`, {
             state: { from: 'list', ...parentProps },
           });
         }}
@@ -67,18 +40,18 @@ const InfoList = ({
           <li></li>
         </S.Bullet>
         <S.MainInfo>
-          <SubTitle>{title}</SubTitle>
-          <Caption color='#adadad'>{author}</Caption>
+          <SubTitle>{props.title}</SubTitle>
+          <Caption color="#adadad">{props.author}</Caption>
         </S.MainInfo>
-        <S.SubInfo $isVisible={isApproved}>
+        <S.SubInfo $isVisible={props.isApproved}>
           <S.Favorite></S.Favorite>
-          <h3>{likes}</h3>
+          <h3>{props.likes}</h3>
           <S.Comment></S.Comment>
-          <h4>{comments}</h4>
-          <h5>조회 {views}</h5>
+          <h4>{props.comments}</h4>
+          <h5>조회 {props.views}</h5>
         </S.SubInfo>
         <S.ImgContainer>
-          {isApproved ? (
+          {props.isApproved ? (
             isHovered ? (
               <S.EditorBox>
                 <S.AlterButton
@@ -92,7 +65,7 @@ const InfoList = ({
                 <S.AlterButton onClick={handleDelete}>삭제</S.AlterButton>
               </S.EditorBox>
             ) : (
-              <img src={imageUrls} alt="미리보기" />
+              <img src={props.imageUrls} alt="미리보기" />
             )
           ) : (
             <S.AllowCheckBox>
@@ -103,8 +76,8 @@ const InfoList = ({
         </S.ImgContainer>
       </S.InfoItem>
       <S.Etc
-        $isAuthor={author === '1313이형석'}
-        $isVisible={isApproved}
+        $isAuthor={props.author === '1313이형석'}
+        $isVisible={props.isApproved}
         onClick={() => setIsHovered(!isHovered)}
       >
         <S.EtcCircle />

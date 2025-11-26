@@ -3,57 +3,68 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ProfileImg from '@/assets/info/test.png';
 import Caption from '@/components/Text/Caption';
+import axios from 'axios';
 
 const InfoDetail = () => {
   const location = useLocation();
-  const {
-    title,
-    content,
-    author,
-    createdAt,
-    likes,
-    comments,
-    views,
-  } = location.state as {
+
+  const state = location.state as {
+    id?: number;
     title?: string;
-    subtitle?: string;
-    name?: string;
     content?: string;
     author?: string;
-    category?: string;
     createdAt?: string;
     likes?: number;
     comments?: number;
-    commentsArr?: Comment[];
     views?: number;
-    imageUrls: string;
+    isApproved: boolean;
   };
+  const parentsProps = { ...state };
   const [Active, setActive] = useState(false);
   return (
     <S.Container>
+      <S.ApprovalBox $visible={!parentsProps.isApproved}>
+        <S.ApprovalButton>승인</S.ApprovalButton>
+        <S.RefuseButton>거부</S.RefuseButton>
+      </S.ApprovalBox>
       <S.MainDetail>
-        <h1>{title}</h1>
+        <h1>{parentsProps.title}</h1>
         <S.ProfileBox>
           <S.ProfileImage src={ProfileImg}></S.ProfileImage>
           <S.ProfileInfo>
-            <h2>{author}</h2>
-            <h3>{createdAt}</h3>
+            <h2>{parentsProps.author}</h2>
+            <h3>{parentsProps.createdAt}</h3>
           </S.ProfileInfo>
         </S.ProfileBox>
         <S.DividingLine $marginTop={60} />
-        <S.Content>{content}</S.Content>
+        <S.Content>{parentsProps.content}</S.Content>
       </S.MainDetail>
       <S.CommentBox>
         <S.ReactionBar>
-          <S.HeartBox $active={Active} onClick={() => setActive(!Active)}>
+          <S.HeartBox
+            $active={Active}
+            onClick={() => {
+              setActive(!Active);
+              axios
+                .post('', {
+                  id: parentsProps.id,
+                })
+                .then(function () {
+                  alert("하트 추가")
+                })
+                .catch(function (error) {
+                  alert(error)
+                });
+            }}
+          >
             {Active ? <S.EnableFavoriteIcon /> : <S.DisableFavoriteIcon />}
-            <Caption color="secondary">{likes}</Caption>
+            <Caption color="secondary">{parentsProps.likes}</Caption>
           </S.HeartBox>
           <S.CommentWrapper>
             <S.CommentIcon />
-            <Caption color="secondary">{comments}</Caption>
+            <Caption color="secondary">{parentsProps.comments}</Caption>
           </S.CommentWrapper>
-          <Caption color="secondary">조회 {views}</Caption>
+          <Caption color="secondary">조회 {parentsProps.views}</Caption>
         </S.ReactionBar>
       </S.CommentBox>
     </S.Container>
