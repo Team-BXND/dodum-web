@@ -21,6 +21,16 @@ const InfoDetail = () => {
   };
   const parentsProps = { ...state };
   const [Active, setActive] = useState(false);
+
+  const handleApprovalClick = () => {
+    axios
+      .post(`info-api/${parentsProps.id}/Approval`, {
+        id: parentsProps.id,
+      })
+      .then()
+      .catch();
+  };
+
   return (
     <S.Container>
       <S.ApprovalBox $visible={!parentsProps.isApproved}>
@@ -50,10 +60,10 @@ const InfoDetail = () => {
                   id: parentsProps.id,
                 })
                 .then(function () {
-                  alert("하트 추가")
+                  alert('하트 추가');
                 })
                 .catch(function (error) {
-                  alert(error)
+                  alert(error);
                 });
             }}
           >

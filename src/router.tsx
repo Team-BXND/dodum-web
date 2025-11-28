@@ -19,6 +19,7 @@ import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
 import Posts from './pages/OtherInfo/pages/Posts';
 import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
 import EtcDetail from './pages/OtherInfo/pages/Detail';
+import AlterPage from './pages/info/AlterPages.tsx';
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'info/add',
-        element: <AddInfo/>
+        element: <AddInfo/>,
+      },
+      {
+        path: 'info/alter',
+        element: <AlterPage/>,
       },
       {
         path: 'major/result',
