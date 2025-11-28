@@ -10,6 +10,7 @@ import MajorResult from './pages/Major/Result/MajorResult';
 import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
 import Posts from './pages/OtherInfo/pages/Posts';
 import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
+import EtcDetail from './pages/OtherInfo/pages/Detail';
 
 const router = createBrowserRouter([
   {
@@ -65,8 +66,12 @@ const router = createBrowserRouter([
           {
             path: 'add',
             element: <AddEtcInfo />
-          }
+          },
         ]
+      },
+      { 
+        path: 'etc/:category/:postId',
+          element: <EtcDetail /> 
       },
     ],
   },
