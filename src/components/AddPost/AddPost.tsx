@@ -29,7 +29,7 @@ export interface IFormInput {
     subTitle: string,
     category: Category,
     content: string,
-    author: string,
+    author?: string,
 }
 
 interface IController {
@@ -37,7 +37,7 @@ interface IController {
     fieldState: ControllerFieldState;
 }
 
-function AddPost({onSubmit}: {onSubmit: SubmitHandler<IFormInput>}) {
+function AddPost({onSubmit, author}: {onSubmit: SubmitHandler<IFormInput>, author?: boolean}) {
     const { control, register, handleSubmit } = useForm<IFormInput>({
         defaultValues: {
             title: "",
@@ -52,7 +52,7 @@ function AddPost({onSubmit}: {onSubmit: SubmitHandler<IFormInput>}) {
             <S.Title placeholder="제목을 입력하세요." {...register("title")}/>
             <S.SubTitle placeholder="부제목을 입력하세요." {...register("subTitle")}/>
             <S.TagsContainer>
-                <S.Author placeholder="작성자를 입력하세요." {...register("author")}/>
+                {author ? <S.Author placeholder="작성자를 입력하세요." {...register("author")}/> : null}
                 <S.Category defaultValue="" {...register("category")} required>
                     <option disabled hidden value="">카테고리를 선택하세요.</option>
                     {Object.values(Category).map((value) => {

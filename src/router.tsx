@@ -7,6 +7,8 @@ import Detail from './pages/Archive/pages/Detail';
 import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 import MajorResult from './pages/Major/Result/MajorResult';
+import OtherInfo from './pages/OtherInfo/OtherInfo';
+import Posts from './pages/OtherInfo/Posts';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,32 @@ const router = createBrowserRouter([
       {
         path: 'info',
         element: <Info />,
+      },
+      {
+        path: 'etc',
+        element: <OtherInfo />,
+        children: [
+          {
+            index: true, 
+            element: <Navigate to="all" replace />,
+          },
+          {
+            path: 'all',
+            element: <Posts category='전체'/>
+          },
+          {
+            path: 'benefits',
+            element: <Posts category='학교지원'/>
+          },
+          {
+            path: 'tools',
+            element: <Posts category='개발도구' />
+          },
+          {
+            path: 'courses',
+            element: <Posts category='강의추천' />
+          },
+        ]
       },
     ],
   },

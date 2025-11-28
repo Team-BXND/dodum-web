@@ -21,7 +21,7 @@ const handleSubmit: SubmitHandler<IFormInput> = (data) => {
 
 function AddArchive() {
     return (
-        <AddPost onSubmit={handleSubmit}/>
+        <AddPost onSubmit={handleSubmit} author/>
     )
 }
 
