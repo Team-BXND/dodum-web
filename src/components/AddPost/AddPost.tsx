@@ -15,19 +15,10 @@ const Buttons = () => {
     )
 }
 
-export const Category = {
-    club: "동아리",
-    narsha: "나르샤",
-    awards: "대회 수상작",
-    mini_project: "미니 프로젝트"
-} as const;
-
-export type Category = (typeof Category)[keyof typeof Category];
-
 export interface IFormInput {
     title: String,
     subTitle: string,
-    category: Category,
+    category: Record<string, string>,
     content: string,
     author?: string,
 }
@@ -37,7 +28,7 @@ interface IController {
     fieldState: ControllerFieldState;
 }
 
-function AddPost({onSubmit, author}: {onSubmit: SubmitHandler<IFormInput>, author?: boolean}) {
+function AddPost({onSubmit, author, category}: {onSubmit: SubmitHandler<IFormInput>, author?: boolean, category: Record<string, string>}) {
     const { control, register, handleSubmit } = useForm<IFormInput>({
         defaultValues: {
             title: "",
@@ -55,7 +46,7 @@ function AddPost({onSubmit, author}: {onSubmit: SubmitHandler<IFormInput>, autho
                 {author ? <S.Author placeholder="작성자를 입력하세요." {...register("author")}/> : null}
                 <S.Category defaultValue="" {...register("category")} required>
                     <option disabled hidden value="">카테고리를 선택하세요.</option>
-                    {Object.values(Category).map((value) => {
+                    {Object.values(category).map((value) => {
                         return (
                             <option key={value} value={value}>{value}</option>
                         )

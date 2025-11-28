@@ -1,5 +1,5 @@
 import PageTitle from "@/components/PageTitle/PageTitle";
-import * as S from "./OtherInfo.style"
+import * as S from "../styles/OtherInfo.style"
 import Category from "@/components/Category/Category";
 import { categories } from "@/constants/etcInfo-category.constants";
 import { Outlet } from "react-router-dom";

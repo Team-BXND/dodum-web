@@ -7,8 +7,9 @@ import Detail from './pages/Archive/pages/Detail';
 import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 import MajorResult from './pages/Major/Result/MajorResult';
-import OtherInfo from './pages/OtherInfo/OtherInfo';
-import Posts from './pages/OtherInfo/Posts';
+import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
+import Posts from './pages/OtherInfo/pages/Posts';
+import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
             path: 'courses',
             element: <Posts category='강의추천' />
           },
+          {
+            path: 'add',
+            element: <AddEtcInfo />
+          }
         ]
       },
     ],

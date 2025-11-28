@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import * as S from "./Posts.style";
+import * as S from "../styles/Posts.style";
 import Body from "@/components/Text/Body";
 
 export interface IPosts {

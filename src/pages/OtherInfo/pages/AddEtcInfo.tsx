@@ -8,7 +8,6 @@ const handleSubmit: SubmitHandler<IFormInput> = (data) => {
         subTitle: data.subTitle,
         category: data.category,
         content: data.content,
-        author: data.author,
     })
     .then((response) => {
         alert(response.data)
@@ -20,17 +19,16 @@ const handleSubmit: SubmitHandler<IFormInput> = (data) => {
 }
 
 const Category = {
-    club: "동아리",
-    narsha: "나르샤",
-    awards: "대회 수상작",
-    mini_project: "미니 프로젝트"
+        school: '학교지원',
+        tools: '개발도구',
+        courses: '강의추천',
 }
 
-function AddArchive() {
+function AddEtcInfo() {
     return (
-        <AddPost onSubmit={handleSubmit} author category={Category}/>
+        <AddPost onSubmit={handleSubmit} category={Category}/>
     )
 }
 
 
-export default AddArchive;
+export default AddEtcInfo;
