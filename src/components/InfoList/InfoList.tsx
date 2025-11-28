@@ -57,7 +57,9 @@ const InfoList = (props: InfoListProps) => {
                 <S.AlterButton
                   onClick={(e) => {
                     e.stopPropagation();
-                    console.log('수정 버튼 클릭');
+                    navigate(`alter`, {
+                      state: { from: 'list', ...parentProps },
+                    });
                   }}
                 >
                   수정

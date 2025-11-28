@@ -10,6 +10,7 @@ import MajorResult from './pages/Major/Result/MajorResult';
 import InfoDetail from './pages/info/Detail/infoDetail.tsx';
 import { PageProvider } from './pages/info/Context/InfoPageContext.tsx';
 import AddInfo from './pages/info/Add/AddInfo.tsx';
+import AlterPage from './pages/info/AlterPages.tsx';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'info/add',
-        element: <AddInfo/>
+        element: <AddInfo/>,
+      },
+      {
+        path: 'info/alter',
+        element: <AlterPage/>,
       },
       {
         path: 'archive',
