@@ -14,7 +14,6 @@ const Domember1 = () => {
           <S.welcomeMessage>회원가입하고 대소고 생활 시작하기</S.welcomeMessage>
         </S.TitleCover>
         <S.Button
-          style={{ position: "relative", bottom: "1.5rem" }}
           onClick={onClick}
         >
           시작하기
