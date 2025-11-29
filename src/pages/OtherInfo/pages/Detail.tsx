@@ -32,7 +32,7 @@ function EtcDetail() {
         })
     }, [])
 
-    {return post && <PostPage {...post} /> || <NotFound/>}
+    {return post ? <PostPage {...post} /> : <NotFound/>}
 }
 
 export default EtcDetail;
