@@ -64,12 +64,10 @@ const Posts = ({ category }: { category: string }) => {
 
   useEffect(() => {
     getPosts()
-  }, [page]);
+  }, [category, page]);
 
   useEffect(() => {
-    getPosts()
     setPage(1)
-    console.log("category changed", page)
   }, [category]);
 
   return (
