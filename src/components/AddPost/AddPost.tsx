@@ -3,6 +3,7 @@ import Editor from "@/components/AddPost/Editor";
 import Button from "@/components/Buttons/Button";
 import { useForm, Controller, type SubmitHandler, type ControllerFieldState, type ControllerRenderProps } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import TurndownService from "turndown";
 
 const Buttons = () => {
     const navigator = useNavigate();
@@ -47,8 +48,20 @@ function AddPost({onSubmit}: {onSubmit: SubmitHandler<IFormInput>}) {
         }
     });
 
+    const handleConvertMarkdown:SubmitHandler<IFormInput> = (data) => {
+        const turndown = new TurndownService();
+        const converted = turndown.turndown(data.content);
+
+        const submitData = {
+            ...data,
+            content: converted
+        };
+
+        onSubmit(submitData)
+    }
+    
     return (
-        <S.Container onSubmit={handleSubmit(onSubmit)}>
+        <S.Container onSubmit={handleSubmit(handleConvertMarkdown)}>
             <S.Title placeholder="제목을 입력하세요." {...register("title")}/>
             <S.SubTitle placeholder="부제목을 입력하세요." {...register("subTitle")}/>
             <S.TagsContainer>
