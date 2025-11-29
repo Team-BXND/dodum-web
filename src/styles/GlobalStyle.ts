@@ -45,6 +45,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   * {
     box-sizing: border-box;
+
   }
   [type="radio"] {
   vertical-align: middle;
