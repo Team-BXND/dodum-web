@@ -1,4 +1,3 @@
-import rehypeRaw from "rehype-raw";
 import Caption from "../Text/Caption";
 import SubTitle from "../Text/SubTitle";
 import Title from "../Text/Title";
