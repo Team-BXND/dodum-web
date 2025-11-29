@@ -69,6 +69,10 @@ const router = createBrowserRouter([
             path: 'add',
             element: <AddEtcInfo />
           },
+          { 
+            path: 'edit/:postId', 
+            element: <EditArchive /> 
+          },
         ]
       },
       { 

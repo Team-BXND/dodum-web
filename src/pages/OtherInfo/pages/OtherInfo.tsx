@@ -2,14 +2,12 @@ import PageTitle from "@/components/PageTitle/PageTitle";
 import * as S from "../styles/OtherInfo.style"
 import Category from "@/components/Category/Category";
 import { categories } from "@/constants/etcInfo-category.constants";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import AddButton from "@/components/AddButton/AddButton";
 
-
-
-
-
 function OtherInfo() {
+  const location = useLocation()
+  const path = location.pathname.split("/")
 
   return (
     <S.Container>
@@ -18,7 +16,7 @@ function OtherInfo() {
         <PageTitle text="기타 정보" />
         <input type="text" />
       </S.TitleContainer>
-      <Category categories={categories}/>
+      {(path.includes("add") || path.includes("edit") || path.length === 4) ? null : <Category categories={categories}/>}
       <Outlet />
     </S.Container>
   )
