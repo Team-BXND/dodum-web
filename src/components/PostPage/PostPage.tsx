@@ -1,8 +1,9 @@
-import DOMPurify from "dompurify";
+import rehypeRaw from "rehype-raw";
 import Caption from "../Text/Caption";
 import SubTitle from "../Text/SubTitle";
 import Title from "../Text/Title";
 import * as S from "./PostPage.style";
+import Markdown from "react-markdown";
 
 export interface IPostPageProps {
     title: string,
@@ -12,7 +13,6 @@ export interface IPostPageProps {
 }
 
 function PostPage(props: IPostPageProps) {
-    const sanitizedContent = DOMPurify.sanitize(props.body);
     return (
         <S.Container>
             <S.TitleContainer>
@@ -22,7 +22,7 @@ function PostPage(props: IPostPageProps) {
                     <Caption color="secondary">{props.createdAt}</Caption>
                 </S.InfoContainer>
                 <S.Body>
-                    <div dangerouslySetInnerHTML={{__html: sanitizedContent}} />
+                    <Markdown>{props.body}</Markdown>
                 </S.Body>
             </S.TitleContainer>
         </S.Container>
