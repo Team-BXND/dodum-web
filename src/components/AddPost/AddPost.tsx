@@ -1,12 +1,11 @@
 import * as S from "./AddPost.style"
 import Editor from "@/components/AddPost/Editor";
 import Button from "@/components/Buttons/Button";
-import { useEffect, useState } from "react";
 import { useForm, Controller, type SubmitHandler, type ControllerFieldState, type ControllerRenderProps } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 export interface IFormInput {
-  title: String,
+  title: string,
   subTitle: string,
   category: Record<string, string>,
   content: string,
