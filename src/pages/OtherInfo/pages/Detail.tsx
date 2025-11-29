@@ -17,10 +17,11 @@ function EtcDetail() {
         
         const location = path.split("/");
         const postId = location[3];
-        console.log(postId)
 
-        axios.post(`/etcinfo/${postId}`, {
-            archiveId: postId,
+        axios.get(`/etcinfo/${postId}`, {
+            params: {
+                id: postId,
+            }
         })
         .then (function (response) {
             setPost(response.data);
