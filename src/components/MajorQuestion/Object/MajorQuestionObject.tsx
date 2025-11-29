@@ -1,4 +1,4 @@
-import * as S from './MajorQuestion.style';
+import * as S from './MajorQuestionObject.style';
 import type { MajorQuestionProps } from '@/types/majorQuestions';
 
 const circleComponents = [
@@ -10,9 +10,17 @@ const circleComponents = [
 ];
 // 컴포넌트 외부에서 선언 시 불필요한 리렌더 방지
 
-const MajorQuestion = ({ question, id, register }: MajorQuestionProps) => {
+const MajorQuestionObject = ({
+  question,
+  id,
+  register,
+  errors,
+  isSubmitted,
+}: MajorQuestionProps) => {
+  const hasError = isSubmitted && !!errors.object?.[id];
+
   return (
-    <S.Container>
+    <S.Container $hasError={hasError}>
       <S.Title>{question}</S.Title>
       <S.ResWrapper>
         <S.SubTitle>매우 그렇지 않다</S.SubTitle>
@@ -23,8 +31,10 @@ const MajorQuestion = ({ question, id, register }: MajorQuestionProps) => {
               <CircleComponent
                 key={value}
                 value={value}
-                {...register(`question_${id}`, { required: true })}
-                name={`question_${id}`}
+                {...register(`object.${id}`, {
+                  required: true,
+                  valueAsNumber: true,
+                })}
               />
             );
           })}
@@ -35,4 +45,4 @@ const MajorQuestion = ({ question, id, register }: MajorQuestionProps) => {
   );
 };
 
-export default MajorQuestion;
+export default MajorQuestionObject;
