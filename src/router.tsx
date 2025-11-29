@@ -11,6 +11,7 @@ import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
 import Posts from './pages/OtherInfo/pages/Posts';
 import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
 import EtcDetail from './pages/OtherInfo/pages/Detail';
+import EditArchive from './pages/Archive/pages/EditArchive';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,8 @@ const router = createBrowserRouter([
           { index: true, element: <Navigate to="club" replace /> },
           { path: ':category', element: <CategoryRoute /> },
           { path: ':category/:postId', element: <Detail /> },
-          { path: ':category/add', element: <AddArchive /> },
+          { path: 'add', element: <AddArchive /> },
+          { path: 'edit/:postId', element: <EditArchive /> },
         ],
       },
       {

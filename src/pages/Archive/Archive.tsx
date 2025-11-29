@@ -11,7 +11,7 @@ function Archive() {
     return (
         <S.Container>
             <PageTitle line text='아카이브' path={path.length == 4 ? path[2] : null}/>
-            {(path.length) <= 3 ? <Category categories={categories}/> : null}
+            {(path.includes("add") || path.includes("edit")) ? null : <Category categories={categories}/>}
             <Outlet />
         </S.Container>
     );

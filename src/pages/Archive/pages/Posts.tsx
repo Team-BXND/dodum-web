@@ -62,7 +62,7 @@ function Posts(props: IPageProps) {
 
     return (
         <S.TileContainer>
-            <AddButton to="add" />
+            <AddButton to="/archive/add" />
             {posts.length === 0 ? <h1>게시글이 없습니다.</h1> : (posts.map((props: IPostsProps) => <Tile key={props.id} to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.author} description={props.description} />))}
         </S.TileContainer>
     )
