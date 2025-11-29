@@ -1,5 +1,5 @@
 import axios from "axios";
-const SERVER_ADDRESS="http://43.201.30.141"
+const SERVER_ADDRESS=import.meta.env.VITE_SERVER_ADDRESS as string;
 export const api=axios.create({
     baseURL:SERVER_ADDRESS
 })

@@ -10,7 +10,7 @@ const PWChange2=()=>{
             setError("pwcheck",{message:"비밀번호가 일치하지 않아요."})
             return;
         }
-        api.post("/auth/pwchage",{
+        api.post("/auth/pwchange",{
             email:location.state.email,
             new_password:watch("pw"),
             passwordCheck:watch("pwcheck")
