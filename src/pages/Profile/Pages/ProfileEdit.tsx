@@ -27,7 +27,7 @@ function ProfileEdit() {
   const navigator = useNavigate();
 
   const GetUserInfo = () => {
-		axios.get("/api")
+		axios.get(`${import.meta.env.VITE_SERVER_URL}/profile`)
 		.then((response) => {
 			setUserInfo(response.data)
 		})
@@ -39,7 +39,7 @@ function ProfileEdit() {
 	}
 
   const submit: SubmitHandler<EditForm> = (data) => {
-    axios.post("/api", {
+    axios.patch(`${import.meta.env.VITE_SERVER_URL}/profile`, {
       grade: data.grade,
       class_no: data.class_no,
       student_no: data.student_no,
