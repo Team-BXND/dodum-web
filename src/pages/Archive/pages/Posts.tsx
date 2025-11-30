@@ -2,6 +2,7 @@ import Tile from "@/components/TileContents/TileContents";
 import * as S from "../Archive.style";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import AddButton from "@/components/AddButton/AddButton";
 
 interface IPostsProps {
     id: string,
@@ -61,7 +62,7 @@ function Posts(props: IPageProps) {
 
     return (
         <S.TileContainer>
-            <S.AddButton to="add">+</S.AddButton>
+            <AddButton to="/archive/add" />
             {posts.length === 0 ? <h1>게시글이 없습니다.</h1> : (posts.map((props: IPostsProps) => <Tile key={props.id} to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.author} description={props.description} />))}
         </S.TileContainer>
     )

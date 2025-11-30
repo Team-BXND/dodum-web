@@ -2,7 +2,7 @@ import * as S from "@/pages/Login/Login.style.ts"
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import {useState } from "react";
-import { api } from "./api";
+import { api } from "./api.ts";
 import { useSignupStore } from "./SignupStore";
 
 const Member2=() => {

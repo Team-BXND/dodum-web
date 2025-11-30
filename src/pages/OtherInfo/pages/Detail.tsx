@@ -3,9 +3,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { IPostPageProps } from "@/components/PostPage/PostPage";
-import NotFound from "../../../components/NotFound";
+import NotFound from "@/components/NotFound";
 
-function Detail() {
+function EtcDetail() {
 
     const path = useLocation().pathname;
     const navigate = useNavigate()
@@ -18,8 +18,10 @@ function Detail() {
         const location = path.split("/");
         const postId = location[3];
 
-        axios.post(`/archive/${postId}`, {
-            archiveId: postId,
+        axios.get(`/etcinfo/${postId}`, {
+            params: {
+                id: postId,
+            }
         })
         .then (function (response) {
             setPost(response.data);
@@ -30,7 +32,7 @@ function Detail() {
         })
     }, [])
 
-    {return post && <PostPage {...post} /> || <NotFound/>}
+    {return post ? <PostPage {...post} /> : <NotFound/>}
 }
 
-export default Detail;
+export default EtcDetail;

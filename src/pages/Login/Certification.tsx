@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import { api } from "./api";
+import { api } from "./api.ts";
 import { useSignupStore } from "./SignupStore";
 const Certification = () => {
     const {username,

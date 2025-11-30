@@ -1,6 +1,6 @@
 import * as S from "@/pages/Login/Login.style.ts"
 import {useForm } from "react-hook-form";
-import { api } from "./api";
+import { api } from "./api.ts";
 import { useLocation } from "react-router-dom";
 const PWChange2=()=>{
     const location=useLocation();
