@@ -1,6 +1,6 @@
 import * as S from './Sidebar.style.ts';
 import { tabList } from '@/constants/sidebar.constants.tsx';
-import { useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
   const location = useLocation();
