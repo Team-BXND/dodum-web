@@ -3,7 +3,7 @@ import AddPost, { type IFormInput } from "../../../components/AddPost/AddPost";
 import type { SubmitHandler } from "react-hook-form";
 
 const handleSubmit: SubmitHandler<IFormInput> = (data) => {
-    axios.post("api.url", {
+    axios.post(`${import.meta.env.VITE_SERVER_URL}/misc`, {
         title: data.title,
         subTitle: data.subTitle,
         category: data.category,
