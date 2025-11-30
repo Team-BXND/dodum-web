@@ -18,7 +18,7 @@ function EtcDetail() {
         const location = path.split("/");
         const postId = location[3];
 
-        axios.get(`/etcinfo/${postId}`, {
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/misc/${postId}`, {
             params: {
                 id: postId,
             }

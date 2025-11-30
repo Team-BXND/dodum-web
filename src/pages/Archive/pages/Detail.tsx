@@ -14,12 +14,13 @@ function Detail() {
     const [post, setPost] = useState<IPostPageProps | null>(null)
 
     useEffect(() => {
-        
         const location = path.split("/");
         const postId = location[3];
 
-        axios.post(`/archive/${postId}`, {
-            archiveId: postId,
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/archive/${postId}`, {
+            params: {
+                archiveId: postId,
+            }
         })
         .then (function (response) {
             setPost(response.data);
