@@ -5,10 +5,20 @@ import { useForm, Controller, type SubmitHandler, type ControllerFieldState, typ
 import { useNavigate } from "react-router-dom";
 import TurndownService from "turndown";
 
+const Buttons = () => {
+    const navigator = useNavigate();
+    return (
+        <S.ButtonContainer>
+            <Button text="게시" type="submit"/>
+            <Button text="취소" onClick={() => {navigator(-1)}} isGray/>
+        </S.ButtonContainer>
+    )
+}
+
 export interface IFormInput {
   title: string,
   subTitle: string,
-  category: Record<string, string>,
+  category: string,
   content: string,
   author: string,
 }
@@ -18,9 +28,14 @@ interface IController {
   fieldState: ControllerFieldState;
 }
 
-function AddPost({ onSubmit, author, value="", category }: { onSubmit: SubmitHandler<IFormInput>, author?: boolean, value?: string, category: Record<string, string> }) {
-  const navigator = useNavigate();
+interface AddPostProps {
+    onSubmit: SubmitHandler<IFormInput>;
+    author?: boolean;
+    value?: string;
+    category: Record<string, string>;
+}
 
+function AddPost({ onSubmit, author, value="", category }: AddPostProps) {
   const { control, register, handleSubmit } = useForm<IFormInput>({
     defaultValues: {
       title: "",
@@ -29,36 +44,6 @@ function AddPost({ onSubmit, author, value="", category }: { onSubmit: SubmitHan
       author: ""
     }
   });
-
-  return (
-    <S.Container onSubmit={handleSubmit(onSubmit)}>
-      <S.Title placeholder="제목을 입력하세요." {...register("title")} />
-      <S.SubTitle placeholder="부제목을 입력하세요." {...register("subTitle")} />
-      <S.TagsContainer>
-        {author ? <S.Author placeholder="작성자를 입력하세요." {...register("author")} /> : null}
-        <S.Category defaultValue="" {...register("category")} required>
-          <option disabled hidden value="">카테고리를 선택하세요.</option>
-          {Object.values(category).map((value) => {
-            return (
-              <option key={value} value={value}>{value}</option>
-            )
-          })}
-        </S.Category>
-      </S.TagsContainer>
-      <Controller
-        name="content"
-        control={control}
-        render={
-          ({ field, fieldState }: IController) => {
-            return (
-              <>
-                <Editor value={field.value} setValue={field.onChange} />
-                {fieldState.error && (
-                  <p>{fieldState.error?.message}</p>
-                )}
-              </>)
-          }
-        } />
 
     const handleConvertMarkdown:SubmitHandler<IFormInput> = (data) => {
         const turndown = new TurndownService();
@@ -77,10 +62,10 @@ function AddPost({ onSubmit, author, value="", category }: { onSubmit: SubmitHan
             <S.Title placeholder="제목을 입력하세요." {...register("title")}/>
             <S.SubTitle placeholder="부제목을 입력하세요." {...register("subTitle")}/>
             <S.TagsContainer>
-                <S.Author placeholder="작성자를 입력하세요." {...register("author")}/>
+                {author ? <S.Author placeholder="작성자를 입력하세요." {...register("author")}/> : null}
                 <S.Category defaultValue="" {...register("category")} required>
                     <option disabled hidden value="">카테고리를 선택하세요.</option>
-                    {Object.values(Category).map((value) => {
+                    {Object.values(category).map((value) => {
                         return (
                             <option key={value} value={value}>{value}</option>
                         )
@@ -106,6 +91,5 @@ function AddPost({ onSubmit, author, value="", category }: { onSubmit: SubmitHan
         </S.Container>
     )
 }
-
 
 export default AddPost;
