@@ -35,9 +35,10 @@ interface AddPostProps {
   author?: boolean;
   value?: string;
   category: Record<string, string>;
+  subtitle?: boolean;
 }
 
-function AddPost({ onSubmit, author, value = "", category }: AddPostProps) {
+function AddPost({ onSubmit, author, value = "", category, subtitle }: AddPostProps) {
   const [thumbnail, setThumbnail] = useState<string | null>(null);
 
   const { control, register, handleSubmit } = useForm<IFormInput>({
@@ -65,7 +66,7 @@ function AddPost({ onSubmit, author, value = "", category }: AddPostProps) {
   return (
     <S.Container onSubmit={handleSubmit(handleConvertMarkdown)}>
       <S.Title placeholder="제목을 입력하세요." {...register("title")} />
-      <S.SubTitle placeholder="부제목을 입력하세요." {...register("subTitle")} />
+      {subtitle ? <S.SubTitle placeholder="부제목을 입력하세요." {...register("subTitle")} /> : null}
       <S.TagsContainer>
         {author ? <S.Author placeholder="작성자를 입력하세요." {...register("author")} /> : null}
         <S.Category defaultValue="" {...register("category")} required>

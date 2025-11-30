@@ -33,7 +33,6 @@ const Posts = ({ category }: { category: string }) => {
   const [posts, setPosts] = useState<IPosts[]>([]);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
-  
 
   const handlePageClick = (event: { selected: number }) => {
     setPage(event.selected + 1);

@@ -45,9 +45,9 @@ const Category = {
 
 function AddArchive({ value, isEdit }: { value?: string , isEdit?: boolean}) {
   if (value) {
-    return <AddPost onSubmit={isEdit ? handleEditSubmit : handleSubmit} author category={Category} value={value} />
+    return <AddPost onSubmit={isEdit ? handleEditSubmit : handleSubmit} subtitle author category={Category} value={value} />
   } else {
-    return <AddPost onSubmit={isEdit ? handleEditSubmit : handleSubmit} author category={Category} />
+    return <AddPost onSubmit={isEdit ? handleEditSubmit : handleSubmit} subtitle author category={Category} />
   }
 }
 
