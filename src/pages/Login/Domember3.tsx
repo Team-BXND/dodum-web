@@ -18,8 +18,7 @@ const Domember3=() => {
             class_no:value[1],
             student_no:value[2],
             phone:watch("phone")})
-            api.post("/auth/email/send",{
-                email:watch("email"),
+            api.post("/auth/email/send",{ email:watch("email"),
             }).then((response)=>{
                 navigate("/domember4",{state:{code:response.data.code,email:watch("email")}});
             })

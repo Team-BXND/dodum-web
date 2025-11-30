@@ -13,11 +13,7 @@ const Domember1 = () => {
           <S.Title>환영합니다!</S.Title>
           <S.welcomeMessage>회원가입하고 대소고 생활 시작하기</S.welcomeMessage>
         </S.TitleCover>
-        <S.Button
-          onClick={onClick}
-        >
-          시작하기
-        </S.Button>
+        <S.Button onClick={onClick}>시작하기</S.Button>
       </S.Card>
     </S.Background>
   );
