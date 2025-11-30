@@ -1,16 +1,13 @@
+
+import App from './App';
+
+import Competition_info from '@/pages/competition_info/Info/Competition_info_writing.tsx';
+import AddInfo from '@/pages/competition_info/Add/AddInfo.tsx';
+import Competition_info_writing from '@/pages/competition_info/Info/Competition_info_writing.tsx';
+import Modify from './pages/competition_info/Modify/Modify';
 import { createBrowserRouter, Navigate } from 'react-router';
-import Archive from '@/pages/Archive/Archive'
 import Major from '@/pages/Major/Major';
 import MajorResult from '@/pages/Major/Result/MajorResult';
-
-// Login 과정
-import Login from '@/pages/Login/Login';
-import Domember1 from '@/pages/Login/Domember1';
-import Domember2 from '@/pages/Login/Domember2';
-import Domember3 from '@/pages/Login/Domember3';
-import Domember4 from '@/pages/Login/Domember4';
-import PWChange1 from '@/pages/Login/PWChange1';
-import PWChange2 from '@/pages/Login/PWChange2';
 
 // Archive
 import Archive from '@/pages/Archive/Archive';
@@ -21,17 +18,12 @@ import EditArchive from '@/pages/Archive/pages/EditArchive';
 
 // Info 페이지
 import Info from '@/pages/info/infoView';
-import App from './App';
-import Detail from './pages/Archive/pages/Detail';
-import CategoryRoute from './pages/Archive/CategoryRoute';
-import AddArchive from './pages/Archive/pages/AddArchive';
-import MajorResult from './pages/Major/Result/MajorResult';
-
 // OtherInfo (etc)
 import OtherInfo from '@/pages/OtherInfo/pages/OtherInfo';
 import Posts from '@/pages/OtherInfo/pages/Posts';
 import AddEtcInfo from '@/pages/OtherInfo/pages/AddEtcInfo';
 import EtcDetail from '@/pages/OtherInfo/pages/Detail';
+
 
 const router = createBrowserRouter([
   {
@@ -41,6 +33,22 @@ const router = createBrowserRouter([
       {
         path: 'major',
         element: <Major />,
+      },
+      {
+        path:"competition_info",
+        element:<Competition_info/>
+      },
+      {
+        path:"add_info",
+        element:<AddInfo/>
+      },
+      {
+        path:"competition_info_writing/:id",
+        element:<Competition_info_writing />
+      },
+      {
+        path:"modify/:id",
+        element:<Modify />
       },
       {
         path: 'major/result',

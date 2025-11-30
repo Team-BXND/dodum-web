@@ -3,6 +3,7 @@ import MajorQuestionObject from '@/components/MajorQuestion/Object/MajorQuestion
 import MajorQuestionSubject from '@/components/MajorQuestion/Subject/MajorQuestionSubject';
 import ProgressCircle from '@/components/ProgressCircle/ProgressCircle';
 import type { MajorFormData } from '@/types/majorQuestions';
+
 import {
   getRandomObjectMajorQuestions,
   getRandomSubjectQuestions,
