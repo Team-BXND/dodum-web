@@ -5,7 +5,7 @@ import {useState } from "react";
 import { api } from "./api";
 import { useSignupStore } from "./SignupStore";
 
-const Domember3=() => {
+const Member2=() => {
     const {username,email,grade,class_no,phone,setSignup}=useSignupStore();
     const [value,setValue]=useState([0,0,0]);
     const { register, handleSubmit, formState: { errors },setError,watch } = useForm();
@@ -28,12 +28,7 @@ const Domember3=() => {
         newValue[index]=event.target.value;
         setValue(newValue);
     }
-    return<S.Background>
-        <S.Card onSubmit={handleSubmit(onValid)} $height="40.5rem">
-            <S.TitleCover>
-            <S.Dodum src="@/assets/image.png" alt="Dodum Logo"/>
-            <S.Title>환영합니다!</S.Title>
-            </S.TitleCover>
+    return<form>
             <S.InputCover>
                 <S.InputTitle>이메일 주소</S.InputTitle>
                 <S.ErrorCover>
@@ -87,8 +82,7 @@ const Domember3=() => {
             <S.Button type="submit">다음으로</S.Button>
             <S.Button $bgColor="#747474" onClick={()=>navigate(-1)} type="button">뒤로가기</S.Button>
             </S.ButtonCover>
-        </S.Card>
-    </S.Background>
+            </form>
 }
 
-export default Domember3;
+export default Member2;

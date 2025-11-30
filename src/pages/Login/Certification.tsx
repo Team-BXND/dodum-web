@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { api } from "./api";
 import { useSignupStore } from "./SignupStore";
-const Domember4 = () => {
+const Certification = () => {
     const {username,
         Password,
         grade,
@@ -57,12 +57,7 @@ const Domember4 = () => {
     };
 
     return(
-        <S.Background>
-    <S.Card $height="32.5rem" onSubmit={handleSubmit(onValid)}>
-        <S.TitleCover>
-            <S.Dodum src="@/assets/image.png" alt="Dodum Logo"/>
-            <S.Title>이메일 인증</S.Title>
-        </S.TitleCover>
+        <form onSubmit={handleSubmit(onValid)}>
         <S.InputCover>
             <S.InputTitle>인증번호</S.InputTitle>
         <S.ErrorCover>
@@ -79,9 +74,8 @@ const Domember4 = () => {
                     <S.Button type="submit">로그인</S.Button>
                     <S.Button $bgColor="#747474" onClick={()=>navigate(-1)} type="button">뒤로가기</S.Button>
         </S.ButtonCover>
-    </S.Card>
-    </S.Background>
+        </form>
     )
 }
 
-export default Domember4;
+export default Certification;

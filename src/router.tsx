@@ -8,12 +8,13 @@ import MajorResult from '@/pages/Major/Result/MajorResult';
 
 // Login 과정
 import Login from '@/pages/Login/Login';
-import Domember1 from '@/pages/Login/Domember1';
-import Domember2 from '@/pages/Login/Domember2';
-import Domember3 from '@/pages/Login/Domember3';
-import Domember4 from '@/pages/Login/Domember4';
-import PWChange1 from '@/pages/Login/PWChange1';
-import PWChange2 from '@/pages/Login/PWChange2';
+import Member from './pages/Login/Member';
+import Start from './pages/Login/Start';
+import Member1 from './pages/Login/Member1';
+import Member2 from './pages/Login/Member2';
+import Certification from './pages/Login/Certification';
+import PWChange1 from './pages/Login/PWChange1';
+import PWChange2 from './pages/Login/PWChange2';
 
 // Archive
 import Archive from '@/pages/Archive/Archive';
@@ -35,12 +36,18 @@ const router = createBrowserRouter([
 
       // Login
       { path: 'login', element: <Login /> },
-      { path: 'domember1', element: <Domember1 /> },
-      { path: 'domember2', element: <Domember2 /> },
-      { path: 'domember3', element: <Domember3 /> },
-      { path: 'domember4', element: <Domember4 /> },
-      { path: 'pwchange1', element: <PWChange1 /> },
-      { path: 'pwchange2', element: <PWChange2 /> },
+      {
+        path: "member",
+        element: <Member />,
+        children: [
+          { path: '/start', element: <Start /> },
+          { path: '/member1', element: <Member1/> },
+          { path: '/member2', element: <Member2/> },
+          { path: '/certificaion', element: <Certification /> },
+          { path: '/pwchange1', element: <PWChange1 /> },
+          { path: '/pwchange2', element: <PWChange2 /> },
+        ]
+      },
 
       // Archive
       {

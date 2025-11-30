@@ -2,7 +2,7 @@ import * as S from "@/pages/Login/Login.style.ts";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useSignupStore } from "@/pages/Login/SignupStore.tsx";
-const Domember2=() => {
+const Member1=() => {
     const {username,Password,setSignup}=useSignupStore();
     interface FormData {
         username: string;
@@ -21,12 +21,7 @@ const Domember2=() => {
             navigate("/domember3");
         }
     }
-    return<S.Background>
-        <S.Card onSubmit={handleSubmit(onValid)} $height="40.5rem">
-            <S.TitleCover>
-            <S.Dodum src="@/assets/image.png" alt="Dodum Logo"/>
-            <S.Title>환영합니다!</S.Title>
-            </S.TitleCover>
+    return<form onSubmit={handleSubmit(onValid)}>
             <S.InputCover>
                 <S.InputTitle>아이디</S.InputTitle>
                 <S.ErrorCover>
@@ -45,8 +40,7 @@ const Domember2=() => {
                 </S.ErrorCover>
             </S.InputCover>
             <S.Button type="submit">다음으로</S.Button>
-        </S.Card>
-    </S.Background>
+            </form>
 }
 
-export default Domember2;
+export default Member1;

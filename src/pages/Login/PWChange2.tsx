@@ -16,12 +16,7 @@ const PWChange2=()=>{
             passwordCheck:watch("pwcheck")
         })
     }
-    return<S.Background>
-        <S.Card $height="33.3rem" onSubmit={handleSubmit(onValid)}>
-        <S.TitleCover>
-            <S.Dodum src="src/assets/image.png" alt="Dodum Logo"/>
-            <S.Title>비밀번호 찾기</S.Title>
-        </S.TitleCover>
+    return<form>
         <S.InputCover>
             <S.InputTitle>비밀번호 재설정</S.InputTitle>
             <S.ErrorCover>
@@ -35,8 +30,7 @@ const PWChange2=()=>{
             </S.ErrorCover>
         </S.InputCover>
         <S.Button type="submit">다음</S.Button>
-        </S.Card>
-    </S.Background>
+        </form>
 }
 
 

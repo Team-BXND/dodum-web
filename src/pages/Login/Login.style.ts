@@ -1,7 +1,7 @@
 import styled from "styled-components"
-export const Card=styled.form<{ $height?: string }>`
+export const Card=styled.form`
     width:34.375rem;
-    height:${(props)=>props.$height || '36.1rem'};
+    height:auto;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -35,6 +35,7 @@ export const TitleCover=styled.div`
     flex-direction:column;
     align-items:center;
     gap:0.75rem;
+    margin-top:4rem;
 `
 
 export const welcomeMessage=styled.h1`
@@ -132,6 +133,7 @@ export const ButtonCover=styled.div`
     display:flex;
     flex-direction:column;
     gap:0.5rem;
+    margin-bottom:4rem;
 `
 
 export const NumberCover=styled.div`
