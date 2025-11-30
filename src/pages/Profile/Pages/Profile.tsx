@@ -58,7 +58,7 @@ export const MyPosts = ({posts} : {posts: IPosts[]}) => {
 }
 
 export const getPosts = (setPosts: React.Dispatch<React.SetStateAction<IPosts[]>>) => {
-	axios.get("/api")
+	axios.get(`${import.meta.env.VITE_SERVER_URL}/profile/write`)
 	.then((response) => {
 		if(Array.isArray(response))
 			setPosts(response.data);
@@ -74,7 +74,7 @@ function Profile() {
 	const [posts, setPosts] = useState<IPosts[]>([])
 
 	const GetUserInfo = () => {
-		axios.get("/api")
+		axios.get(`${import.meta.env.VITE_SERVER_URL}/profile`)
 		.then((response) => {
 			setUserInfo(response.data)
 		})
