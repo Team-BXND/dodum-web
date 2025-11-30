@@ -3,7 +3,9 @@ import { useState,useEffect } from 'react';
 import { useLocation,useParams} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const Competition_info_writing=()=>{
+    const navigate=useNavigate();
     interface CompetitionData {
     title: string
     content: string
@@ -38,6 +40,9 @@ const Competition_info_writing=()=>{
             window.location.replace("/competition_info");
         })
     }
+    const onClickModify=()=>{
+        navigate(`/competition_info_modify/${id}`,{state:{data}});
+    }
     return(
         <>
         <S.Card>
@@ -49,7 +54,7 @@ const Competition_info_writing=()=>{
             <S.Dotted></S.Dotted>
         </S.DottedCover>
         <S.ModifyWrapper opacity={isClicked ? 1 : 0} >
-            <S.Modify>수정</S.Modify>
+            <S.Modify onClick={onClickModify}>수정</S.Modify>
             <S.Modify onClick={onClickDelete}>삭제</S.Modify>
         </S.ModifyWrapper>
         </S.WritingtitleCover>

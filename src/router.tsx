@@ -1,8 +1,9 @@
 import { createBrowserRouter } from 'react-router';
-import Major from '@/pages/Major/Major';
-import Competition_info from './pages/competition_info/Competition_info';
-import Competition_info_add from './pages/competition_info/Competiton_info_add';
-import Competition_info_writing from './pages/competition_info/Competition_info_writing';
+import Major from '@/pages/Major/Major.tsx';
+import Competition_info from '@/pages/competition_info/Info/Competition_info_writing.tsx';
+import AddInfo from '@/pages/competition_info/Add/AddInfo.tsx';
+import Competition_info_writing from '@/pages/competition_info/Info/Competition_info_writing.tsx';
+import Modify from './pages/competition_info/Modify/Modify';
 import App from './App';
 
 const router = createBrowserRouter([
@@ -19,12 +20,16 @@ const router = createBrowserRouter([
         element:<Competition_info/>
       },
       {
-        path:"competition_info_add",
-        element:<Competition_info_add/>
+        path:"add_info",
+        element:<AddInfo/>
       },
       {
         path:"competition_info_writing/:id",
         element:<Competition_info_writing />
+      },
+      {
+        path:"modify/:id",
+        element:<Modify />
       }
     ],
   },

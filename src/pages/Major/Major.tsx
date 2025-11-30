@@ -1,4 +1,4 @@
-import * as S from './Major.style';
+import * as S from '@/pages/Major/Major.style.ts';
 import MajorQuestion from '@/components/MajorQuestion/MajorQuestion';
 import { majorQuestions } from '@/constants/major.constants';
 import type { MajorFormData } from '@/types/majorQuestions';
