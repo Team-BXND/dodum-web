@@ -57,3 +57,39 @@ export const Body = styled.div`
 export const Image = styled.img`
     width: 100%;
 `
+
+export const Info = styled.div`
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+`
+
+export const OptionButton = styled.button`
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+`
+
+export const Options = styled.div`
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: ${(props) => props.theme.shadowLight};
+    background-color: ${(props) => props.theme.bgPrimary};
+    border-radius: 10px;
+`
+
+export const Option = styled.button`
+    background: none;
+    border: none;
+    cursor: pointer;
+`
