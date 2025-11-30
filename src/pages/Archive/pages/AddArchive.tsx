@@ -3,20 +3,37 @@ import AddPost, { type IFormInput } from "../../../components/AddPost/AddPost";
 import type { SubmitHandler } from "react-hook-form";
 
 const handleSubmit: SubmitHandler<IFormInput> = (data) => {
-  axios.post("api.url", {
+  axios.post(`${import.meta.env.VITE_SERVER_URL}/archive/write`, {
     title: data.title,
     subTitle: data.subTitle,
     category: data.category,
     content: data.content,
-    author: data.author,
+    teamname: data.author,
+    thumbnail: data.thumbnail,
   })
-    .then((response) => {
-      alert(response.data)
+  .then((response) => {
+    alert(response.data)
+  })
+  .catch((error) => {
+    alert(error.message)
+  })
+}
 
-    })
-    .catch((error) => {
-      alert(error.message)
-    })
+const handleEditSubmit: SubmitHandler<IFormInput> = (data) => {
+  axios.patch(`${import.meta.env.VITE_SERVER_URL}/archive`, {
+    title: data.title,
+    subTitle: data.subTitle,
+    category: data.category,
+    content: data.content,
+    teamname: data.author,
+    thumbnail: data.thumbnail,
+  })
+  .then((response) => {
+    alert(response.data)
+  })
+  .catch((error) => {
+    alert(error.message)
+  })
 }
 
 const Category = {
@@ -26,11 +43,11 @@ const Category = {
   mini_project: "미니 프로젝트"
 }
 
-function AddArchive({ value }: { value?: string }) {
+function AddArchive({ value, isEdit }: { value?: string , isEdit?: boolean}) {
   if (value) {
-    return <AddPost onSubmit={handleSubmit} author category={Category} value={value} />
+    return <AddPost onSubmit={isEdit ? handleEditSubmit : handleSubmit} author category={Category} value={value} />
   } else {
-    return <AddPost onSubmit={handleSubmit} author category={Category} />
+    return <AddPost onSubmit={isEdit ? handleEditSubmit : handleSubmit} author category={Category} />
   }
 }
 
