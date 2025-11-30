@@ -1,4 +1,3 @@
-import DOMPurify from "dompurify";
 import Caption from "../Text/Caption";
 import SubTitle from "../Text/SubTitle";
 import Title from "../Text/Title";
@@ -6,6 +5,7 @@ import * as S from "./PostPage.style";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import Markdown from "react-markdown";
 
 export interface IPostPageProps {
     title: string,
@@ -57,7 +57,7 @@ function PostPage(props: IPostPageProps) {
                     </S.Info>
                 </S.InfoContainer>
                 <S.Body>
-                    <div dangerouslySetInnerHTML={{__html: sanitizedContent}} />
+                    <Markdown>{props.body}</Markdown>
                 </S.Body>
             </S.TitleContainer>
         </S.Container>

@@ -1,8 +1,5 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
-
-import App from './App';
-
-// Major
+import { createBrowserRouter, Navigate } from 'react-router';
+import Archive from '@/pages/Archive/Archive'
 import Major from '@/pages/Major/Major';
 import MajorResult from '@/pages/Major/Result/MajorResult';
 
@@ -24,6 +21,11 @@ import EditArchive from '@/pages/Archive/pages/EditArchive';
 
 // Info 페이지
 import Info from '@/pages/info/infoView';
+import App from './App';
+import Detail from './pages/Archive/pages/Detail';
+import CategoryRoute from './pages/Archive/CategoryRoute';
+import AddArchive from './pages/Archive/pages/AddArchive';
+import MajorResult from './pages/Major/Result/MajorResult';
 
 // OtherInfo (etc)
 import OtherInfo from '@/pages/OtherInfo/pages/OtherInfo';
@@ -36,20 +38,14 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
-      // Major
-      { path: 'major', element: <Major /> },
-      { path: 'major/result', element: <MajorResult /> },
-
-      // Login
-      { path: 'login', element: <Login /> },
-      { path: 'domember1', element: <Domember1 /> },
-      { path: 'domember2', element: <Domember2 /> },
-      { path: 'domember3', element: <Domember3 /> },
-      { path: 'domember4', element: <Domember4 /> },
-      { path: 'pwchange1', element: <PWChange1 /> },
-      { path: 'pwchange2', element: <PWChange2 /> },
-
-      // Archive
+      {
+        path: 'major',
+        element: <Major />,
+      },
+      {
+        path: 'major/result',
+        element: <MajorResult />,
+      },
       {
         path: 'archive',
         element: <Archive />,
@@ -106,5 +102,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 
 export default router;

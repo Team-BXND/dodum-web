@@ -3,6 +3,7 @@ import Editor from "@/components/AddPost/Editor";
 import Button from "@/components/Buttons/Button";
 import { useForm, Controller, type SubmitHandler, type ControllerFieldState, type ControllerRenderProps } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import TurndownService from "turndown";
 
 export interface IFormInput {
   title: string,
@@ -59,12 +60,51 @@ function AddPost({ onSubmit, author, value="", category }: { onSubmit: SubmitHan
           }
         } />
 
-      <S.ButtonContainer>
-        <Button text="게시" type="submit" />
-        <Button text="취소" onClick={() => { navigator(-1) }} isGray />
-      </S.ButtonContainer>
-    </S.Container>
-  )
+    const handleConvertMarkdown:SubmitHandler<IFormInput> = (data) => {
+        const turndown = new TurndownService();
+        const converted = turndown.turndown(data.content);
+
+        const submitData = {
+            ...data,
+            content: converted
+        };
+
+        onSubmit(submitData)
+    }
+    
+    return (
+        <S.Container onSubmit={handleSubmit(handleConvertMarkdown)}>
+            <S.Title placeholder="제목을 입력하세요." {...register("title")}/>
+            <S.SubTitle placeholder="부제목을 입력하세요." {...register("subTitle")}/>
+            <S.TagsContainer>
+                <S.Author placeholder="작성자를 입력하세요." {...register("author")}/>
+                <S.Category defaultValue="" {...register("category")} required>
+                    <option disabled hidden value="">카테고리를 선택하세요.</option>
+                    {Object.values(Category).map((value) => {
+                        return (
+                            <option key={value} value={value}>{value}</option>
+                        )
+                    })}
+                </S.Category>
+            </S.TagsContainer>
+            <Controller 
+                name="content"
+                control={control}
+                render={
+                    ({ field, fieldState }:IController) => {
+                        return (
+                        <>
+                            <Editor value={field.value} setValue={field.onChange}/>
+                            {fieldState.error && (
+                                <p>{fieldState.error?.message}</p>
+                            )}
+                        </>)
+                    }
+                } />
+                
+            <Buttons/>
+        </S.Container>
+    )
 }
 
 
