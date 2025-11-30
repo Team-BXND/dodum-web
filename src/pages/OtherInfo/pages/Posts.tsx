@@ -43,7 +43,7 @@ const Posts = ({ category }: { category: string }) => {
   }, [])
 
   const getPosts = () => {
-    axios.get("endpoint", {
+    axios.get(`${import.meta.env.VITE_SERVER_URL}/misc`, {
       params: {
         category: category,
         criteria: "LATEST",
