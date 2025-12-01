@@ -98,4 +98,5 @@ function AddPost({ onSubmit, author, value = "", category, subtitle }: AddPostPr
   )
 }
 
+
 export default AddPost;

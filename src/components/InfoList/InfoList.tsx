@@ -1,330 +1,92 @@
-import testImg from '../../assets/info/test.png';
 import type { InfoListProps } from '@/types/infoList';
 import * as S from './InfoList.style';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+import SubTitle from '../Text/SubTitle';
+import Caption from '../Text/Caption';
 
-const infoItems = [
-  {
-    posts: [
-      {
-        id: 1,
-        title: '해커톤 행사건',
-        content: 'React를 처음 시작하는 사람들을 위한 내용...',
-        author: '홍길동',
-        category: 'React',
-        createdAt: '2025-10-22T23:00:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 2,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 3,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 4,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 5,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 6,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 7,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 8,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 9,
-        title: '해커톤 행사건',
-        content: 'React를 처음 시작하는 사람들을 위한 내용...',
-        author: '홍길동',
-        category: 'React',
-        createdAt: '2025-10-22T23:00:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 10,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 11,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 12,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 13,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 14,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 15,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 16,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 17,
-        title: '해커톤 행사건',
-        content: 'React를 처음 시작하는 사람들을 위한 내용...',
-        author: '홍길동',
-        category: 'React',
-        createdAt: '2025-10-22T23:00:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 18,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 19,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 20,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 21,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 22,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 23,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-      {
-        id: 24,
-        title: 'Next.js SSR과 SSG 차이',
-        content: 'Next.js에서 SSR과 SSG의 차이에 대해 설명합니다...',
-        author: '이형석',
-        category: 'Next.js',
-        createdAt: '2025-10-22T22:45:00Z',
-        like: 2025,
-        comment: 2025,
-        view: 2025,
-        img: testImg,
-      },
-    ],
-  },
-];
+const InfoList = (props: InfoListProps) => {
+  const navigate = useNavigate();
+  const parentProps = { ...props };
+  const handleDelete = async (e: React.MouseEvent) => {
+    e.stopPropagation();
 
-const InfoList = ({ title, like, comment, view, img }: InfoListProps) => {
+    if (!window.confirm('정말 삭제하시겠습니까?')) return;
+
+    try {
+      const response = await axios.delete(`/info-api/info/${props.id}`, {});
+
+      if (response.status === 200) {
+        alert(response.data);
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error('삭제 실패:', error);
+      alert('삭제에 실패했습니다.');
+    }
+  };
+  const [isHovered, setIsHovered] = useState(false);
   return (
-    <S.Container
-      onClick={() => {
-        console.log('test');
-      }}
-    >
-      <S.InfoItem>
+    <S.Container>
+      <S.InfoItem
+        onClick={() => {
+          navigate(`/info/${props.id}`, {
+            state: { from: 'list', ...parentProps },
+          });
+        }}
+      >
         <S.Bullet>
           <li></li>
         </S.Bullet>
         <S.MainInfo>
-          <h2>{title}</h2>
-          <h4>1313 이형석</h4>
+          <SubTitle>{props.title}</SubTitle>
+          <Caption color="#adadad">{props.author}</Caption>
         </S.MainInfo>
-        <S.SubInfo>
+        <S.SubInfo $isVisible={props.isApproved}>
           <S.Favorite></S.Favorite>
-          <h3>{like}</h3>
+          <h3>{props.likes}</h3>
           <S.Comment></S.Comment>
-          <h4>{comment}</h4>
-          <h5>조회 {view}</h5>
-          <S.ImgContainer>
-            <img src={img} alt="미리보기"></img>
-          </S.ImgContainer>
+          <h4>{props.comments}</h4>
+          <h5>조회 {props.views}</h5>
         </S.SubInfo>
+        <S.ImgContainer>
+          {props.isApproved ? (
+            isHovered ? (
+              <S.EditorBox>
+                <S.AlterButton
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`alter`, {
+                      state: { from: 'list', ...parentProps },
+                    });
+                  }}
+                >
+                  수정
+                </S.AlterButton>
+                <S.AlterButton onClick={handleDelete}>삭제</S.AlterButton>
+              </S.EditorBox>
+            ) : (
+              <img src={props.imageUrls} alt="미리보기" />
+            )
+          ) : (
+            <S.AllowCheckBox>
+              <S.Approval />
+              <p>승인 대기</p>
+            </S.AllowCheckBox>
+          )}
+        </S.ImgContainer>
       </S.InfoItem>
+      <S.Etc
+        $isAuthor={props.author === '1313이형석'}
+        $isVisible={props.isApproved}
+        onClick={() => setIsHovered(!isHovered)}
+      >
+        <S.EtcCircle />
+        <S.EtcCircle />
+        <S.EtcCircle />
+      </S.Etc>
     </S.Container>
   );
 };
 export default InfoList;
-export { infoItems };
