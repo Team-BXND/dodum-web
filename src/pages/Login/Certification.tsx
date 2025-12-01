@@ -42,15 +42,18 @@ const Certification = () => {
         setValue(newValue);
       }
     
-    const { register, handleSubmit, formState: { errors },setError,control } = useForm();
+    const { register, handleSubmit, formState: { errors },setError} = useForm();
     const onValid = () => {
         if(value.join("")===String(location.state.code)){
             api.post("/auth/email/check",{
                 email:location.state.email,
                 authNum:location.state.code
             })
-            navigate("/login")
-        api.post("/auth/signup",SignupData)
+            api.post("/auth/signup",SignupData)
+            .then((response)=>{
+                navigate("/login");
+            }).catch((error) => {
+                setError("certification1", { message: "회원가입에 실패했습니다. 다시 시도해주세요." })})
         } else {
             setError("certification1",{message:"인증번호가 일치하지 않습니다."});
         }

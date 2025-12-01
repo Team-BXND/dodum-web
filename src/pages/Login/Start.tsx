@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const Start = () => {
   const navigate = useNavigate();
   const onClick = () => {
-    navigate("/domember2");
+    navigate("/member1");
   };
   return (
     <S.ButtonCover>

@@ -20,7 +20,12 @@ const Member2=() => {
             phone:watch("phone")})
             api.post("/auth/email/send",{ email:watch("email"),
             }).then((response)=>{
-                navigate("/domember4",{state:{code:response.data.code,email:watch("email")}});
+                if(response.data.success){
+                navigate("/certification",{state:{code:response.data.code,email:watch("email")}});
+                }
+                else{
+                    setError("email",{message:"이메일 인증번호 발송에 실패했습니다. 다시 시도해주세요."})
+                }
             })
     }
     const onChangeValue=(index:number,event:any)=>{
@@ -28,7 +33,7 @@ const Member2=() => {
         newValue[index]=event.target.value;
         setValue(newValue);
     }
-    return<form>
+    return<form onSubmit={handleSubmit(onValid)}>
             <S.InputCover>
                 <S.InputTitle>이메일 주소</S.InputTitle>
                 <S.ErrorCover>

@@ -18,7 +18,7 @@ const Member1=() => {
         }
         else{
             setSignup({username:watch("username"),Password:watch("Password")});
-            navigate("/domember3");
+            navigate("/member2");
         }
     }
     return<form onSubmit={handleSubmit(onValid)}>

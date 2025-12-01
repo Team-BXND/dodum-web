@@ -68,7 +68,7 @@ export const Input=styled.input<{ $placeholderColor?: string,$Color?:string }>`
     width:21.875rem;
     height:2.7rem;
     border:1px solid #9B9B9B;
-    borderColor:${(props)=>props.$Color || '#9B9B9B'};
+    border-color:${(props)=>props.$Color || '#9B9B9B'};
     border-radius:8px;
     font-size:1rem;
     font-weight:400;
@@ -144,9 +144,9 @@ gap:0.5rem;
 
 export const Number=styled.input`
     font-size:4rem;
-    font-color:black;
+    color:black;
     font-weight:600;
-    max-length:1;
+    maxLength:1;
     width:5rem;
     height:5rem;
     border-radius:8px;

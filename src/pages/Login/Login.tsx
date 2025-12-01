@@ -82,7 +82,7 @@ const Login = () => {
           </S.ErrorCover>
           <S.LinkCover>
             <S.ForgetPassword>비밀번호를 잊으셨나요?</S.ForgetPassword>
-            <Link to="/domember2">
+            <Link to="/pwchange1">
               <S.ForgetPassword>회원가입</S.ForgetPassword>
             </Link>
           </S.LinkCover>

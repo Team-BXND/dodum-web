@@ -29,6 +29,11 @@ const PWChange1 = () => {
           setIsCertified(true);
           setCode(response.data.code);
         }
+        else {
+          setError("email", {
+            message: "이메일 인증번호 발송에 실패했습니다. 다시 시도해주세요.",
+          });
+        }
       });
   };
 

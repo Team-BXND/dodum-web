@@ -14,9 +14,15 @@ const PWChange2=()=>{
             email:location.state.email,
             new_password:watch("pw"),
             passwordCheck:watch("pwcheck")
+        }).then((response)=>{
+            if(response.data.success){
+                window.location.href="/login";
+            } else {
+                setError("pw",{message:"비밀번호 변경에 실패했습니다. 다시 시도해주세요."})
+            }
         })
     }
-    return<form>
+    return<form onSubmit={handleSubmit(onValid)}>
         <S.InputCover>
             <S.InputTitle>비밀번호 재설정</S.InputTitle>
             <S.ErrorCover>

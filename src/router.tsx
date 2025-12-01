@@ -49,7 +49,7 @@ const router = createBrowserRouter([
           { path: '/start', element: <Start /> },
           { path: '/member1', element: <Member1/> },
           { path: '/member2', element: <Member2/> },
-          { path: '/certificaion', element: <Certification /> },
+          { path: '/certification', element: <Certification /> },
           { path: '/pwchange1', element: <PWChange1 /> },
           { path: '/pwchange2', element: <PWChange2 /> },
         ]
