@@ -1,12 +1,12 @@
 import * as S from "@/components/AddPost/AddPost.style"
 import Editor from "@/components/AddPost/Editor";
 import Button from "@/components/Button/Button.tsx";
-import { useForm, Controller, type SubmitHandler, type ControllerFieldState, type ControllerRenderProps, set } from "react-hook-form";
+import { useForm, Controller, type SubmitHandler, type ControllerFieldState, type ControllerRenderProps, } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect,useState } from "react";
-
+const VITE_SERVER_URL= import.meta.env.VITE_SERVER_URL.toString();
 const Buttons = () => {
     const navigator = useNavigate();
 
@@ -46,7 +46,13 @@ function ModifyPost({ onSubmit, setId }: ModifyPostProps) {
     const [data, setData] = useState<Partial<IFormInput> | null>(null);
 
     useEffect(() => {
-        axios.get(`contest/${id}`, {
+        if (id) {
+          setId(Number(id));
+        }
+      }, [id]);
+
+    useEffect(() => {
+        axios.get(`${VITE_SERVER_URL}/contest/${id}`, {
             params: {
                 page: 1,
             },
@@ -55,7 +61,7 @@ function ModifyPost({ onSubmit, setId }: ModifyPostProps) {
         });
     }, []);
 
-    const { control, register, handleSubmit } = useForm<IFormInput>({
+    const { control, register, handleSubmit,reset} = useForm<IFormInput>({
         defaultValues: {
             title: `${data?.title || ""}`,
             subtitle: `${data?.subtitle || ""}`,
@@ -65,6 +71,12 @@ function ModifyPost({ onSubmit, setId }: ModifyPostProps) {
             time: `${data?.time || ""}`,
         },
     });
+
+    useEffect(() => {
+        if (data) {
+          reset(data);
+        }
+      }, [data]);
 
     return (
         <S.Container onSubmit={handleSubmit(onSubmit)}>

@@ -19,8 +19,9 @@ const Competition_info_writing=()=>{
     const [data, setData] = useState<CompetitionData | null>(null);
     const {id}=useParams();
     const location=useLocation();
+    const VITE_SERVER_URL = import.meta.env.VITE_SERVER_URL.toString();
     useEffect(()=>{
-        axios.get(`contest/${id}`,{
+        axios.get(`${VITE_SERVER_URL}/contest/${id}`,{
             params:{
                 page:1
             }
@@ -34,7 +35,7 @@ const Competition_info_writing=()=>{
     }
 
     const onClickDelete=()=>{
-        axios.delete(`contest/${id}`)
+        axios.delete(`${VITE_SERVER_URL}/contest/${id}`)
         .then((response)=>{
             alert("삭제되었습니다.");
             window.location.replace("/competition_info");

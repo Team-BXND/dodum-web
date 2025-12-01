@@ -3,8 +3,9 @@ import AddInfoPost, { type IFormInput } from '../Add/AddInfoPost';
 import type { SubmitHandler } from 'react-hook-form';
 
 const handleSubmit: SubmitHandler<IFormInput> = (data) => {
+  const VITE_SERVER_URL = import.meta.env.VITE_SERVER_URL.toString();
   axios
-    .post(`/contest`, {
+    .post(`${VITE_SERVER_URL}/contest`, {
         title: data.title,
         subtitle: data.subtitle,
         content: data.content,
