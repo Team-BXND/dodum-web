@@ -59,6 +59,7 @@ function AddPost({ onSubmit, author, value="", category }: { onSubmit: SubmitHan
               </>)
           }
         } />
+    </S.Container>
 
     const handleConvertMarkdown:SubmitHandler<IFormInput> = (data) => {
         const turndown = new TurndownService();
