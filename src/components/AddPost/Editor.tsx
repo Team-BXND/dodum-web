@@ -1,4 +1,4 @@
-import ReactQuill from "react-quill-new";
+import ReactQuill from 'react-quill';
 import 'react-quill-new/dist/quill.snow.css'
 import { QuillStyle, QuillWrapper } from "./Editor.style";
 import { useRef, useState } from "react";

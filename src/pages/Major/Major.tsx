@@ -4,6 +4,7 @@ import MajorQuestionSubject from '@/components/MajorQuestion/Subject/MajorQuesti
 import ProgressCircle from '@/components/ProgressCircle/ProgressCircle';
 import { SERVER_URL } from '@/constants/api';
 import type { MajorFormData } from '@/types/majorQuestions';
+
 import {
   getRandomObjectMajorQuestions,
   getRandomSubjectQuestions,

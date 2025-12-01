@@ -1,19 +1,20 @@
 import { createBrowserRouter, Navigate } from 'react-router';
-import Archive from './pages/Archive/Archive'
-import EditArchive from './pages/Archive/pages/EditArchive';
+import App from './App';
+import Competition_info from '@/pages/competition_info/Info/Competition_info_writing.tsx';
+import AddInfo from '@/pages/competition_info/Add/AddInfo.tsx';
+import Competition_info_writing from '@/pages/competition_info/Info/Competition_info_writing.tsx';
+import Modify from './pages/competition_info/Modify/Modify';
+import Major from '@/pages/Major/Major';
+import MajorResult from '@/pages/Major/Result/MajorResult';
+// Archive
+import Archive from '@/pages/Archive/Archive';
+import Detail from '@/pages/Archive/pages/Detail';
+import CategoryRoute from '@/pages/Archive/CategoryRoute';
+import AddArchive from '@/pages/Archive/pages/AddArchive';
+import EditArchive from '@/pages/Archive/pages/EditArchive';
 
 // Info 페이지
-import Major from '@/pages/Major/Major';
-import Info from '@/pages/info/infoView';
-import App from './App';
-import Detail from './pages/Archive/pages/Detail';
-import CategoryRoute from './pages/Archive/CategoryRoute';
-import AddArchive from './pages/Archive/pages/AddArchive';
-import MajorResult from './pages/Major/Result/MajorResult';
-import { PageProvider } from './pages/info/Context/InfoPageContext.tsx';
-import AddInfo from './pages/info/Add/AddInfo.tsx';
-import InfoDetail from './pages/info/Detail/infoDetail.tsx'
-
+import Info from './pages/info/infoView';
 // OtherInfo (etc)
 import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
 import Posts from './pages/OtherInfo/pages/Posts';
@@ -29,6 +30,22 @@ const router = createBrowserRouter([
       {
         path: 'major',
         element: <Major />,
+      },
+      {
+        path:"competition_info",
+        element:<Competition_info/>
+      },
+      {
+        path:"add_info",
+        element:<AddInfo/>
+      },
+      {
+        path:"competition_info_writing/:id",
+        element:<Competition_info_writing />
+      },
+      {
+        path:"modify/:id",
+        element:<Modify />
       },
       {
         path: 'major/result',
