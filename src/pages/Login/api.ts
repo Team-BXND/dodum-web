@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const VITE_SERVER_URL = import.meta.env.VITE_SERVER_ADDRESS as string;
+const VITE_SERVER_URL = import.meta.env.VITE_SERVER_URL as string;
 
 export const api = axios.create({
   baseURL: VITE_SERVER_URL,
