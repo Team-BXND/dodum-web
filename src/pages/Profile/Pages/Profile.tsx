@@ -6,7 +6,7 @@ import Arrow from "@/assets/Profile/Arrow.svg"
 import { Link, useNavigate } from "react-router-dom";
 import { MiniTile } from "@/components/TileContents/TileContents";
 import Placeholder from "@/assets/Profile/Placeholder.png"
-import Archive from "@/assets/Profile/archive.svg"
+import Archive from "@/assets/Profile/Archive.svg"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "@/components/Buttons/Button";
