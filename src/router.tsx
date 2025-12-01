@@ -2,6 +2,15 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import App from './App';
 
+// Info 페이지
+import Info from '@/pages/info/infoView';
+import Detail from './pages/Archive/pages/Detail';
+import CategoryRoute from './pages/Archive/CategoryRoute';
+import AddArchive from './pages/Archive/pages/AddArchive';
+import EditArchive from './pages/Archive/pages/EditArchive';
+import Archive from './pages/Archive/Archive'
+import MajorResult from './pages/Major/Result/MajorResult';
+
 // Major
 import Major from '@/pages/Major/Major';
 
@@ -16,22 +25,11 @@ import Certification from "@/pages/Login/Certification.tsx";
 import PWChange1 from './pages/Login/PWChange1';
 import PWChange2 from './pages/Login/PWChange2';
 
-// Archive
-import Archive from '@/pages/Archive/Archive';
-import EditArchive from '@/pages/Archive/pages/EditArchive';
-
-// Info 페이지
-import Info from '@/pages/info/infoView';
-import Detail from './pages/Archive/pages/Detail';
-import CategoryRoute from './pages/Archive/CategoryRoute';
-import AddArchive from './pages/Archive/pages/AddArchive';
-import MajorResult from './pages/Major/Result/MajorResult';
-
 // OtherInfo (etc)
-import OtherInfo from '@/pages/OtherInfo/pages/OtherInfo';
-import Posts from '@/pages/OtherInfo/pages/Posts';
-import AddEtcInfo from '@/pages/OtherInfo/pages/AddEtcInfo';
-import EtcDetail from '@/pages/OtherInfo/pages/Detail';
+import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
+import Posts from './pages/OtherInfo/pages/Posts';
+import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
+import EtcDetail from './pages/OtherInfo/pages/Detail';
 
 const router = createBrowserRouter([
   {
