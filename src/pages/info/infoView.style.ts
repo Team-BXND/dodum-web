@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import SearchIcon from '@/assets/info/search.svg';
+import SearchIcon from '@/assets/info/Search.svg';
 
 interface AllowButtonProps {
   $active?: boolean;
