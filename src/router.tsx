@@ -31,6 +31,11 @@ import Posts from './pages/OtherInfo/pages/Posts';
 import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
 import EtcDetail from './pages/OtherInfo/pages/Detail';
 
+import Profile from './pages/Profile/Pages/Profile';
+import ProfilePosts from './pages/Profile/Pages/Posts';
+import ProfileDetail from './pages/Profile/Pages/ProfileDetail';
+import ProfileEdit from './pages/Profile/Pages/ProfileEdit';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -39,6 +44,24 @@ const router = createBrowserRouter([
       // Major
       { path: 'major', element: <Major /> },
       { path: 'major/result', element: <MajorResult /> },
+
+      {
+        path: 'profile',
+        element: <Profile />,
+      },
+      {
+        path: 'profile/posts',
+        element: <ProfilePosts />,
+      },
+
+      {
+        path: 'profile/detail',
+        element: <ProfileDetail />,
+      },
+      {
+        path: 'profile/edit',
+        element: <ProfileEdit />,
+      },
 
       // Login
       { path: 'login', element: <Login /> },
