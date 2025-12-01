@@ -1,20 +1,30 @@
-import { createBrowserRouter, Navigate } from 'react-router';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+
 import App from './App';
-import Competition_info from '@/pages/competition_info/Info/Competition_info_writing.tsx';
-import AddInfo from '@/pages/competition_info/Add/AddInfo.tsx';
-import Competition_info_writing from '@/pages/competition_info/Info/Competition_info_writing.tsx';
-import Modify from './pages/competition_info/Modify/Modify';
-import Major from '@/pages/Major/Major';
-import MajorResult from '@/pages/Major/Result/MajorResult';
-// Archive
-import Archive from '@/pages/Archive/Archive';
-import Detail from '@/pages/Archive/pages/Detail';
-import CategoryRoute from '@/pages/Archive/CategoryRoute';
-import AddArchive from '@/pages/Archive/pages/AddArchive';
-import EditArchive from '@/pages/Archive/pages/EditArchive';
 
 // Info 페이지
-import Info from './pages/info/infoView';
+import Info from '@/pages/info/infoView';
+import Detail from './pages/Archive/pages/Detail';
+import CategoryRoute from './pages/Archive/CategoryRoute';
+import AddArchive from './pages/Archive/pages/AddArchive';
+import EditArchive from './pages/Archive/pages/EditArchive';
+import Archive from './pages/Archive/Archive'
+import MajorResult from './pages/Major/Result/MajorResult';
+
+// Major
+import Major from '@/pages/Major/Major';
+
+// Login 과정
+import Login from '@/pages/Login/Login';
+
+import Member from './pages/Login/Member';
+import Start from './pages/Login/Start';
+import Member1 from './pages/Login/Member1';
+import Member2 from './pages/Login/Member2';
+import Certification from "@/pages/Login/Certification.tsx";
+import PWChange1 from './pages/Login/PWChange1';
+import PWChange2 from './pages/Login/PWChange2';
+
 // OtherInfo (etc)
 import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
 import Posts from './pages/OtherInfo/pages/Posts';
@@ -27,53 +37,26 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
+      // Major
+      { path: 'major', element: <Major /> },
+      { path: 'major/result', element: <MajorResult /> },
+
+      // Login
+      { path: 'login', element: <Login /> },
       {
-        path: 'major',
-        element: <Major />,
+        path: "member",
+        element: <Member />,
+        children: [
+          { path: '/start', element: <Start /> },
+          { path: '/member1', element: <Member1/> },
+          { path: '/member2', element: <Member2/> },
+          { path: '/certification', element: <Certification /> },
+          { path: '/pwchange1', element: <PWChange1 /> },
+          { path: '/pwchange2', element: <PWChange2 /> },
+        ]
       },
-      {
-        path:"competition_info",
-        element:<Competition_info/>
-      },
-      {
-        path:"add_info",
-        element:<AddInfo/>
-      },
-      {
-        path:"competition_info_writing/:id",
-        element:<Competition_info_writing />
-      },
-      {
-        path:"modify/:id",
-        element:<Modify />
-      },
-      {
-        path: 'major/result',
-        element: <MajorResult />,
-      },
-      {
-        path: 'info',
-        element:
-        <PageProvider>
-          <Info/>
-        </PageProvider>
-      },
-      {
-        path: 'info/:id',
-        element: <InfoDetail />,
-      },
-      {
-        path: 'info/add',
-        element: <AddInfo/>,
-      },
-      {
-        path: 'info/alter',
-        element: <AlterPage/>,
-      },
-      {
-        path: 'major/result',
-        element: <MajorResult />,
-      },
+
+      // Archive
       {
         path: 'archive',
         element: <Archive />,

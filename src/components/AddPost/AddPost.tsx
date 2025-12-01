@@ -92,6 +92,7 @@ function AddPost({ onSubmit, author, value = "", category, subtitle }: AddPostPr
               </>)
           }
         } />
+    </S.Container>
 
       <Buttons />
     </S.Container>
