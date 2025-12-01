@@ -5,6 +5,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import SubTitle from '../Text/SubTitle';
 import Caption from '../Text/Caption';
+import { SERVER_URL } from '@/constants/api';
 
 const InfoList = (props: InfoListProps) => {
   const navigate = useNavigate();
@@ -13,16 +14,19 @@ const InfoList = (props: InfoListProps) => {
     e.stopPropagation();
 
     if (!window.confirm('정말 삭제하시겠습니까?')) return;
-
+    const token = localStorage.getItem("token")
     try {
-      const response = await axios.delete(`/info-api/info/${props.id}`, {});
+      const response = await axios.delete(`${SERVER_URL}/info/${props.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       if (response.status === 200) {
         alert(response.data);
         window.location.reload();
       }
     } catch (error) {
-      console.error('삭제 실패:', error);
       alert('삭제에 실패했습니다.');
     }
   };

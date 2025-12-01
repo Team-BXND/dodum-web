@@ -5,6 +5,8 @@ import InfoPost from './infoPost';
 import type { InfoListProps } from '@/types/infoList';
 import { AddButton } from '../Archive/Archive.style';
 import { infoItems } from '@/constants/info.constants';
+import axios from 'axios';
+import { SERVER_URL } from '@/constants/api';
 
 const Info = () => {
   const { currentPage, setCurrentPage } = useContext(PageContext);
@@ -16,42 +18,30 @@ const Info = () => {
   );
   const POSTS_PER_PAGE = 10;
   const grade = 2;
-  // const endpoint = allowFilter === 'notAllowed' ? 'info/false' : 'info';
-  // useEffect(() => {
-  //   axios
-  //     .get(`/info-api/${endpoint}`, {
-  //       params: { page: currentPage - 1 },
-  //       headers: { 'ngrok': 'true' },
-  //     })
-  //     .then((res) => {
-  //       const fetchedPosts = res.data.data;
-  //       if (currentPage === 1 && totalPages === 0 && fetchedPosts.length > 0) {
-  //         const totalElements = fetchedPosts[0].id;
-
-  //         setTotalPages(Math.ceil(totalElements / POSTS_PER_PAGE));
-  //       }
-  //       setPosts(fetchedPosts);
-  //       console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }, [currentPage, allowFilter]);
-  //서버가 닫혀있어서 임시로 더미데이터 쓰겠습니다
-
-  // 더미 데이터 사용
+  const endpoint = allowFilter === 'notAllowed' ? 'info/false' : 'info';
   useEffect(() => {
-    const filteredAllPosts = infoItems[0].posts.filter((post) =>
-      allowFilter === 'allowed' ? post.isApproved : !post.isApproved
-    );
+    const fetchedPost = async () => {
+      try {
+        const res = await axios.get(`${SERVER_URL}/${endpoint}`, {
+          params: { page: currentPage - 1 },
+        });
+        const fetchedPosts: InfoListProps[] = res.data?.data ?? [];
+        const totalElements = 15;
 
-    setTotalPages(Math.ceil(filteredAllPosts.length / POSTS_PER_PAGE));
+        setTotalPages(Math.ceil(totalElements / POSTS_PER_PAGE));
+        setPosts(fetchedPosts);
+        console.log(res.data)
+      } catch (err) {
+        if (axios.isAxiosError(err)) {
+          console.error(err.response?.data || err.message);
+        } else {
+          console.error(err);
+        }
+      }
+    };
 
-    const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-    const endIndex = startIndex + POSTS_PER_PAGE;
-
-    setPosts(filteredAllPosts.slice(startIndex, endIndex));
-  }, [currentPage, allowFilter]);
+    fetchedPost();
+  }, []);
 
   const filteredPosts = useMemo(() => {
     return posts.filter((post) =>

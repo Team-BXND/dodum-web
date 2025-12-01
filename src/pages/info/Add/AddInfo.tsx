@@ -1,12 +1,11 @@
 import axios from 'axios';
 import AddInfoPost, { type IFormInput } from '../Add/AddInfoPost';
 import type { SubmitHandler } from 'react-hook-form';
-
+import { SERVER_URL } from '@/constants/api';
 const handleSubmit: SubmitHandler<IFormInput> = (data) => {
   axios
-    .post(`/info-api/info`, {
+    .post(`${SERVER_URL}/info`, {
       title: data.title,
-      subTitle: data.subTitle,
       content: data.content,
       author: data.author,
     })

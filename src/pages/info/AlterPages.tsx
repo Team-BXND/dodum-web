@@ -1,6 +1,7 @@
 import InfoAlter from './infoAlter';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { SERVER_URL } from '@/constants/api';
 
 export interface IFormInput {
   title: string;
@@ -14,8 +15,7 @@ const AlterPage = () => {
 
   const onSubmit = async (data: IFormInput) => {
     try {
-      await axios.put(`/info-api/info/${state.id}`, data);
-
+      await axios.put(`${SERVER_URL}/info/${state.id}`, data);
       alert('수정 완료!');
       navigate(-1);
     } catch (error) {
