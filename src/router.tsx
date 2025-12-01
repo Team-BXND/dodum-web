@@ -1,20 +1,25 @@
 import { createBrowserRouter, Navigate } from 'react-router';
 import Archive from './pages/Archive/Archive'
-import Major from './pages/Major/Major';
-import MajorResult from './pages/Major/Result/MajorResult';
-import Detail from './pages/Archive/pages/Detail';
-import CategoryRoute from './pages/Archive/CategoryRoute';
-import AddArchive from './pages/Archive/pages/AddArchive';
 import EditArchive from './pages/Archive/pages/EditArchive';
 
 // Info 페이지
-import Info from './pages/info/infoView';
+import Major from '@/pages/Major/Major';
+import Info from '@/pages/info/infoView';
 import App from './App';
+import Detail from './pages/Archive/pages/Detail';
+import CategoryRoute from './pages/Archive/CategoryRoute';
+import AddArchive from './pages/Archive/pages/AddArchive';
+import MajorResult from './pages/Major/Result/MajorResult';
+import { PageProvider } from './pages/info/Context/InfoPageContext.tsx';
+import AddInfo from './pages/info/Add/AddInfo.tsx';
+import InfoDetail from './pages/info/Detail/infoDetail.tsx'
+
 // OtherInfo (etc)
 import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
 import Posts from './pages/OtherInfo/pages/Posts';
 import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
 import EtcDetail from './pages/OtherInfo/pages/Detail';
+import AlterPage from './pages/info/AlterPages.tsx';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +29,29 @@ const router = createBrowserRouter([
       {
         path: 'major',
         element: <Major />,
+      },
+      {
+        path: 'major/result',
+        element: <MajorResult />,
+      },
+      {
+        path: 'info',
+        element:
+        <PageProvider>
+          <Info/>
+        </PageProvider>
+      },
+      {
+        path: 'info/:id',
+        element: <InfoDetail />,
+      },
+      {
+        path: 'info/add',
+        element: <AddInfo/>,
+      },
+      {
+        path: 'info/alter',
+        element: <AlterPage/>,
       },
       {
         path: 'major/result',
@@ -49,7 +77,7 @@ const router = createBrowserRouter([
         element: <OtherInfo />,
         children: [
           {
-            index: true, 
+            index: true,
             element: <Navigate to="all" replace />,
           },
           {
@@ -72,15 +100,15 @@ const router = createBrowserRouter([
             path: 'add',
             element: <AddEtcInfo />
           },
-          { 
-            path: 'edit/:postId', 
-            element: <EditArchive /> 
+          {
+            path: 'edit/:postId',
+            element: <EditArchive />
           },
         ]
       },
-      { 
+      {
         path: 'etc/:category/:postId',
-          element: <EtcDetail /> 
+          element: <EtcDetail />
       },
     ],
   },

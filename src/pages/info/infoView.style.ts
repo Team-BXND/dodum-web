@@ -1,21 +1,26 @@
 import styled from 'styled-components';
 import SearchIcon from '@/assets/info/search.svg';
-import AddIcon from '@/assets/info/AddButton.svg';
+
+interface AllowButtonProps {
+  $active?: boolean;
+}
 
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
-  width: 1114px;
-  height: 607px;
-  left: 328px;
+  width: 100%;
+  max-width: 1114px;
+  height: 570px;
+  left: 300px;
   top: 127px;
 
-  background: #ffffff;
+  background: ${(props) => props.theme.bgPrimary};
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
-  /* Rectangle 73 */
 
-  /* 스크롤바 숨기기 */
   ::-webkit-scrollbar {
     display: none;
   }
@@ -25,10 +30,10 @@ export const SearchBox = styled.input`
   position: absolute;
   width: 236px;
   height: 39px;
-  left: 1195px;
+  left: 1165px;
   top: 75px;
 
-  ::placeholder {
+  &::placeholder {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -36,24 +41,21 @@ export const SearchBox = styled.input`
     letter-spacing: -0.02em;
   }
 
-  border: 1px solid #adadad;
+  border: 1px solid ${(props) => props.theme.btnGraySecondary};
   border-radius: 8px;
   padding-left: 33px;
 `;
 
 export const Search = styled(SearchIcon)`
   position: absolute;
-  left: 1205px;
+  left: 1175px;
   top: 85px;
 `;
 
 export const List = styled.div`
-  /* Rectangle 73 */
-
   width: 1094px;
   height: 570px;
 
-  /* 내부 오토레이아웃 */
   flex: none;
   order: 0;
   align-self: stretch;
@@ -62,8 +64,6 @@ export const List = styled.div`
 `;
 
 export const Box = styled.div`
-  /* Group 79 */
-
   position: absolute;
   width: 1044.03px;
   height: 71px;
@@ -74,7 +74,7 @@ export const Box = styled.div`
 export const Titletext = styled.h1`
   /* 정보공유 */
 
-  width: 106px;
+  width: 200px;
   height: 38px;
   font-family: 'Pretendard Variable';
   font-style: normal;
@@ -90,10 +90,8 @@ export const Titletext = styled.h1`
   order: 0;
   flex-grow: 0;
 `;
-export const Title = styled.div`
-  /* Title */
 
-  /* 오토레이아웃 */
+export const Title = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -105,6 +103,20 @@ export const Title = styled.div`
   height: 39px;
   left: 356px;
   top: 82px;
+
+  > h1 {
+    width: 200px;
+    height: 38px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: -0.05em;
+    color: ${(props) => props.theme.textPrimary};
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
 `;
 
 export const AddButtonWrapper = styled.button`
@@ -115,10 +127,45 @@ export const AddButtonWrapper = styled.button`
   height: 72px;
   width: 72px;
   border: none;
-  background-color: #FAFAFA;
+  background-color: ${(props) => props.theme.bgSecondary};
   left: 1370px;
   top: 750px;
 `;
-export const AddButton = styled(AddIcon)`
-  position: absolute;
+
+export const Pagination = styled.div`
+  display: block;
+  margin-top: 25px;
+  height: 29px;
+`;
+
+export const PageBtn = styled.button<{ $active: boolean }>`
+  background: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  border: none;
+  color: ${({ theme, $active }) => ($active ? theme.textPrimary : theme.btnGraySecondary)};
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  cursor: pointer;
+`;
+
+export const AllowBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 30px;
+  gap: 10px;
+  position: relative;
+  top: 50px;
+`;
+
+export const AllowButton = styled.button<AllowButtonProps>`
+  width: 127px;
+  height: 30px;
+
+  background-color: ${({ theme, $active }) => ($active ? theme.btnPrimary : theme.bgPrimary)};
+  border: 1px solid ${(props) => props.theme.btnPrimary};
+  border-radius: 15px;
 `;
