@@ -42,7 +42,6 @@ interface ModifyPostProps {
 
 function ModifyPost({ onSubmit, setId }: ModifyPostProps) {
     const { id } = useParams<{ id: string }>();
-    setId(Number(id));
     const [data, setData] = useState<Partial<IFormInput> | null>(null);
 
     useEffect(() => {
