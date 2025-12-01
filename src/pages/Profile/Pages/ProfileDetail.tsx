@@ -8,13 +8,14 @@ import Button from "@/components/Buttons/Button"
 import { useNavigate } from "react-router-dom"
 import { ProfileImage } from "../styles/Profile.style"
 import Placeholder from "@/assets/Profile/Placeholder.png"
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 function Detail() {
   const [userInfo, setUserInfo] = useState<IUserInfo>();
   const navigator = useNavigate();
 
   const GetUserInfo = () => {
-		axios.get("/api")
+		axios.get(`${SERVER_URL}/profile`)
 		.then((response) => {
 			setUserInfo(response.data)
 		})

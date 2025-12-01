@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom"
 import Placeholder from "@/assets/Profile/Placeholder.png"
 import { ProfileImage } from "../styles/Profile.style"
 
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
+
 type EditForm = {
   // username: string,
   email: string,
@@ -27,7 +29,7 @@ function ProfileEdit() {
   const navigator = useNavigate();
 
   const GetUserInfo = () => {
-		axios.get(`${import.meta.env.VITE_SERVER_URL}/profile`)
+		axios.get(`${SERVER_URL}/profile`)
 		.then((response) => {
 			setUserInfo(response.data)
 		})
@@ -39,7 +41,7 @@ function ProfileEdit() {
 	}
 
   const submit: SubmitHandler<EditForm> = (data) => {
-    axios.patch(`${import.meta.env.VITE_SERVER_URL}/profile`, {
+    axios.patch(`${SERVER_URL}/profile`, {
       grade: data.grade,
       class_no: data.class_no,
       student_no: data.student_no,
