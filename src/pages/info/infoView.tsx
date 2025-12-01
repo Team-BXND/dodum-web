@@ -1,84 +1,99 @@
 import * as S from './infoView.style';
-import InfoList from '@/components/InfoList/InfoList';
-import { infoItems } from '@/components/InfoList/InfoList';
-import { useState, useEffect, useRef } from 'react';
+import { useContext, useEffect, useState, useMemo } from 'react';
+import { PageContext } from './Context/InfoPageContext';
+import InfoPost from './infoPost';
+import axios from "axios";
+import type { InfoListProps } from '@/types/infoList';
+import { AddButton } from '../Archive/Archive.style';
 
 const Info = () => {
-  const [displayItems, setDisplayItems] = useState(
-    infoItems[0].posts.slice(0, 7)
+  const { currentPage, setCurrentPage } = useContext(PageContext);
+  const [posts, setPosts] = useState<InfoListProps[]>([]);
+  const [totalPages, setTotalPages] = useState(0);
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const [allowFilter, setAllowFilter] = useState<'allowed' | 'notAllowed'>(
+    'allowed'
   );
-  const listRef = useRef<HTMLDivElement>(null);
-  const itemsPerLoad = 7;
-  const loadMore = () => {
-    setDisplayItems((prev) => {
-      if (prev.length >= infoItems[0].posts.length) return prev;
-      const nextItems = infoItems[0].posts.slice(
-        prev.length,
-        prev.length + itemsPerLoad
-      );
-      return [...prev, ...nextItems];
-    });
-  };
+  const POSTS_PER_PAGE = 10;
+  const [grade, setGrade] = useState(2);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const list = listRef.current;
-      if (!list) return;
+    axios
+      .get(`${import.meta.env.VITE_SERVER_URL}/info-api/info`, {
+        params: { page: currentPage - 1 },
+        headers: { 'ngrok-skip-browser-warning': 'true' },
+      })
+      .then((res) => {
+        const fetchedPosts = res.data.data;
+        if (currentPage === 1 && totalPages === 0 && fetchedPosts.length > 0) {
+          const totalElements = fetchedPosts[0].id;
+          setTotalPages(Math.ceil(totalElements / POSTS_PER_PAGE));
+        }
+        setPosts(fetchedPosts);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+        alert('게시물을 불러오지 못했습니다.');
+      });
+  }, [currentPage]);
 
-      // 리스트가 스크롤 끝에 도달하면 loadMore
-      if (list.scrollTop + list.clientHeight >= list.scrollHeight - 50) {
-        loadMore();
-      }
-    };
-
-    const list = listRef.current;
-    list?.addEventListener('scroll', handleScroll);
-
-    return () => list?.removeEventListener('scroll', handleScroll);
-  }, []);
-
+  const filteredPosts = useMemo(() => {
+      return posts.filter((post) =>
+          searchKeyword.trim()
+              ? post.title?.toLowerCase().includes(searchKeyword.toLowerCase())
+              : true
+      );
+  }, [posts, searchKeyword]);
   return (
     <>
       <S.Title>
         <S.Titletext>정보공유</S.Titletext>
       </S.Title>
-      <S.SearchBox placeholder="검색어를 입력해주세요"></S.SearchBox>
+      <S.AllowBox>
+        <S.AllowButton
+          $active={allowFilter === 'allowed'}
+          onClick={() => setAllowFilter('allowed')}
+        >
+          승인
+        </S.AllowButton>
+        <S.AllowButton
+          $active={allowFilter === 'notAllowed'}
+          onClick={() => setAllowFilter('notAllowed')}
+        >
+          미승인
+        </S.AllowButton>
+      </S.AllowBox>
+      <S.SearchBox
+        placeholder="검색어를 입력해주세요"
+        value={searchKeyword}
+        onChange={(e) => setSearchKeyword(e.target.value)}
+      ></S.SearchBox>
       <S.Search />
       <S.Container>
-        <S.List ref={listRef}>
-          {displayItems.map(
-            ({
-              id,
-              title,
-              content,
-              author,
-              category,
-              createdAt,
-              like,
-              comment,
-              view,
-              img,
-            }) => (
-              <InfoList
-                key={id}
-                id={id}
-                title={title}
-                content={content}
-                author={author}
-                category={category}
-                createdAt={createdAt}
-                like={like}
-                comment={comment}
-                view={view}
-                img={img}
-              />
-            )
-          )}
+        <S.List>
+          <InfoPost posts={filteredPosts} />
         </S.List>
+        <S.Pagination>
+          {Array.from({ length: totalPages }, (_, i) => (
+            <S.PageBtn
+              key={i}
+              $active={currentPage === i + 1}
+              onClick={() => setCurrentPage(i + 1)}
+            >
+              {i + 1}
+            </S.PageBtn>
+          ))}
+        </S.Pagination>
       </S.Container>
-      <S.AddButtonWrapper>
-        <S.AddButton />
-      </S.AddButtonWrapper>
+      <AddButton
+        style={{
+          visibility: grade === 2 || grade === 3 ? 'visible' : 'hidden',
+        }}
+        to="add"
+      >
+        +
+      </AddButton>
     </>
   );
 };
