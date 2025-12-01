@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { IPostPageProps } from "@/components/PostPage/PostPage";
-import NotFound from "./NotFound";
+import NotFound from "../../../components/NotFound";
 
 function Detail() {
 
@@ -14,12 +14,13 @@ function Detail() {
     const [post, setPost] = useState<IPostPageProps | null>(null)
 
     useEffect(() => {
-        
         const location = path.split("/");
         const postId = location[3];
 
-        axios.post(`/archive/${postId}`, {
-            archiveId: postId,
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/archive/${postId}`, {
+            params: {
+                archiveId: postId,
+            }
         })
         .then (function (response) {
             setPost(response.data);

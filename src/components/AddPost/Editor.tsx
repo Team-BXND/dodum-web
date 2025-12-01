@@ -1,14 +1,16 @@
-import ReactQuill from "react-quill-new";
+import ReactQuill from 'react-quill';
 import 'react-quill-new/dist/quill.snow.css'
 import { QuillStyle, QuillWrapper } from "./Editor.style";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import axios from "axios";
 
 interface IProps {
     value?: string;
     setValue?: React.Dispatch<React.SetStateAction<string>>;
+    thumbnail: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-function Editor({value, setValue}:IProps) {
+function Editor({value, setValue, thumbnail}:IProps) {
     const quillRef = useRef<ReactQuill>(null);
 
     const imageHandler = () => {
@@ -18,12 +20,22 @@ function Editor({value, setValue}:IProps) {
         input.click();
         input.addEventListener("change", async () => {
             const file = input.files?.[0]; //업로드한 이미지 파일
+            const [imageUrl, setImageUrl] = useState("")
             try {
-                const name = Date.now(); //업로드 할 이미지의 이름을 현재 시각으로
-                //TODO: image upload func
+                //TODO: 이미지 업로드 API 전송 형식 확인 필요
+                axios.post(`${import.meta.env.VITE_SERVER_URL}/files/upload`, {
+                    params: {
+                        file: file
+                    }
+                })
+                .then((response) => {
+                    setImageUrl(response.data);
+                })
+                .catch((error) => {
+                    alert(error.response);
+                })
 
-                //placeholderImage
-                const imageUrl = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTpvRRub-ODLG5AAHLD4g1Hyx1X1RAbvUPuBpdM1whwQqdOOQiZzfSvuDtGrRgADTc-HMNwlumHxyAG4GFg7IKcs25oU0D2Qm9lWmwBpz0";
+                thumbnail(imageUrl);
 
                 const editor = quillRef.current?.getEditor(); //에디터 가져오기
                 const range = editor?.getSelection(); //현재 커서 위치
@@ -44,7 +56,7 @@ function Editor({value, setValue}:IProps) {
             ['link', 'image'],
         ],
         handlers: {
-            image: imageHandler //이미지 업로드 시 imageHandler 사용
+            image: imageHandler
         }
     },
     };

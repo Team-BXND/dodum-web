@@ -3,6 +3,7 @@ import { path } from "@/constants/path.constants";
 
 const Text = styled.h1`
     font-size: 32px;
+    font-weight: bold;
     letter-spacing: -5%;
 `;
 
@@ -12,26 +13,27 @@ const Path = styled.span`
     color: ${(props) => props.theme.textSecondary};
 `
 
-const Container = styled.div`
+const Container = styled.div<{line: boolean}>`
     display: flex;
     flex-direction: column;
     align-items: start;
     width: 100%;
-    border-bottom: 2.5px dotted rgba(0, 0, 0, 0.2);
+    border-bottom: ${(props) => props.line ? '2.5px dotted rgba(0, 0, 0, 0.2)' : 0} ;
 `;
 
 interface PageTitleInterface {
     text: string,
     path?: string | null,
+    line?: boolean,
 }
 
-const PageTitle = (props: PageTitleInterface) => {
+const PageTitle = ({ text, path: pathKey, line = false }: PageTitleInterface) => {
     return (
-        <Container>
-            <Text>{props.text}</Text>
-            {props.path && path[props.path as keyof typeof path] && (
+        <Container line={line}>
+            <Text>{text}</Text>
+            {path && path[pathKey as keyof typeof path] && (
                 <Path>
-                아카이브 &gt; {path[props.path as keyof typeof path].text}
+                아카이브 &gt; {path[pathKey as keyof typeof path].text}
                 </Path>
             )}
         </Container>

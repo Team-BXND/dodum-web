@@ -1,29 +1,71 @@
-import axios from "axios";
-import AddPost, { type IFormInput } from "../../../components/AddPost/AddPost";
-import type { SubmitHandler } from "react-hook-form";
+import axios from 'axios';
+import AddPost, { type IFormInput } from '../../../components/AddPost/AddPost';
+import type { SubmitHandler } from 'react-hook-form';
 
-function AddArchive() {
-    const handleSubmit: SubmitHandler<IFormInput> = (data) => {
-    axios.post("/api", {
-        title: data.title,
-        subTitle: data.subTitle,
-        category: data.category,
-        content: data.content,
-        author: data.author,
+const handleSubmit: SubmitHandler<IFormInput> = (data) => {
+  axios
+    .post(`${import.meta.env.VITE_SERVER_URL}/archive/write`, {
+      title: data.title,
+      subTitle: data.subTitle,
+      category: data.category,
+      content: data.content,
+      teamname: data.author,
+      thumbnail: data.thumbnail,
     })
     .then((response) => {
-        alert(response.data)
-
+      alert(response.data);
     })
     .catch((error) => {
-        alert(`데이터를 불러오는데 실패했습니다. (${error.response.status})`)
+      alert(error.message);
+    });
+};
+
+const handleEditSubmit: SubmitHandler<IFormInput> = (data) => {
+  axios
+    .patch(`${import.meta.env.VITE_SERVER_URL}/archive`, {
+      title: data.title,
+      subTitle: data.subTitle,
+      category: data.category,
+      content: data.content,
+      teamname: data.author,
+      thumbnail: data.thumbnail,
     })
-}
+    .then((response) => {
+      alert(response.data);
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+};
 
+const Category = {
+  club: '동아리',
+  narsha: '나르샤',
+  awards: '대회 수상작',
+  mini_project: '미니 프로젝트',
+};
+
+function AddArchive({ value, isEdit }: { value?: string; isEdit?: boolean }) {
+  if (value) {
     return (
-        <AddPost onSubmit={handleSubmit}/>
-    )
+      <AddPost
+        onSubmit={isEdit ? handleEditSubmit : handleSubmit}
+        subtitle
+        author
+        category={Category}
+        value={value}
+      />
+    );
+  } else {
+    return (
+      <AddPost
+        onSubmit={isEdit ? handleEditSubmit : handleSubmit}
+        subtitle
+        author
+        category={Category}
+      />
+    );
+  }
 }
-
 
 export default AddArchive;
