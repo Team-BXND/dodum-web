@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "@/components/Buttons/Button";
 
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
+
 const CLUB = {
 	BIND: "BIND",
 	삼디: "삼디",
@@ -58,7 +60,7 @@ export const MyPosts = ({posts} : {posts: IPosts[]}) => {
 }
 
 export const getPosts = (setPosts: React.Dispatch<React.SetStateAction<IPosts[]>>) => {
-	axios.get(`${import.meta.env.VITE_SERVER_URL}/profile/write`)
+	axios.get(`${SERVER_URL}/profile/write`)
 	.then((response) => {
 		if(Array.isArray(response))
 			setPosts(response.data);
@@ -74,7 +76,7 @@ function Profile() {
 	const [posts, setPosts] = useState<IPosts[]>([])
 
 	const GetUserInfo = () => {
-		axios.get(`${import.meta.env.VITE_SERVER_URL}/profile`)
+		axios.get(`${SERVER_URL}/profile`)
 		.then((response) => {
 			setUserInfo(response.data)
 		})
