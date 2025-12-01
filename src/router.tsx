@@ -8,7 +8,7 @@ import Detail from './pages/Archive/pages/Detail';
 import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 import EditArchive from './pages/Archive/pages/EditArchive';
-import Archive from './pages/Archive/Archive'
+import Archive from './pages/Archive/Archive';
 import MajorResult from './pages/Major/Result/MajorResult';
 
 // Major
@@ -21,7 +21,7 @@ import Member from './pages/Login/Member';
 import Start from './pages/Login/Start';
 import Member1 from './pages/Login/Member1';
 import Member2 from './pages/Login/Member2';
-import Certification from "@/pages/Login/Certification.tsx";
+import Certification from '@/pages/Login/Certification.tsx';
 import PWChange1 from './pages/Login/PWChange1';
 import PWChange2 from './pages/Login/PWChange2';
 
@@ -30,7 +30,6 @@ import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
 import Posts from './pages/OtherInfo/pages/Posts';
 import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
 import EtcDetail from './pages/OtherInfo/pages/Detail';
-import AlterPage from './pages/info/AlterPages.tsx';
 
 const router = createBrowserRouter([
   {
@@ -44,16 +43,16 @@ const router = createBrowserRouter([
       // Login
       { path: 'login', element: <Login /> },
       {
-        path: "member",
+        path: 'member',
         element: <Member />,
         children: [
           { path: '/start', element: <Start /> },
-          { path: '/member1', element: <Member1/> },
-          { path: '/member2', element: <Member2/> },
+          { path: '/member1', element: <Member1 /> },
+          { path: '/member2', element: <Member2 /> },
           { path: '/certification', element: <Certification /> },
           { path: '/pwchange1', element: <PWChange1 /> },
           { path: '/pwchange2', element: <PWChange2 /> },
-        ]
+        ],
       },
 
       // Archive
@@ -82,37 +81,36 @@ const router = createBrowserRouter([
           },
           {
             path: 'all',
-            element: <Posts category='전체'/>
+            element: <Posts category="전체" />,
           },
           {
             path: 'benefits',
-            element: <Posts category='학교지원'/>
+            element: <Posts category="학교지원" />,
           },
           {
             path: 'tools',
-            element: <Posts category='개발도구' />
+            element: <Posts category="개발도구" />,
           },
           {
             path: 'courses',
-            element: <Posts category='강의추천' />
+            element: <Posts category="강의추천" />,
           },
           {
             path: 'add',
-            element: <AddEtcInfo />
+            element: <AddEtcInfo />,
           },
           {
             path: 'edit/:postId',
-            element: <EditArchive />
+            element: <EditArchive />,
           },
-        ]
+        ],
       },
       {
         path: 'etc/:category/:postId',
-          element: <EtcDetail />
+        element: <EtcDetail />,
       },
     ],
   },
 ]);
-
 
 export default router;
