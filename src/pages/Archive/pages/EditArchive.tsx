@@ -10,9 +10,9 @@ function EditArchive() {
   const postId = path.pathname.split("/")[3];
   
   useEffect(() => {
-    axios.get("/endpoint", {
+    axios.get(`${import.meta.env.VITE_SERVER_URL}/archive/${postId}`, {
       params: {
-        postId: postId
+        archiveId: postId
       }
     })
     .then((response) => {

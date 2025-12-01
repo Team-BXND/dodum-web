@@ -80,7 +80,7 @@ export const FightingBox = styled(DescriptionBox)`
 `;
 
 export const RightDescriptionContainer = styled(LeftDescriptionContainer)``;
-export const GraphConatiner = styled(DescriptionBox)``;
+export const GraphContainer = styled(DescriptionBox)``;
 
 export const GraphBox = styled.div`
   display: flex;

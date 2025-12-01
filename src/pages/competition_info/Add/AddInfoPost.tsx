@@ -62,7 +62,7 @@ function AddInfoPost({onSubmit}: {onSubmit: SubmitHandler<IFormInput>}) {
                     ({ field, fieldState }:IController) => {
                         return (
                         <>
-                            <Editor value={field.value} setValue={field.onChange}/>
+                            <Editor value={field.value} setValue={field.onChange} thumbnail={() => null}/>
                             {fieldState.error && (
                                 <p>{fieldState.error?.message}</p>
                             )}

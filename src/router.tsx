@@ -1,14 +1,11 @@
-
+import { createBrowserRouter, Navigate } from 'react-router';
 import App from './App';
-
 import Competition_info from '@/pages/competition_info/Info/Competition_info_writing.tsx';
 import AddInfo from '@/pages/competition_info/Add/AddInfo.tsx';
 import Competition_info_writing from '@/pages/competition_info/Info/Competition_info_writing.tsx';
 import Modify from './pages/competition_info/Modify/Modify';
-import { createBrowserRouter, Navigate } from 'react-router';
 import Major from '@/pages/Major/Major';
 import MajorResult from '@/pages/Major/Result/MajorResult';
-
 // Archive
 import Archive from '@/pages/Archive/Archive';
 import Detail from '@/pages/Archive/pages/Detail';
@@ -17,13 +14,12 @@ import AddArchive from '@/pages/Archive/pages/AddArchive';
 import EditArchive from '@/pages/Archive/pages/EditArchive';
 
 // Info 페이지
-import Info from '@/pages/info/infoView';
+import Info from './pages/info/infoView';
 // OtherInfo (etc)
-import OtherInfo from '@/pages/OtherInfo/pages/OtherInfo';
-import Posts from '@/pages/OtherInfo/pages/Posts';
-import AddEtcInfo from '@/pages/OtherInfo/pages/AddEtcInfo';
-import EtcDetail from '@/pages/OtherInfo/pages/Detail';
-
+import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
+import Posts from './pages/OtherInfo/pages/Posts';
+import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
+import EtcDetail from './pages/OtherInfo/pages/Detail';
 
 const router = createBrowserRouter([
   {
