@@ -43,6 +43,7 @@ interface ModifyPostProps {
 function ModifyPost({ onSubmit, setId }: ModifyPostProps) {
     const { id } = useParams<{ id: string }>();
     const [data, setData] = useState<Partial<IFormInput> | null>(null);
+    const [thumbnail, setThumbnail] = useState<string | null>(null);
 
     useEffect(() => {
         if (id) {
@@ -93,7 +94,7 @@ function ModifyPost({ onSubmit, setId }: ModifyPostProps) {
                 render={({ field, fieldState }: IController) => {
                     return (
                         <>
-                            <Editor value={field.value} setValue={field.onChange} />
+                            <Editor value={field.value} setValue={field.onChange} thumbnail={setThumbnail} />
                             {fieldState.error && (
                                 <p>{fieldState.error?.message}</p>
                             )}

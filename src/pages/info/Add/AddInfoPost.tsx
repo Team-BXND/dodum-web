@@ -3,6 +3,7 @@ import Editor from "@/components/AddPost/Editor";
 import Button from "@/components/Buttons/Button";
 import { useForm, Controller, type SubmitHandler, type ControllerFieldState, type ControllerRenderProps } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Buttons = () => {
     const navigator = useNavigate();
@@ -29,6 +30,7 @@ interface IController {
 }
 
 function AddInfoPost({onSubmit}: {onSubmit: SubmitHandler<IFormInput>}) {
+    const [thumbnail, setThumbnail] = useState<string | null>(null);
     const { control, register, handleSubmit } = useForm<IFormInput>({
         defaultValues: {
             title: "",
@@ -51,7 +53,7 @@ function AddInfoPost({onSubmit}: {onSubmit: SubmitHandler<IFormInput>}) {
                     ({ field, fieldState }:IController) => {
                         return (
                         <>
-                            <Editor value={field.value} setValue={field.onChange}/>
+                            <Editor value={field.value} setValue={field.onChange} thumbnail={setThumbnail}/>
                             {fieldState.error && (
                                 <p>{fieldState.error?.message}</p>
                             )}
