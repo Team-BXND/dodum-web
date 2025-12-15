@@ -70,6 +70,26 @@ export const Box = styled.div`
   top: 28px;
 `;
 
+export const Titletext = styled.h1`
+  /* 정보공유 */
+
+  width: 200px;
+  height: 38px;
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  letter-spacing: -0.05em;
+
+  color: #1b1b1b;
+
+  /* 내부 오토레이아웃 */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+`;
+
 export const Title = styled.div`
   display: flex;
   flex-direction: row;

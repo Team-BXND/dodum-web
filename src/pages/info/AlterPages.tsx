@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { SERVER_URL } from '@/constants/api';
 
+
 export interface IFormInput {
   title: string;
   content: string;

@@ -7,6 +7,7 @@ interface EtcProps {
   $isVisible?: boolean;
 }
 
+
 export const Container = styled.div`
   display: flex;
   width: 1094px;
@@ -203,5 +204,6 @@ export const AllowCheckBox = styled.div`
     color: ${(props) => props.theme.mainColor};
   }
 `;
+
 
 export const Approval = styled(ApprovalIcon)``;

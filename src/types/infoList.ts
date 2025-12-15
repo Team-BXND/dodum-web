@@ -12,12 +12,14 @@ export interface InfoListProps {
   imageUrls: string;
   isApproved?: boolean
 }
+
 export interface InfoCommentProps {
   id: number;
   author: string;
   text: string;
   createdAt: string;
 }
+
 export interface IconProps {
   svgUrl: string;
 }
