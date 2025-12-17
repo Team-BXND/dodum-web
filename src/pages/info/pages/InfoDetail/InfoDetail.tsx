@@ -5,7 +5,6 @@ import ProfileImg from '@/assets/info/test.png';
 import Caption from '@/components/Text/Caption';
 import axios from 'axios';
 import { SERVER_URL } from '@/constants/api';
-import { error } from 'console';
 const InfoDetail = () => {
   const location = useLocation();
 

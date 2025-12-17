@@ -1,7 +1,7 @@
 import * as S from './InfoView.style';
 import { useContext, useEffect, useState, useMemo } from 'react';
 import { PageContext } from '../../Context/InfoPageContext';
-import InfoPost from '../../components/infoPost';
+import InfoPost from '../../components/InfoPost';
 import type { InfoListProps } from '@/types/infoList';
 import { AddButton } from '../../../Archive/Archive.style';
 import axios from 'axios';

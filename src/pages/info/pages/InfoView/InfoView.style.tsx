@@ -185,7 +185,6 @@ const toastCycle = keyframes`
     transform: translateX(0); 
     opacity: 1; 
   }
-  /* 6초 지점 */
   100% { 
     transform: translateX(120%); 
     opacity: 0; 
