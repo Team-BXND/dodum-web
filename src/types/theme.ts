@@ -10,8 +10,4 @@ export interface Theme {
   bgPrimary: string;
   bgSecondary: string;
   shadowLight: string;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/develop

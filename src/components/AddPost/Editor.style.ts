@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { BodyStyle, SubTitleStyle, TitleStyle } from "../Text/TextStyle";
+import { BodyStyle, SubTitleStyle, TitleStyle } from "../Text/Textstyle";
 
 
 export const QuillStyle = createGlobalStyle`

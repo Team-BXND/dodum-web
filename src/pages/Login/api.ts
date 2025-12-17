@@ -7,9 +7,36 @@ export const api = axios.create({
   withCredentials: true, 
 });
 
-api.interceptors.request.use((config) => {
-  return config;
-});
+api.interceptors.response.use(
+  res => res,
+  async (error) => {
+    const originalRequest = error.config;
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      const refreshToken = localStorage.getItem("refreshToken");
+      const username = localStorage.getItem("username");
+
+      try {
+        const response = await api.post("/auth/refresh", {
+          username,
+          refreshToken
+        });
+        const newAccessToken = response.data.accessToken;
+
+        localStorage.setItem("token", newAccessToken);
+
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+        return api(originalRequest);
+      } catch (refreshError) {
+        
+        window.location.href = "/login";
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 api.interceptors.response.use(
   (response) => response,

@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 const Start = () => {
   const navigate = useNavigate();
   const onClick = () => {
-    navigate("/member1");
+    navigate("/member/member1");
   };
   return (
     <S.ButtonCover>
-        <S.Button onClick={onClick}>시작하기</S.Button>
+        <S.Button onClick={onClick} type="button">시작하기</S.Button>
         </S.ButtonCover>
   );
 };

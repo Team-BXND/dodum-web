@@ -64,7 +64,11 @@ const InfoAlter = ({onSubmit}: {onSubmit: SubmitHandler<IFormInput>}) => {
                     ({ field, fieldState }:IController) => {
                         return (
                         <>
-                            <Editor value={field.value} setValue={field.onChange}/>
+                            <Editor 
+                                value={field.value} 
+                                setValue={field.onChange} 
+                                thumbnail={() => null} // Provide a default or appropriate thumbnail handler
+                            />
                             {fieldState.error && (
                                 <p>{fieldState.error?.message}</p>
                             )}

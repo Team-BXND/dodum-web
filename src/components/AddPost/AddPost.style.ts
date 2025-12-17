@@ -1,5 +1,5 @@
-import { SubTitleStyle, TitleStyle } from '@/components/Text/TextStyle';
-import styled from 'styled-components';
+import { SubTitleStyle, TitleStyle } from "@/components/Text/Textstyle";
+import styled from "styled-components";
 
 export const Container = styled.form`
   display: flex;

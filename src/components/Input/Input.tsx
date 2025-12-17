@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./input.style";
+import { forwardRef } from "react";
 interface InputProps {
   fontsize?: string;
   fontweight?: string;
@@ -9,32 +10,24 @@ interface InputProps {
   error?: { message?: string };
 }
 
-const Input: React.FC<InputProps> = ({
+const Input = forwardRef<HTMLInputElement, InputProps>(({
     fontsize,
     fontweight,
     placeholder,
-    register,
-    name,
     error,
-  }) => {
-    const hasRegister = register && name;
-  
+  }, ref) => {
     return (
       <S.ErrorCover>
         <S.Input
+          ref={ref}
           style={error?.message ? { fontSize: fontsize, fontWeight: fontweight, borderColor: "#FF3E3E" } : { fontSize: fontsize, fontWeight: fontweight }}
           placeholder={placeholder}
-          {...(hasRegister
-            ? register(name, {
-                required: `${placeholder}를 입력해주세요`,
-              })
-            : {})}
         />
   
         <S.Errortext>{error?.message}</S.Errortext>
       </S.ErrorCover>
     );
-  };
+  });
   
 
 export default Input;
