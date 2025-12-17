@@ -1,3 +1,4 @@
+// import 
 import * as S from "@/pages/Login/Login.style.ts"
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -5,7 +6,9 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { api } from "./api.ts";
 import { useSignupStore } from "./SignupStore";
+
 const Certification = () => {
+    // 회원가입 스토어에서 데이터 가져오기
     const {username,
         Password,
         grade,
@@ -15,7 +18,7 @@ const Certification = () => {
         email,
         major,
         history,}=useSignupStore();
-        
+         
     const SignupData={
         username,
         Password,
@@ -28,35 +31,39 @@ const Certification = () => {
         history,
     }
 
+    // 여러가지 정의
     const navigate = useNavigate();
     const location=useLocation();
-    const state = location.state as { code?: string } | null;
-    if (!state?.code) {
-        navigate("/domember3");
-        return;
-      }
+    const { register, handleSubmit, formState: { errors },setError} = useForm();
+
+    // 인증번호 4자리 상태관리
     const [value,setValue]=useState([0,0,0,0]);
       const onChangeValue=(index:number,event:any)=>{
         const newValue=[...value];
         newValue[index]=event.target.value;
         setValue(newValue);
       }
-    
-    const { register, handleSubmit, formState: { errors },setError} = useForm();
+
+    // 핸들러 정의(인증번호 확인 및 회원가입 요청)
     const onValid = () => {
-        if(value.join("")===String(location.state.code)){
             api.post("/auth/email/check",{
                 email:location.state.email,
-                authNum:location.state.code
-            })
-            api.post("/auth/signup",SignupData)
-            .then((response)=>{
-                navigate("/login");
-            }).catch((error) => {
+                authNum:value.join("")
+            }).then((response)=>{
+                if(response.data.data){
+
+                 // 회원가입 요청 및 로그인 페이지 이동
+                api.post("/auth/signup",SignupData)
+                .then((response)=>{
+                    navigate("/login");
+                }).catch((error) => {
                 setError("certification1", { message: "회원가입에 실패했습니다. 다시 시도해주세요." })})
-        } else {
-            setError("certification1",{message:"인증번호가 일치하지 않습니다."});
-        }
+                
+                }
+                else{
+                    setError("certification1", { message: "인증번호가 일치하지 않습니다." })
+                    return;
+                }})
     };
 
     return(

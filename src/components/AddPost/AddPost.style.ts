@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { SubTitleStyle, TitleStyle } from "@/components/Text/Textstyle";
-=======
-import { SubTitleStyle, TitleStyle } from "@/components/Text/TextStyle";
->>>>>>> origin/develop
 import styled from "styled-components";
 
 export const Container = styled.form`
