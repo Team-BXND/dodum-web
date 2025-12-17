@@ -3,17 +3,17 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from './App';
 
 // Info 페이지
-import Info from '@/pages/info/infoView';
+import Info from './pages/info/pages/InfoView/infoView.tsx';
 import Detail from './pages/Archive/pages/Detail';
 import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 import EditArchive from './pages/Archive/pages/EditArchive';
 import Archive from './pages/Archive/Archive';
 import MajorResult from './pages/Major/Result/MajorResult';
-import InfoDetail from './pages/info/Detail/infoDetail.tsx';
+import InfoDetail from './pages/info/pages/InfoDetail/infoDetail.tsx';
 import { PageProvider } from './pages/info/Context/InfoPageContext.tsx';
-import AddInfo from './pages/info/Add/AddInfo.tsx';
-import AlterPage from './pages/info/AlterPages.tsx';
+import AddInfo from './pages/info/add/AddInfo.tsx';
+import AlterPage from './pages/info/pages/InfoAlter/AlterPages.tsx';
 
 // Major
 import Major from '@/pages/Major/Major';
@@ -85,10 +85,11 @@ const router = createBrowserRouter([
       // Archive
       {
         path: 'info',
-        element:
-        <PageProvider>
-          <Info/>
-        </PageProvider>
+        element: (
+          <PageProvider>
+            <Info />
+          </PageProvider>
+        ),
       },
       {
         path: 'info/:id',
@@ -96,11 +97,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'info/add',
-        element: <AddInfo/>,
+        element: <AddInfo />,
       },
       {
         path: 'info/alter',
-        element: <AlterPage/>,
+        element: <AlterPage />,
       },
       {
         path: 'archive',

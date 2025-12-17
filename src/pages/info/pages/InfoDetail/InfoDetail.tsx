@@ -1,4 +1,4 @@
-import * as S from '@/pages/info/Detail/infoDetail.style';
+import * as S from './InfoDetail.style';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ProfileImg from '@/assets/info/test.png';
@@ -28,8 +28,12 @@ const InfoDetail = () => {
       .post(`${SERVER_URL}/${parentsProps.id}/approve`, {
         id: parentsProps.id,
       })
-      .then()
-      .catch();
+      .then((response) => {
+        alert('승인');
+      })
+      .catch((error) => {
+        console.log(`에러 발생 ${error}`);
+      });
   };
 
   const handleRefuseClick = () => {
@@ -38,7 +42,7 @@ const InfoDetail = () => {
         id: parentsProps.id,
       })
       .then((response) => {
-        alert('승인');
+        alert('승인 거부');
       })
       .catch((error) => {
         console.log(`에러 발생 ${error}`);

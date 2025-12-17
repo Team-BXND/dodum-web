@@ -10,7 +10,7 @@ export interface InfoListProps {
   commented?: Comment[];
   views?: number;
   imageUrls: string;
-  isApproved?: boolean
+  isApproved?: boolean;
 }
 
 export interface InfoCommentProps {
