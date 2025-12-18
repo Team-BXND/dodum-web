@@ -17,21 +17,21 @@ interface IPageProps {
 }
 
 function Posts(props: IPageProps) {
-  // API 호출
-  const [posts, setPosts] = useState<IPostsProps[]>([])
-
-  useEffect(() => {
-    // axios get 함수에는 Body를 담을 수 없어 post Method로 요청
-    privateInstance.get(`${import.meta.env.VITE_SERVER_URL}/archive/all`, {
-      params: {
-          category: props.category,
-      }
-    })
-      .then(function (response) {
-        setPosts(response.data)
-      })
-      .catch(function (error) {
-          alert(error.response?.status === 404? "게시물을 불러오지 못하였습니다.(404 에러)" : error.message);
+    // API 호출
+    const [posts, setPosts] = useState<IPostsProps[]>([])
+    
+    useEffect(() => {
+        // axios get 함수에는 Body를 담을 수 없어 post Method로 요청
+        privateInstance.get(`${import.meta.env.VITE_SERVER_URL}/archive/all`, {
+            params: {
+                category: props.category,
+            }
+        })
+        .then(function (response) {
+            setPosts(response.data)
+        })
+        .catch(function (error) {
+            alert(error.response?.status === 404? "게시물을 불러오지 못하였습니다.(404 에러)" : error.message);
         }
       )}, [props.category])
 
