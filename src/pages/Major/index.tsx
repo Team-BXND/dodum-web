@@ -41,9 +41,7 @@ const Major = () => {
   const onSubmit = async (data: MajorFormData) => {
     setIsSubmitting(true);
     privateInstance
-      .post(`${SERVER_URL}/major-ai/recommend`, {
-        data,
-      })
+      .post(`${SERVER_URL}/major-ai/recommend`, data)
       .then((res) => {
         navigate('/major/result', { state: res.data });
       })
