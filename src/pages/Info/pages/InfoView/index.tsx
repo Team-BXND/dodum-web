@@ -7,8 +7,8 @@ import { AddButton } from '../../../Archive/style';
 import { SERVER_URL } from '@/constants/api';
 import { useLocation } from 'react-router-dom';
 import SubTitle from '@/components/Text/SubTitle';
-import {privateInstance} from "@/api/axiosInstance.ts";
-import axios from "axios";
+import { privateInstance } from '@/api/axiosInstance.ts';
+import axios from 'axios';
 import { getUserRole } from '@/utils/cookie';
 
 const Info = () => {
@@ -28,7 +28,7 @@ const Info = () => {
   const [showSkeleton, setShowSkeleton] = useState(true);
 
   const POSTS_PER_PAGE = 10;
-  const role = getUserRole()
+  const role = getUserRole();
   const endpoint = allowFilter === 'notAllowed' ? 'info/false' : 'info';
   useEffect(() => {
     const controller = new AbortController();
@@ -44,12 +44,20 @@ const Info = () => {
           signal: controller.signal,
         })
         .then((res) => {
-          const fetchedPosts: InfoListProps[] = res.data?.data ?? [];
-          const totalElements = 15;
+          const rawPosts: InfoListProps[] = res.data?.data ?? [];
+
+          const fetchedPosts = rawPosts.map((post) => ({
+            ...post,
+            isApproved: allowFilter === 'allowed',
+          }));
+          const totalElements = res.data.data[0].totalCount;
 
           setTotalPages(Math.ceil(totalElements / POSTS_PER_PAGE));
           setPosts(fetchedPosts);
-          console.log(res.data)
+
+          console.log('원본 데이터:', rawPosts);
+          console.log('가공된 데이터:', fetchedPosts);
+          console.log('totalCount:', totalElements);
         })
         .catch((err) => {
           if (axios.isAxiosError(err)) {
@@ -115,7 +123,13 @@ const Info = () => {
         </S.AllowButton>
         <S.AllowButton
           $active={allowFilter === 'notAllowed'}
-          onClick={() => setAllowFilter('notAllowed')}
+          onClick={() => {
+            if (role !== 'ADMIN' && role !== 'TEACHER') {
+              alert('권한이 없습니다.');
+              return;
+            }
+            setAllowFilter('notAllowed');
+          }}
         >
           미승인
         </S.AllowButton>
@@ -144,7 +158,8 @@ const Info = () => {
       </S.Container>
       <AddButton
         style={{
-          visibility: role === 'SENIOR' || role === 'GRADUATE' ? 'visible' : 'hidden',
+          visibility:
+            role === 'SENIOR' || role === 'GRADUATE' ? 'visible' : 'hidden',
         }}
         to="add"
       >
