@@ -1,8 +1,8 @@
 import Tile from "@/components/TileContents";
 import * as S from "../../style";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import AddButton from "@/components/AddButton";
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 interface IPostsProps {
     id: string,
@@ -22,7 +22,7 @@ function Posts(props: IPageProps) {
     
     useEffect(() => {
         // axios get 함수에는 Body를 담을 수 없어 post Method로 요청
-        axios.post(`${import.meta.env.VITE_SERVER_URL}/archive/all`, {
+        privateInstance.post(`${import.meta.env.VITE_SERVER_URL}/archive/all`, {
             category: props.category,
         })
         .then(function (response) {

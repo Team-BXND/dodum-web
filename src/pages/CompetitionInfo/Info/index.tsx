@@ -1,14 +1,14 @@
 import * as S from "@/pages/CompetitionInfo/style";
 import { useState,useEffect} from "react";
 import { useNavigate,useLocation } from "react-router-dom";
-import axios from "axios";
+import {privateInstance} from "@/api/axiosInstance.ts";
 const Competition_info = () => {
   const VITE_SERVER_URL = import.meta.env.VITE_SERVER_URL.toString();
   const [clickalarm , setClickalarm] = useState(false);
   const location = useLocation();
   const [posts, setPosts] = useState<any[]>([]);
   useEffect(() => {
-    axios.get(`${VITE_SERVER_URL}/contest`, {
+    privateInstance.get(`${VITE_SERVER_URL}/contest`, {
       params: {
         page: 1
       }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import * as S from "../../styles/Posts.style";
 import Body from "@/components/Text/Body";
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 export interface IPosts {
   title: string;
@@ -43,7 +43,7 @@ const Posts = ({ category }: { category: string }) => {
   }, [])
 
   const getPosts = () => {
-    axios.get(`${import.meta.env.VITE_SERVER_URL}/misc`, {
+    privateInstance.get(`${import.meta.env.VITE_SERVER_URL}/misc`, {
       params: {
         category: category,
         criteria: "LATEST",

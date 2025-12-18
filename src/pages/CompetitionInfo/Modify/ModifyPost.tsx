@@ -4,8 +4,8 @@ import Button from "@/components/Button";
 import { useForm, Controller, type SubmitHandler, type ControllerFieldState, type ControllerRenderProps, } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { useEffect,useState } from "react";
+import {privateInstance} from "@/api/axiosInstance.ts";
 const VITE_SERVER_URL= import.meta.env.VITE_SERVER_URL.toString();
 const Buttons = () => {
     const navigator = useNavigate();
@@ -52,7 +52,7 @@ function ModifyPost({ onSubmit, setId }: ModifyPostProps) {
       }, [id]);
 
     useEffect(() => {
-        axios.get(`${VITE_SERVER_URL}/contest/${id}`, {
+        privateInstance.get(`${VITE_SERVER_URL}/contest/${id}`, {
             params: {
                 page: 1,
             },

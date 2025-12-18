@@ -4,10 +4,10 @@ import { PageContext } from '@/contexts/InfoPageContext';
 import InfoPost from '@/components/InfoPost';
 import type { InfoListProps } from '@/types/infoList';
 import { AddButton } from '../../../Archive/style';
-import axios from 'axios';
 import { SERVER_URL } from '@/constants/api';
 import { useLocation } from 'react-router-dom';
 import SubTitle from '@/components/Text/SubTitle';
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 const Info = () => {
   const location = useLocation();
@@ -38,7 +38,7 @@ const Info = () => {
       skeletonTimer = setTimeout(() => {
         setShowSkeleton(false);
       }, 8000);
-      axios
+      privateInstance
         .get(`${SERVER_URL}/${endpoint}`, {
           params: { page: currentPage - 1 },
           signal: controller.signal,

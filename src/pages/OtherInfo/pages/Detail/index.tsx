@@ -1,9 +1,9 @@
 import PostPage from "@/components/PostPage";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { IPostPageProps } from "@/components/PostPage";
 import NotFound from "@/components/NotFound";
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 function EtcDetail() {
 
@@ -18,7 +18,7 @@ function EtcDetail() {
         const location = path.split("/");
         const postId = location[3];
 
-        axios.get(`${import.meta.env.VITE_SERVER_URL}/misc/${postId}`, {
+        privateInstance.get(`${import.meta.env.VITE_SERVER_URL}/misc/${postId}`, {
             params: {
                 id: postId,
             }

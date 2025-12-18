@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ProfileImg from '@/assets/info/test.png';
 import Caption from '@/components/Text/Caption';
-import axios from 'axios';
 import { SERVER_URL } from '@/constants/api';
+import {privateInstance} from "@/api/axiosInstance.ts";
 const InfoDetail = () => {
   const location = useLocation();
 
@@ -23,7 +23,7 @@ const InfoDetail = () => {
   const [Active, setActive] = useState(false);
 
   const handleApprovalClick = () => {
-    axios
+    privateInstance
       .post(`${SERVER_URL}/${parentsProps.id}/approve`, {
         id: parentsProps.id,
       })
@@ -36,7 +36,7 @@ const InfoDetail = () => {
   };
 
   const handleRefuseClick = () => {
-    axios
+    privateInstance
       .post(`${SERVER_URL}/${parentsProps.id}/disappove`, {
         id: parentsProps.id,
       })
