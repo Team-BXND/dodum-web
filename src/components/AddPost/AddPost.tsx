@@ -64,38 +64,39 @@ function AddPost({ onSubmit, author, value = "", category, subtitle }: AddPostPr
   }
 
   return (
-    <S.Container onSubmit={handleSubmit(handleConvertMarkdown)}>
-      <S.Title placeholder="제목을 입력하세요." {...register("title")} />
-      {subtitle ? <S.SubTitle placeholder="부제목을 입력하세요." {...register("subTitle")} /> : null}
-      <S.TagsContainer>
-        {author ? <S.Author placeholder="작성자를 입력하세요." {...register("author")} /> : null}
-        <S.Category defaultValue="" {...register("category")} required>
-          <option disabled hidden value="">카테고리를 선택하세요.</option>
-          {Object.values(category).map((value) => {
-            return (
-              <option key={value} value={value}>{value}</option>
-            )
-          })}
-        </S.Category>
-      </S.TagsContainer>
-      <Controller
-        name="content"
-        control={control}
-        render={
-          ({ field, fieldState }: IController) => {
-            return (
-              <>
-                <Editor thumbnail={setThumbnail} value={field.value} setValue={field.onChange} />
-                {fieldState.error && (
-                  <p>{fieldState.error?.message}</p>
-                )}
-              </>)
-          }
-        } />
-    </S.Container>
+    <>
+      <S.Container onSubmit={handleSubmit(handleConvertMarkdown)}>
+        <S.Title placeholder="제목을 입력하세요." {...register("title")} />
+        {subtitle ? <S.SubTitle placeholder="부제목을 입력하세요." {...register("subTitle")} /> : null}
+        <S.TagsContainer>
+          {author ? <S.Author placeholder="작성자를 입력하세요." {...register("author")} /> : null}
+          <S.Category defaultValue="" {...register("category")} required>
+            <option disabled hidden value="">카테고리를 선택하세요.</option>
+            {Object.values(category).map((value) => {
+              return (
+                <option key={value} value={value}>{value}</option>
+              )
+            })}
+          </S.Category>
+        </S.TagsContainer>
+        <Controller
+          name="content"
+          control={control}
+          render={
+            ({ field, fieldState }: IController) => {
+              return (
+                <>
+                  <Editor thumbnail={setThumbnail} value={field.value} setValue={field.onChange} />
+                  {fieldState.error && (
+                    <p>{fieldState.error?.message}</p>
+                  )}
+                </>)
+            }
+          } />
+      </S.Container>
 
       <Buttons />
-    </S.Container>
+    </>
   )
 }
 

@@ -31,3 +31,11 @@ export const TitleStyle = css`
     return findColor(props);
   }};
 `;
+export const TileTitleStyle = css`
+  font-size: 32px;
+  letter-spacing: -5%;
+  font-weight: bold;
+  color: ${(props) => {
+    return findColor(props);
+  }};
+`;

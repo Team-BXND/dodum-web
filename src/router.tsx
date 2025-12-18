@@ -3,13 +3,17 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from './App';
 
 // Info 페이지
-import Info from '@/pages/info/infoView';
+import Info from './pages/info/pages/InfoView/InfoView.tsx';
 import Detail from './pages/Archive/pages/Detail';
 import CategoryRoute from './pages/Archive/CategoryRoute';
 import AddArchive from './pages/Archive/pages/AddArchive';
 import EditArchive from './pages/Archive/pages/EditArchive';
 import Archive from './pages/Archive/Archive';
 import MajorResult from './pages/Major/Result/MajorResult';
+import InfoDetail from './pages/info/pages/InfoDetail/InfoDetail.tsx';
+import { PageProvider } from './pages/info/Context/InfoPageContext.tsx';
+import AddInfo from '@/pages/info/add/AddInfo.tsx'
+import AlterPage from './pages/info/pages/InfoAlter/AlterPages.tsx';
 
 // Major
 import Major from '@/pages/Major/Major';
@@ -31,6 +35,11 @@ import Posts from './pages/OtherInfo/pages/Posts';
 import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
 import EtcDetail from './pages/OtherInfo/pages/Detail';
 
+import Profile from './pages/Profile/Pages/Profile';
+import ProfilePosts from './pages/Profile/Pages/Posts';
+import ProfileDetail from './pages/Profile/Pages/ProfileDetail';
+import ProfileEdit from './pages/Profile/Pages/ProfileEdit';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -40,22 +49,60 @@ const router = createBrowserRouter([
       { path: 'major', element: <Major /> },
       { path: 'major/result', element: <MajorResult /> },
 
+      {
+        path: 'profile',
+        element: <Profile />,
+      },
+      {
+        path: 'profile/posts',
+        element: <ProfilePosts />,
+      },
+
+      {
+        path: 'profile/detail',
+        element: <ProfileDetail />,
+      },
+      {
+        path: 'profile/edit',
+        element: <ProfileEdit />,
+      },
+
       // Login
       { path: 'login', element: <Login /> },
       {
         path: 'member',
         element: <Member />,
         children: [
-          { path: '/start', element: <Start /> },
-          { path: '/member1', element: <Member1 /> },
-          { path: '/member2', element: <Member2 /> },
-          { path: '/certification', element: <Certification /> },
-          { path: '/pwchange1', element: <PWChange1 /> },
-          { path: '/pwchange2', element: <PWChange2 /> },
+          { path: 'start', element: <Start /> },
+          { path: 'member1', element: <Member1 /> },
+          { path: 'member2', element: <Member2 /> },
+          { path: 'certification', element: <Certification /> },
+          { path: 'pwchange1', element: <PWChange1 /> },
+          { path: 'pwchange2', element: <PWChange2 /> },
         ],
       },
 
       // Archive
+      {
+        path: 'info',
+        element: (
+          <PageProvider>
+            <Info />
+          </PageProvider>
+        ),
+      },
+      {
+        path: 'info/:id',
+        element: <InfoDetail />,
+      },
+      {
+        path: 'info/add',
+        element: <AddInfo />,
+      },
+      {
+        path: 'info/alter',
+        element: <AlterPage />,
+      },
       {
         path: 'archive',
         element: <Archive />,

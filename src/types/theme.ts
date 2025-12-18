@@ -7,11 +7,10 @@ export interface Theme {
   btnSecondary: string;
   btnGrayPrimary: string;
   btnGraySecondary: string;
+  btnRedPrimary: string;
+  btnRedSecondary: string;
   bgPrimary: string;
   bgSecondary: string;
   shadowLight: string;
-<<<<<<< HEAD
+  boxShadow: string;
 }
-=======
-}
->>>>>>> origin/develop
