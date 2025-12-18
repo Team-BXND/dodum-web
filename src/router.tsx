@@ -3,20 +3,20 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from './App';
 
 // Info 페이지
-import Info from './pages/info/pages/InfoView/InfoView.tsx';
-import Detail from './pages/Archive/pages/Detail';
-import CategoryRoute from './pages/Archive/CategoryRoute';
-import AddArchive from './pages/Archive/pages/AddArchive';
-import EditArchive from './pages/Archive/pages/EditArchive';
-import Archive from './pages/Archive/Archive';
-import MajorResult from './pages/Major/Result/MajorResult';
-import InfoDetail from './pages/info/pages/InfoDetail/InfoDetail.tsx';
-import { PageProvider } from './pages/info/Context/InfoPageContext.tsx';
-import AddInfo from '@/pages/info/add/AddInfo.tsx'
-import AlterPage from './pages/info/pages/InfoAlter/AlterPages.tsx';
+import Info from '@/pages/Info/pages/InfoView';
+import Detail from '@/pages/Archive/pages/Detail';
+import CategoryRoute from '@/pages/Archive/CategoryRoute';
+import AddArchive from '@/pages/Archive/pages/AddArchive';
+import EditArchive from '@/pages/Archive/pages/EditArchive';
+import Archive from '@/pages/Archive';
+import MajorResult from '@/pages/Major/Result/MajorResult';
+import InfoDetail from '@/pages/Info/pages/InfoDetail';
+import { PageProvider } from '@/contexts/InfoPageContext';
+import AddInfo from '@/pages/Info/add/AddInfo'
+import AlterPage from '@/pages/Info/pages/InfoAlter/AlterPages';
 
 // Major
-import Major from '@/pages/Major/Major';
+import Major from '@/pages/Major';
 
 // Login 과정
 import Login from '@/pages/Login/Login';
@@ -35,10 +35,10 @@ import Posts from './pages/OtherInfo/pages/Posts';
 import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
 import EtcDetail from './pages/OtherInfo/pages/Detail';
 
-import Profile from './pages/Profile/Pages/Profile';
-import ProfilePosts from './pages/Profile/Pages/Posts';
-import ProfileDetail from './pages/Profile/Pages/ProfileDetail';
-import ProfileEdit from './pages/Profile/Pages/ProfileEdit';
+import Profile from '@/pages/Profile/pages/Profile';
+import ProfilePosts from '@/pages/Profile/pages/Posts';
+import ProfileDetail from '@/pages/Profile/pages/ProfileDetail';
+import ProfileEdit from '@/pages/Profile/pages/ProfileEdit';
 
 const router = createBrowserRouter([
   {
