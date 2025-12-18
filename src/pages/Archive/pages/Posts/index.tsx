@@ -22,11 +22,7 @@ function Posts(props: IPageProps) {
     
     useEffect(() => {
         // axios get 함수에는 Body를 담을 수 없어 post Method로 요청
-        privateInstance.get(`${import.meta.env.VITE_SERVER_URL}/archive/all`, {
-            params: {
-                category: props.category,
-            }
-        })
+        privateInstance.get(`${import.meta.env.VITE_SERVER_URL}/archive/all`)
         .then(function (response) {
             setPosts(response.data)
         })
