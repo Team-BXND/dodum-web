@@ -24,9 +24,7 @@ function Editor({value, setValue, thumbnail}:IProps) {
             try {
                 //TODO: 이미지 업로드 API 전송 형식 확인 필요
                 axios.post(`${import.meta.env.VITE_SERVER_URL}/files/upload`, {
-                    params: {
-                        file: file
-                    }
+                    file: file
                 })
                 .then((response) => {
                     setImageUrl(response.data);
