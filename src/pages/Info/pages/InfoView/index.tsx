@@ -51,7 +51,7 @@ const Info = () => {
           setPosts(fetchedPosts);
         })
         .catch((err) => {
-          if (axios.isAxiosError(err)) {
+          if (privateInstance.isAxiosError(err)) {
             console.error(err.response?.data || err.message);
           } else {
             console.error(err);
