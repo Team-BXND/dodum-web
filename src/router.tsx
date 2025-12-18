@@ -12,7 +12,7 @@ import Archive from './pages/Archive/Archive';
 import MajorResult from './pages/Major/Result/MajorResult';
 import InfoDetail from './pages/info/pages/InfoDetail/InfoDetail.tsx';
 import { PageProvider } from './pages/info/Context/InfoPageContext.tsx';
-import AddInfo from '@/pages/info/Add/AddInfo.tsx'
+import AddInfo from '@/pages/info/add/AddInfo.tsx'
 import AlterPage from './pages/info/pages/InfoAlter/AlterPages.tsx';
 
 // Major
