@@ -13,7 +13,11 @@ const handleSubmit: SubmitHandler<IFormInput> = (data) => {
       thumbnail: data.thumbnail,
     })
     .then((response) => {
-      alert(response.data);
+      if (response.data.status === "success") {
+        alert("게시글 작성에 성공하였습니다.");
+      } else {
+        alert(response.data.status);
+      }
     })
     .catch((error) => {
       alert(error.message);
