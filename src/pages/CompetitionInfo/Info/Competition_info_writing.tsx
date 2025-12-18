@@ -2,8 +2,8 @@ import * as S from '@/pages/CompetitionInfo/style';
 import { useState,useEffect } from 'react';
 import { useLocation,useParams} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {privateInstance} from "@/api/axiosInstance.ts";
 const Competition_info_writing=()=>{
     const navigate=useNavigate();
     interface CompetitionData {
@@ -21,7 +21,7 @@ const Competition_info_writing=()=>{
     const location=useLocation();
     const VITE_SERVER_URL = import.meta.env.VITE_SERVER_URL.toString();
     useEffect(()=>{
-        axios.get(`${VITE_SERVER_URL}/contest/${id}`,{
+        privateInstance.get(`${VITE_SERVER_URL}/contest/${id}`,{
             params:{
                 page:1
             }
@@ -35,7 +35,7 @@ const Competition_info_writing=()=>{
     }
 
     const onClickDelete=()=>{
-        axios.delete(`${VITE_SERVER_URL}/contest/${id}`)
+        privateInstance.delete(`${VITE_SERVER_URL}/contest/${id}`)
         .then((response)=>{
             alert("삭제되었습니다.");
             window.location.replace("/competition_info");

@@ -9,10 +9,10 @@ import {
   getRandomObjectMajorQuestions,
   getRandomSubjectQuestions,
 } from '@/utils/getRandomMajorQuestions';
-import axios from 'axios';
 import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 const Major = () => {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ const Major = () => {
 
   const onSubmit = async (data: MajorFormData) => {
     setIsSubmitting(true);
-    axios
+    privateInstance
       .post(`${SERVER_URL}/major-ai/recommend`, {
         data,
       })

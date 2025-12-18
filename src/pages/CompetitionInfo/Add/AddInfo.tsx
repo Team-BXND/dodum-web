@@ -1,10 +1,10 @@
-import axios from 'axios';
 import AddInfoPost, { type IFormInput } from '../Add/AddInfoPost';
 import type { SubmitHandler } from 'react-hook-form';
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 const handleSubmit: SubmitHandler<IFormInput> = (data) => {
   const VITE_SERVER_URL = import.meta.env.VITE_SERVER_URL.toString();
-  axios
+  privateInstance
     .post(`${VITE_SERVER_URL}/contest`, {
         title: data.title,
         subtitle: data.subtitle,

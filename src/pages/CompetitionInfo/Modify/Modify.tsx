@@ -1,14 +1,14 @@
-import axios from 'axios';
 import ModifyPost, { type IFormInput } from '@/pages/CompetitionInfo/Modify/ModifyPost.tsx';
 import type { SubmitHandler } from 'react-hook-form';
 import { useState } from 'react';
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 const VITE_SERVER_URL = import.meta.env.VITE_SERVER_URL.toString();
 function Modify() {
   const [id, setId] = useState<number | null>(null);
 
   const handleSubmit: SubmitHandler<IFormInput> = (data) => {
-    axios
+    privateInstance
       .put(`${VITE_SERVER_URL}/contest/${id}`, {
           title: data.title,
           subtitle: data.subtitle,

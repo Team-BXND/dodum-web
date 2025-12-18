@@ -1,9 +1,9 @@
-import axios from "axios";
 import AddPost, { type IFormInput } from "@/components/AddPost";
 import type { SubmitHandler } from "react-hook-form";
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 const handleSubmit: SubmitHandler<IFormInput> = (data) => {
-    axios.post(`${import.meta.env.VITE_SERVER_URL}/misc`, {
+    privateInstance.post(`${import.meta.env.VITE_SERVER_URL}/misc`, {
         title: data.title,
         subTitle: data.subTitle,
         category: data.category,

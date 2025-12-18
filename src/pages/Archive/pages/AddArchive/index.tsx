@@ -1,9 +1,9 @@
-import axios from 'axios';
 import AddPost, { type IFormInput } from '@/components/AddPost';
 import type { SubmitHandler } from 'react-hook-form';
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 const handleSubmit: SubmitHandler<IFormInput> = (data) => {
-  axios
+  privateInstance
     .post(`${import.meta.env.VITE_SERVER_URL}/archive/write`, {
       title: data.title,
       subTitle: data.subTitle,
@@ -21,7 +21,7 @@ const handleSubmit: SubmitHandler<IFormInput> = (data) => {
 };
 
 const handleEditSubmit: SubmitHandler<IFormInput> = (data) => {
-  axios
+  privateInstance
     .patch(`${import.meta.env.VITE_SERVER_URL}/archive`, {
       title: data.title,
       subTitle: data.subTitle,

@@ -2,12 +2,12 @@ import SubTitle from "@/components/Text/SubTitle"
 import { type IUserInfo } from "../Profile"
 import * as S from "../../styles/ProfileDetail.style"
 import Caption from "@/components/Text/Caption"
-import axios from "axios"
 import { useEffect, useState } from "react"
 import Button from "@/components/Buttons"
 import { useNavigate } from "react-router-dom"
 import { ProfileImage } from "../../styles/Profile.style"
 import Placeholder from "@/assets/Profile/Placeholder.png"
+import {privateInstance} from "@/api/axiosInstance.ts";
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 function Detail() {
@@ -15,7 +15,7 @@ function Detail() {
   const navigator = useNavigate();
 
   const GetUserInfo = () => {
-		axios.get(`${SERVER_URL}/profile`)
+		privateInstance.get(`${SERVER_URL}/profile`)
 		.then((response) => {
 			setUserInfo(response.data)
 		})

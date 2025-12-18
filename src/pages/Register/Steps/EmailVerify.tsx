@@ -28,8 +28,8 @@ function EmailVerify() {
       window.location.replace("/login");
     })
     .catch((error) => {
-      alert(`회원가입에 실패했습니다. ${error.response.data.error.message} ${error.response.data.status === 409 ? "\n아이디 변경 후 다시 시도해주세요." : ""}`);
-      window.location.replace("/register");
+      alert(`회원가입에 실패했습니다. ${error.response.data.error.message} ${error.response.data.status === 409 ? "\n아이디 또는 이메일 변경 후 다시 시도해주세요." : ""}`);
+      window.location.replace("/register/greeting");
     })
   }
 

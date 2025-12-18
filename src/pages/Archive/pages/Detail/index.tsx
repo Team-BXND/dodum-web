@@ -1,9 +1,9 @@
 import PostPage from "@/components/PostPage";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { IPostPageProps } from "@/components/PostPage";
 import NotFound from "@/components/NotFound";
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 function Detail() {
 
@@ -17,7 +17,7 @@ function Detail() {
         const location = path.split("/");
         const postId = location[3];
 
-        axios.get(`${import.meta.env.VITE_SERVER_URL}/archive/${postId}`, {
+        privateInstance.get(`${import.meta.env.VITE_SERVER_URL}/archive/${postId}`, {
             params: {
                 archiveId: postId,
             }

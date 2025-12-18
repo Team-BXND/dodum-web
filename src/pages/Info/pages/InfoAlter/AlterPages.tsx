@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { SERVER_URL } from '@/constants/api';
 import InfoAlter from '../InfoAlter';
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 export interface IFormInput {
   title: string;
@@ -14,7 +14,7 @@ const AlterPage = () => {
   const state = location.state;
 
   const onSubmit = async (data: IFormInput) => {
-    axios
+    privateInstance
       .put(`${SERVER_URL}/info/${state.id}`, data)
       .then((respone) => {
         alert('수정 완료!');

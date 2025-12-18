@@ -1,7 +1,6 @@
 import { type IUserInfo } from "../Profile"
 import * as S from "../../styles/ProfileDetail.style"
 import Caption from "@/components/Text/Caption"
-import axios from "axios"
 import { useEffect, useState } from "react"
 import Button from "@/components/Buttons"
 import { useForm, type SubmitHandler } from "react-hook-form"
@@ -11,6 +10,7 @@ import SubTitle from "@/components/Text/SubTitle"
 import { useNavigate } from "react-router-dom"
 import Placeholder from "@/assets/Profile/Placeholder.png"
 import { ProfileImage } from "../../styles/Profile.style"
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
@@ -29,7 +29,7 @@ function ProfileEdit() {
   const navigator = useNavigate();
 
   const GetUserInfo = () => {
-		axios.get(`${SERVER_URL}/profile`)
+		privateInstance.get(`${SERVER_URL}/profile`)
 		.then((response) => {
 			setUserInfo(response.data)
 		})
@@ -41,7 +41,7 @@ function ProfileEdit() {
 	}
 
   const submit: SubmitHandler<EditForm> = (data) => {
-    axios.patch(`${SERVER_URL}/profile`, {
+    privateInstance.patch(`${SERVER_URL}/profile`, {
       grade: data.grade,
       class_no: data.class_no,
       student_no: data.student_no,

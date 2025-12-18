@@ -8,8 +8,8 @@ import { MiniTile } from "@/components/TileContents";
 import Placeholder from "@/assets/Profile/Placeholder.png"
 import Archive from "@/assets/Profile/Archive.svg"
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Button from "@/components/Buttons";
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
@@ -60,7 +60,7 @@ export const MyPosts = ({posts} : {posts: IPosts[]}) => {
 }
 
 export const getPosts = (setPosts: React.Dispatch<React.SetStateAction<IPosts[]>>) => {
-	axios.get(`${SERVER_URL}/profile/write`)
+	privateInstance.get(`${SERVER_URL}/profile/write`)
 	.then((response) => {
 		if(Array.isArray(response))
 			setPosts(response.data);
@@ -76,7 +76,7 @@ function Profile() {
 	const [posts, setPosts] = useState<IPosts[]>([])
 
 	const GetUserInfo = () => {
-		axios.get(`${SERVER_URL}/profile`)
+		privateInstance.get(`${SERVER_URL}/profile`)
 		.then((response) => {
 			setUserInfo(response.data)
 		})
