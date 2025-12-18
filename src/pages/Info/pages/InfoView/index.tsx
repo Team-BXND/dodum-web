@@ -8,6 +8,7 @@ import { SERVER_URL } from '@/constants/api';
 import { useLocation } from 'react-router-dom';
 import SubTitle from '@/components/Text/SubTitle';
 import {privateInstance} from "@/api/axiosInstance.ts";
+import axios from "axios";
 
 const Info = () => {
   const location = useLocation();
@@ -51,7 +52,7 @@ const Info = () => {
           setPosts(fetchedPosts);
         })
         .catch((err) => {
-          if (privateInstance.isAxiosError(err)) {
+          if (axios.isAxiosError(err)) {
             console.error(err.response?.data || err.message);
           } else {
             console.error(err);
