@@ -41,7 +41,7 @@ function ProfileEdit() {
 	}
 
   const submit: SubmitHandler<EditForm> = (data) => {
-    privateInstance.patch(`${SERVER_URL}/profile`, {
+    privateInstance.put(`${SERVER_URL}/profile`, {
       grade: data.grade,
       class_no: data.class_no,
       student_no: data.student_no,
