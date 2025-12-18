@@ -1,5 +1,5 @@
 import axios from 'axios';
-import AddInfoPost, { type IFormInput } from './AddInfoPost';
+import AddInfoPost, { type IFormInput } from '@/pages/info/add/AddInfoPost'
 import type { SubmitHandler } from 'react-hook-form';
 import { SERVER_URL } from '@/constants/api';
 import { useState } from 'react';
