@@ -13,7 +13,7 @@ function RegisterStep() {
     const isValid = await trigger(["id", "password", "passwordConfirm"])
 
     if(isValid) {
-      navigate('/register/3')
+      navigate('/register/student-info')
     }
   }
 

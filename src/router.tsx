@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import App from './App';
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 // Info 페이지
 import Info from '@/pages/Info/pages/InfoView';
@@ -38,10 +39,27 @@ import ProfileDetail from '@/pages/Profile/pages/ProfileDetail';
 import ProfileEdit from '@/pages/Profile/pages/ProfileEdit';
 
 const router = createBrowserRouter([
+  // Login & Register
+  { path: 'login', element: <Login /> },
+  {
+    path: 'register',
+    element: <Register />,
+    children: [
+      { path: 'greeting', element: <Greeting /> },
+      { path: 'credentials', element: <Credentials /> },
+      { path: 'student-info', element: <StudentInfo /> },
+      { path: 'email-verify', element: <EmailVerify /> },
+    ],
+  },
   {
     path: '/',
     element: <App />,
     children: [
+      // 루트 경로 리다이렉트
+      { index: true, element: <Navigate to="/info" replace /> },
+      {
+        element: <ProtectedRoute />,
+        children: [
       // Major
       { path: 'major', element: <Major /> },
       { path: 'major/result', element: <MajorResult /> },
@@ -62,19 +80,6 @@ const router = createBrowserRouter([
       {
         path: 'profile/edit',
         element: <ProfileEdit />,
-      },
-
-      // Login
-      { path: 'login', element: <Login /> },
-      {
-        path: 'register',
-        element: <Register />,
-        children: [
-          { path: 'greeting', element: <Greeting /> },
-          { path: 'credentials', element: <Credentials /> },
-          { path: 'student-info', element: <StudentInfo /> },
-          { path: 'email-verify', element: <EmailVerify /> },
-        ],
       },
 
       // Archive
@@ -150,6 +155,8 @@ const router = createBrowserRouter([
       {
         path: 'etc/:category/:postId',
         element: <EtcDetail />,
+      },
+        ],
       },
     ],
   },
