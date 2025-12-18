@@ -4,17 +4,17 @@ import App from './App';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
 // Info 페이지
-import Info from '@/pages/Info/pages/InfoView';
+import Info from '@/pages/info/pages/InfoView';
 import Detail from '@/pages/Archive/pages/Detail';
 import CategoryRoute from '@/pages/Archive/CategoryRoute';
 import AddArchive from '@/pages/Archive/pages/AddArchive';
 import EditArchive from '@/pages/Archive/pages/EditArchive';
 import Archive from '@/pages/Archive';
 import MajorResult from '@/pages/Major/Result/MajorResult';
-import InfoDetail from '@/pages/Info/pages/InfoDetail';
+import InfoDetail from '@/pages/info/pages/InfoDetail';
 import { PageProvider } from '@/contexts/InfoPageContext';
-import AddInfo from '@/pages/Info/add/AddInfo'
-import AlterPage from '@/pages/Info/pages/InfoAlter/AlterPages';
+import AddInfo from '@/pages/info/add/AddInfo';
+import AlterPage from '@/pages/info/pages/InfoAlter/AlterPages';
 
 // Major
 import Major from '@/pages/Major';
@@ -37,8 +37,8 @@ import Profile from '@/pages/Profile/pages/Profile';
 import ProfilePosts from '@/pages/Profile/pages/Posts';
 import ProfileDetail from '@/pages/Profile/pages/ProfileDetail';
 import ProfileEdit from '@/pages/Profile/pages/ProfileEdit';
-import InfoView from "@/pages/Info/pages/InfoView";
-import Competition_info from "@/pages/CompetitionInfo/Info";
+import InfoView from '@/pages/info/pages/InfoView';
+import Competition_info from '@/pages/CompetitionInfo/Info';
 
 const router = createBrowserRouter([
   // Login & Register
@@ -62,107 +62,107 @@ const router = createBrowserRouter([
       {
         element: <ProtectedRoute />,
         children: [
-      // Major
-      { path: 'major', element: <Major /> },
-      { path: 'major/result', element: <MajorResult /> },
+          // Major
+          { path: 'major', element: <Major /> },
+          { path: 'major/result', element: <MajorResult /> },
 
-      {
-        path: 'profile',
-        element: <Profile />,
-      },
-      {
-        path: 'profile/posts',
-        element: <ProfilePosts />,
-      },
+          {
+            path: 'profile',
+            element: <Profile />,
+          },
+          {
+            path: 'profile/posts',
+            element: <ProfilePosts />,
+          },
 
-      {
-        path: 'profile/detail',
-        element: <ProfileDetail />,
-      },
-      {
-        path: 'profile/edit',
-        element: <ProfileEdit />,
-      },
+          {
+            path: 'profile/detail',
+            element: <ProfileDetail />,
+          },
+          {
+            path: 'profile/edit',
+            element: <ProfileEdit />,
+          },
 
-      {
-        path: 'contest',
-        element: <Competition_info />
-      },
+          {
+            path: 'contest',
+            element: <Competition_info />,
+          },
 
-      // Archive
-      {
-        path: 'info',
-        element: (
-          <PageProvider>
-            <Info />
-          </PageProvider>
-        ),
-      },
-      {
-        path: 'info/:id',
-        element: <InfoDetail />,
-      },
-      {
-        path: 'info/add',
-        element: <AddInfo />,
-      },
-      {
-        path: 'info/alter',
-        element: <AlterPage />,
-      },
-      {
-        path: 'archive',
-        element: <Archive />,
-        children: [
-          { index: true, element: <Navigate to="club" replace /> },
-          { path: ':category', element: <CategoryRoute /> },
-          { path: ':category/:postId', element: <Detail /> },
-          { path: 'add', element: <AddArchive /> },
-          { path: 'edit/:postId', element: <EditArchive /> },
-        ],
-      },
-      {
-        path: 'info',
-        element: <Info />,
-      },
-      {
-        path: 'etc',
-        element: <OtherInfo />,
-        children: [
+          // Archive
           {
-            index: true,
-            element: <Navigate to="all" replace />,
+            path: 'info',
+            element: (
+              <PageProvider>
+                <Info />
+              </PageProvider>
+            ),
           },
           {
-            path: 'all',
-            element: <Posts category="전체" />,
+            path: 'info/:id',
+            element: <InfoDetail />,
           },
           {
-            path: 'benefits',
-            element: <Posts category="학교지원" />,
+            path: 'info/add',
+            element: <AddInfo />,
           },
           {
-            path: 'tools',
-            element: <Posts category="개발도구" />,
+            path: 'info/alter',
+            element: <AlterPage />,
           },
           {
-            path: 'courses',
-            element: <Posts category="강의추천" />,
+            path: 'archive',
+            element: <Archive />,
+            children: [
+              { index: true, element: <Navigate to="club" replace /> },
+              { path: ':category', element: <CategoryRoute /> },
+              { path: ':category/:postId', element: <Detail /> },
+              { path: 'add', element: <AddArchive /> },
+              { path: 'edit/:postId', element: <EditArchive /> },
+            ],
           },
           {
-            path: 'add',
-            element: <AddEtcInfo />,
+            path: 'info',
+            element: <Info />,
           },
           {
-            path: 'edit/:postId',
-            element: <EditArchive />,
+            path: 'etc',
+            element: <OtherInfo />,
+            children: [
+              {
+                index: true,
+                element: <Navigate to="all" replace />,
+              },
+              {
+                path: 'all',
+                element: <Posts category="전체" />,
+              },
+              {
+                path: 'benefits',
+                element: <Posts category="학교지원" />,
+              },
+              {
+                path: 'tools',
+                element: <Posts category="개발도구" />,
+              },
+              {
+                path: 'courses',
+                element: <Posts category="강의추천" />,
+              },
+              {
+                path: 'add',
+                element: <AddEtcInfo />,
+              },
+              {
+                path: 'edit/:postId',
+                element: <EditArchive />,
+              },
+            ],
           },
-        ],
-      },
-      {
-        path: 'etc/:category/:postId',
-        element: <EtcDetail />,
-      },
+          {
+            path: 'etc/:category/:postId',
+            element: <EtcDetail />,
+          },
         ],
       },
     ],
