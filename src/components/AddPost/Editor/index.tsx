@@ -3,6 +3,7 @@ import 'react-quill-new/dist/quill.snow.css'
 import { QuillStyle, QuillWrapper } from "./style";
 import { useRef, useState } from "react";
 import axios from "axios";
+import {privateInstance} from "@/api/axiosInstance.ts";
 
 interface IProps {
     value?: string;
@@ -14,36 +15,49 @@ function Editor({value, setValue, thumbnail}:IProps) {
     const quillRef = useRef<ReactQuill>(null);
 
     const imageHandler = () => {
-        const input = document.createElement('input'); //가상의 input을 만들어 이미지를 업로드하도록 유도
+        const input = document.createElement('input');
         input.setAttribute('type', 'file');
         input.setAttribute('accept', 'image/*');
         input.click();
-        input.addEventListener("change", async () => {
-            const file = input.files?.[0]; //업로드한 이미지 파일
-            const [imageUrl, setImageUrl] = useState("")
-            try {
-                //TODO: 이미지 업로드 API 전송 형식 확인 필요
-                axios.post(`${import.meta.env.VITE_SERVER_URL}/files/upload`, {
-                    file: file
-                })
-                .then((response) => {
-                    setImageUrl(response.data);
-                })
-                .catch((error) => {
-                    alert(error.response);
-                })
 
+        input.onchange = async () => { // addEventListener 대신 onchange 사용 (간결함)
+            const file = input.files?.[0];
+            if (!file) return;
+
+            // 1. FormData 객체 생성
+            const formData = new FormData();
+            formData.append("file", file); // 백엔드에서 받는 key 이름 확인 필요 ('file' or 'image')
+
+            try {
+                // 2. 이미지 업로드 요청
+                const res = await privateInstance.post(`${import.meta.env.VITE_SERVER_URL}/files/upload`, formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    }
+                });
+
+                // 3. 서버에서 받은 이미지 URL (서버 응답 구조에 따라 res.data.url 등일 수 있음)
+                const imageUrl = res.data.url;
+
+                // 4. 썸네일 상태 업데이트
                 thumbnail(imageUrl);
 
-                const editor = quillRef.current?.getEditor(); //에디터 가져오기
-                const range = editor?.getSelection(); //현재 커서 위치
-                editor?.insertEmbed(range?.index || 0, "image", imageUrl); //이미지 삽입
+                // 5. 에디터에 이미지 삽입
+                const editor = quillRef.current?.getEditor();
+                const range = editor?.getSelection();
+
+                // 커서 위치가 없으면 맨 끝에 삽입
+                editor?.insertEmbed(range?.index ?? 0, "image", imageUrl);
+
+                // 이미지 삽입 후 커서를 이미지 뒤로 이동 (선택 사항)
+                editor?.setSelection((range?.index ?? 0) + 1);
+
+            } catch (error) {
+                console.error("이미지 업로드 실패:", error);
+                alert("이미지 업로드에 실패했습니다.");
             }
-            catch(error) {
-                alert(error);
-            }
-        })
-    }
+        };
+    };
 
     const modules = {
     toolbar: {
