@@ -37,6 +37,8 @@ import Profile from '@/pages/Profile/pages/Profile';
 import ProfilePosts from '@/pages/Profile/pages/Posts';
 import ProfileDetail from '@/pages/Profile/pages/ProfileDetail';
 import ProfileEdit from '@/pages/Profile/pages/ProfileEdit';
+import InfoView from "@/pages/Info/pages/InfoView";
+import Competition_info from "@/pages/CompetitionInfo/Info";
 
 const router = createBrowserRouter([
   // Login & Register
@@ -80,6 +82,11 @@ const router = createBrowserRouter([
       {
         path: 'profile/edit',
         element: <ProfileEdit />,
+      },
+
+      {
+        path: 'contest',
+        element: <Competition_info />
       },
 
       // Archive
