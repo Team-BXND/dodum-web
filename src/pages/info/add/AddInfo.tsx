@@ -1,21 +1,23 @@
 import axios from 'axios';
-import AddInfoPost, { type IFormInput } from '@/pages/info/add/AddInfoPost'
+import AddInfoPost, { type IFormInput } from '@/pages/info/add/AddInfoPost';
 import type { SubmitHandler } from 'react-hook-form';
 import { SERVER_URL } from '@/constants/api';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function AddInfo() {
-  const [showToast, setShowToast] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleSubmit: SubmitHandler<IFormInput> = (data) => {
     axios
-      .post(`${SERVER_URL}/info`, {
-        title: data.title,
-        content: data.content,
-        author: data.author,
-      })
+      .post(
+        `${SERVER_URL}/info`,
+        {
+          title: data.title,
+          content: data.content,
+          author: data.author,
+        },
+        { timeout: 3000 }
+      )
       .then(() => {
         navigate('/info', {
           state: {

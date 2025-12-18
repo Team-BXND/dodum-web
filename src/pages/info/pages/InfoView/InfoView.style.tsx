@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import SearchIcon from '@/assets/info/search.svg';
+import SearchIcon from '@/assets/info/Search.svg';
 import CheckIcon from '@/assets/info/Check.svg';
 
 interface AllowButtonProps {
