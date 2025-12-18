@@ -20,14 +20,11 @@ import Major from '@/pages/Major';
 
 // Login 과정
 import Login from '@/pages/Login/Login';
-
-import Member from './pages/Login/Member';
-import Start from './pages/Login/Start';
-import Member1 from './pages/Login/Member1';
-import Member2 from './pages/Login/Member2';
-import Certification from '@/pages/Login/Certification.tsx';
-import PWChange1 from './pages/Login/PWChange1';
-import PWChange2 from './pages/Login/PWChange2';
+import Register from '@/pages/Register/Register';
+import Greeting from '@/pages/Register/Steps/Greeting';
+import Credentials from '@/pages/Register/Steps/Credentials';
+import StudentInfo from '@/pages/Register/Steps/StudentInfo';
+import EmailVerify from '@/pages/Register/Steps/EmailVerify';
 
 // OtherInfo (etc)
 import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
@@ -70,15 +67,13 @@ const router = createBrowserRouter([
       // Login
       { path: 'login', element: <Login /> },
       {
-        path: 'member',
-        element: <Member />,
+        path: 'register',
+        element: <Register />,
         children: [
-          { path: 'start', element: <Start /> },
-          { path: 'member1', element: <Member1 /> },
-          { path: 'member2', element: <Member2 /> },
-          { path: 'certification', element: <Certification /> },
-          { path: 'pwchange1', element: <PWChange1 /> },
-          { path: 'pwchange2', element: <PWChange2 /> },
+          { path: 'greeting', element: <Greeting /> },
+          { path: 'credentials', element: <Credentials /> },
+          { path: 'student-info', element: <StudentInfo /> },
+          { path: 'email-verify', element: <EmailVerify /> },
         ],
       },
 
