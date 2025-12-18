@@ -12,7 +12,7 @@ function RegisterStep() {
         <Text.Title>입학을 축하합니다!</Text.Title>
         <Text.Body color="#ADADAD">회원가입하고 대소고 생활 시작하기</Text.Body>
       </S.TitleContainer>
-      <ButtonLong text="시작하기" onClick={() => navigate('/register/2')} />
+      <ButtonLong text="시작하기" onClick={() => navigate('/register/credentials')} />
     </S.Container>
   )
 }

@@ -25,7 +25,7 @@ function RegisterStep() {
         alert("인증메일 전송에 실패했습니다.")
         return;
       })
-      navigate('/register/4')
+      navigate('/register/email-verify')
     }
   }
 
