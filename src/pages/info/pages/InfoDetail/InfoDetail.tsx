@@ -1,10 +1,10 @@
-import * as S from '@/pages/info/Detail/infoDetail.style';
+import * as S from './InfoDetail.style';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ProfileImg from '@/assets/info/test.png';
 import Caption from '@/components/Text/Caption';
 import axios from 'axios';
-
+import { SERVER_URL } from '@/constants/api';
 const InfoDetail = () => {
   const location = useLocation();
 
@@ -24,18 +24,35 @@ const InfoDetail = () => {
 
   const handleApprovalClick = () => {
     axios
-      .post(`info-api/${parentsProps.id}/Approval`, {
+      .post(`${SERVER_URL}/${parentsProps.id}/approve`, {
         id: parentsProps.id,
       })
-      .then()
-      .catch();
+      .then((response) => {
+        alert('승인');
+      })
+      .catch((error) => {
+        console.log(`에러 발생 ${error}`);
+      });
+  };
+
+  const handleRefuseClick = () => {
+    axios
+      .post(`${SERVER_URL}/${parentsProps.id}/disappove`, {
+        id: parentsProps.id,
+      })
+      .then((response) => {
+        alert('승인 거부');
+      })
+      .catch((error) => {
+        console.log(`에러 발생 ${error}`);
+      });
   };
 
   return (
     <S.Container>
       <S.ApprovalBox $visible={!parentsProps.isApproved}>
-        <S.ApprovalButton>승인</S.ApprovalButton>
-        <S.RefuseButton>거부</S.RefuseButton>
+        <S.ApprovalButton onClick={handleApprovalClick}>승인</S.ApprovalButton>
+        <S.RefuseButton onClick={handleRefuseClick}>거부</S.RefuseButton>
       </S.ApprovalBox>
       <S.MainDetail>
         <h1>{parentsProps.title}</h1>
@@ -56,7 +73,7 @@ const InfoDetail = () => {
             onClick={() => {
               setActive(!Active);
               axios
-                .post('', {
+                .post(`${SERVER_URL}/info/${parentsProps.id}/like`, {
                   id: parentsProps.id,
                 })
                 .then(function () {

@@ -66,5 +66,4 @@ function AddInfoPost({onSubmit}: {onSubmit: SubmitHandler<IFormInput>}) {
     )
 }
 
-
 export default AddInfoPost;

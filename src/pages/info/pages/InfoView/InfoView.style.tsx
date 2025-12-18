@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import SearchIcon from '@/assets/info/Search.svg';
+import CheckIcon from '@/assets/info/Check.svg';
 
 interface AllowButtonProps {
   $active?: boolean;
 }
-
 
 export const Container = styled.div`
   display: flex;
@@ -143,7 +143,8 @@ export const PageBtn = styled.button<{ $active: boolean }>`
   border-radius: 6px;
   padding: 4px 12px;
   border: none;
-  color: ${({ theme, $active }) => ($active ? theme.textPrimary : theme.btnGraySecondary)};
+  color: ${({ theme, $active }) =>
+    $active ? theme.textPrimary : theme.btnGraySecondary};
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -165,7 +166,77 @@ export const AllowButton = styled.button<AllowButtonProps>`
   width: 127px;
   height: 30px;
 
-  background-color: ${({ theme, $active }) => ($active ? theme.btnPrimary : theme.bgPrimary)};
+  background-color: ${({ theme, $active }) =>
+    $active ? theme.btnPrimary : theme.bgPrimary};
   border: 1px solid ${(props) => props.theme.btnPrimary};
   border-radius: 15px;
+`;
+
+const toastCycle = keyframes`
+  0% { 
+    transform: translateX(120%); 
+    opacity: 0; 
+  }
+  16.6% { 
+    transform: translateX(0); 
+    opacity: 1; 
+  }
+  83.3% { 
+    transform: translateX(0); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(120%); 
+    opacity: 0; 
+  }
+`;
+
+export const ToastContainer = styled.div`
+  width: 397px;
+  height: 81.98px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  right: -8px;
+  color: #fff;
+  border-radius: 5px;
+  z-index: 3000;
+  background-color: transparent;
+  animation: ${toastCycle} 5s forwards ease-in-out;
+`;
+
+export const ToastCircle = styled.div`
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #26874e;
+  width: 74.53px;
+  height: 74.53px;
+  box-sizing: border-box;
+  box-shadow: -4px 4px 4px rgba(38, 135, 78, 0.1);
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ToastTextContainer = styled.div`
+  width: 365.48px;
+  height: 81.98px;
+
+  background: #ffffff;
+  box-shadow: -4px 4px 4px rgba(38, 135, 78, 0.1);
+  border-radius: 12px 0px 0px 12px;
+  z-index: 4000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+  margin-left: -50px;
+  padding-left: 20px;
+`;
+
+export const Check = styled(CheckIcon)`
+  z-index: 5001;
 `;
