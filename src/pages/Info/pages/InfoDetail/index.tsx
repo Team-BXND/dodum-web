@@ -72,7 +72,7 @@ const InfoDetail = () => {
             $active={Active}
             onClick={() => {
               setActive(!Active);
-              axios
+              privateInstance
                 .post(`${SERVER_URL}/info/${parentsProps.id}/like`, {
                   id: parentsProps.id,
                 })
