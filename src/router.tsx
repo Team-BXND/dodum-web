@@ -3,17 +3,17 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from './App';
 
 // Info 페이지
-import Info from './pages/Info/pages/InfoView';
-import Detail from './pages/Archive/pages/Detail';
-import CategoryRoute from './pages/Archive/CategoryRoute';
-import AddArchive from './pages/Archive/pages/AddArchive';
-import EditArchive from './pages/Archive/pages/EditArchive';
-import Archive from './pages/Archive';
-import MajorResult from './pages/Major/Result/MajorResult';
-import InfoDetail from './pages/Info/pages/InfoDetail';
+import Info from '@/pages/Info/pages/InfoView';
+import Detail from '@/pages/Archive/pages/Detail';
+import CategoryRoute from '@/pages/Archive/CategoryRoute';
+import AddArchive from '@/pages/Archive/pages/AddArchive';
+import EditArchive from '@/pages/Archive/pages/EditArchive';
+import Archive from '@/pages/Archive';
+import MajorResult from '@/pages/Major/Result/MajorResult';
+import InfoDetail from '@/pages/Info/pages/InfoDetail';
 import { PageProvider } from '@/contexts/InfoPageContext';
 import AddInfo from '@/pages/Info/add/AddInfo'
-import AlterPage from './pages/Info/pages/InfoAlter/AlterPages';
+import AlterPage from '@/pages/Info/pages/InfoAlter/AlterPages';
 
 // Major
 import Major from '@/pages/Major';
@@ -35,10 +35,10 @@ import Posts from './pages/OtherInfo/pages/Posts';
 import AddEtcInfo from './pages/OtherInfo/pages/AddEtcInfo';
 import EtcDetail from './pages/OtherInfo/pages/Detail';
 
-import Profile from './pages/Profile/pages/Profile';
-import ProfilePosts from './pages/Profile/pages/Posts';
-import ProfileDetail from './pages/Profile/pages/ProfileDetail';
-import ProfileEdit from './pages/Profile/pages/ProfileEdit';
+import Profile from '@/pages/Profile/pages/Profile';
+import ProfilePosts from '@/pages/Profile/pages/Posts';
+import ProfileDetail from '@/pages/Profile/pages/ProfileDetail';
+import ProfileEdit from '@/pages/Profile/pages/ProfileEdit';
 
 const router = createBrowserRouter([
   {
