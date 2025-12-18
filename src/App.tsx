@@ -1,4 +1,4 @@
-import Layout from '@/components/Layout/Layout';
+import Layout from '@/components/Layout';
 import { GlobalStyle } from '@/styles/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from './styles/theme';

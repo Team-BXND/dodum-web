@@ -1,4 +1,4 @@
-import Button from "@/components/Buttons/Button";
+import Button from "@/components/Buttons";
 import styled from "styled-components";
 
 export const Container = styled.div`

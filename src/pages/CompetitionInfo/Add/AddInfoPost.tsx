@@ -1,9 +1,8 @@
 import * as S from "@/components/AddPost/style"
 import Editor from "@/components/AddPost/Editor";
-import Button from "@/components/Buttons";
+import Button from "@/components/Button";
 import { useForm, Controller, type SubmitHandler, type ControllerFieldState, type ControllerRenderProps } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 const Buttons = () => {
     const navigator = useNavigate();
@@ -18,10 +17,14 @@ const Buttons = () => {
 
 
 export interface IFormInput {
-    title: string,
-    subTitle: string,
-    content: string,
-    author: string,
+    title: string;
+  subtitle: string;
+  content: string;
+  phone: string;
+  email: string;
+  time: string;   
+  place: string;
+  image: string;
 }
 
 interface IController {
@@ -30,21 +33,27 @@ interface IController {
 }
 
 function AddInfoPost({onSubmit}: {onSubmit: SubmitHandler<IFormInput>}) {
-    const [thumbnail, setThumbnail] = useState<string | null>(null);
     const { control, register, handleSubmit } = useForm<IFormInput>({
         defaultValues: {
             title: "",
-            subTitle: "",
+            subtitle: "",
             content: "",
-            author: ""
+            phone:"",
+            email:"",
+            time:""
+
         }
     });
 
     return (
         <S.Container onSubmit={handleSubmit(onSubmit)}>
             <S.Title placeholder="제목을 입력하세요." {...register("title")}/>
+            <S.SubTitle placeholder="부제목을 입력하세요." {...register("subtitle")}/>
+            <S.SubTitle placeholder="장소를 입력하세요." {...register("place")}/>
+            <S.SubTitle placeholder="전화번호를 입력하세요." {...register("phone")}/>
+            <S.SubTitle placeholder="이메일을 입력하세요." {...register("email")}/>
+            <S.SubTitle placeholder="시간을 입력하세요." {...register("time")}/>
             <S.TagsContainer>
-                <S.Author placeholder="작성자를 입력하세요." {...register("author")}/>
             </S.TagsContainer>
             <Controller 
                 name="content"
@@ -53,7 +62,7 @@ function AddInfoPost({onSubmit}: {onSubmit: SubmitHandler<IFormInput>}) {
                     ({ field, fieldState }:IController) => {
                         return (
                         <>
-                            <Editor value={field.value} setValue={field.onChange} thumbnail={setThumbnail}/>
+                            <Editor value={field.value} setValue={field.onChange} thumbnail={() => null}/>
                             {fieldState.error && (
                                 <p>{fieldState.error?.message}</p>
                             )}
@@ -65,5 +74,6 @@ function AddInfoPost({onSubmit}: {onSubmit: SubmitHandler<IFormInput>}) {
         </S.Container>
     )
 }
+
 
 export default AddInfoPost;
