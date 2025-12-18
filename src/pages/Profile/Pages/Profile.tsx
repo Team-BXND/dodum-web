@@ -10,6 +10,7 @@ import Archive from "@/assets/Profile/Archive.svg"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "@/components/Buttons/Button";
+import {logout} from "@/api/auth.ts";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
@@ -122,7 +123,7 @@ function Profile() {
 			<S.Buttons>
 				<Button text="상세 정보" onClick={() => navigator("/profile/detail")}/>
 				<Button text="정보 수정" onClick={() => navigator("/profile/edit")}/>
-				<S.LogoutButton text="로그아웃" onClick={() => navigator("/logout")}/>
+				<S.LogoutButton text="로그아웃" onClick={() => logout()}/>
 			</S.Buttons>
 		</S.Container>
 	)

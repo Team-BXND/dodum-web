@@ -18,17 +18,6 @@ import AlterPage from './pages/info/pages/InfoAlter/AlterPages.tsx';
 // Major
 import Major from '@/pages/Major/Major';
 
-// Login 과정
-import Login from '@/pages/Login/Login';
-
-import Member from './pages/Login/Member';
-import Start from './pages/Login/Start';
-import Member1 from './pages/Login/Member1';
-import Member2 from './pages/Login/Member2';
-import Certification from '@/pages/Login/Certification.tsx';
-import PWChange1 from './pages/Login/PWChange1';
-import PWChange2 from './pages/Login/PWChange2';
-
 // OtherInfo (etc)
 import OtherInfo from './pages/OtherInfo/pages/OtherInfo';
 import Posts from './pages/OtherInfo/pages/Posts';
@@ -39,6 +28,12 @@ import Profile from './pages/Profile/Pages/Profile';
 import ProfilePosts from './pages/Profile/Pages/Posts';
 import ProfileDetail from './pages/Profile/Pages/ProfileDetail';
 import ProfileEdit from './pages/Profile/Pages/ProfileEdit';
+import Login from "@/pages/Login/Login.tsx";
+import Register from "@/pages/Register/Register.tsx";
+import Greeting from "@/pages/Register/Steps/Greeting.tsx";
+import Credentials from "@/pages/Register/Steps/Credentials.tsx";
+import StudentInfo from "@/pages/Register/Steps/StudentInfo.tsx";
+import EmailVerify from "@/pages/Register/Steps/EmailVerify.tsx";
 
 const router = createBrowserRouter([
   {
@@ -66,22 +61,6 @@ const router = createBrowserRouter([
         path: 'profile/edit',
         element: <ProfileEdit />,
       },
-
-      // Login
-      { path: 'login', element: <Login /> },
-      {
-        path: 'member',
-        element: <Member />,
-        children: [
-          { path: 'start', element: <Start /> },
-          { path: 'member1', element: <Member1 /> },
-          { path: 'member2', element: <Member2 /> },
-          { path: 'certification', element: <Certification /> },
-          { path: 'pwchange1', element: <PWChange1 /> },
-          { path: 'pwchange2', element: <PWChange2 /> },
-        ],
-      },
-
       // Archive
       {
         path: 'info',
@@ -156,6 +135,18 @@ const router = createBrowserRouter([
         path: 'etc/:category/:postId',
         element: <EtcDetail />,
       },
+    ],
+  },
+  { path: 'login', element: <Login /> },
+  {
+    path: 'register',
+    element: <Register />,
+    children: [
+      { index: true, element: <Navigate to="1" replace /> },
+      { path: '1', element: <Greeting /> },
+      { path: '2', element: <Credentials /> },
+      { path: '3-info', element: <StudentInfo /> },
+      { path: '4', element: <EmailVerify /> },
     ],
   },
 ]);
