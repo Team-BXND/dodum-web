@@ -79,7 +79,7 @@ function Profile() {
 	const GetUserInfo = () => {
 		privateInstance.get(`${SERVER_URL}/profile`)
 		.then((response) => {
-			setUserInfo(response.data)
+			setUserInfo(response.data.data)
 		})
 		.catch((error) => {
 			alert(`데이터를 불러오는데 실패했습니다. (${error.response.status})`)

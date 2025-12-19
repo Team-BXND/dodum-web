@@ -3,14 +3,23 @@ import * as S from "../../style";
 import { useEffect, useState } from "react";
 import AddButton from "@/components/AddButton";
 import {privateInstance} from "@/api/axiosInstance.ts";
+import category from "@/components/Category";
 
 interface IPostsProps {
   id: string,
   thumbnail?: string,
   title: string,
-  author: string,
-  description: string,
+  teamname: string,
+  content: string,
+  category: string,
 }
+
+const CATEGORY_MAP: { [key: string]: string } = {
+  "club": "동아리",
+  "narsha": "나르샤",
+  "awards": "대회 수상작",
+  "mini-project": "미니 프로젝트"
+};
 
 interface IPageProps {
   category: string,
@@ -19,16 +28,17 @@ interface IPageProps {
 function Posts(props: IPageProps) {
     // API 호출
     const [posts, setPosts] = useState<IPostsProps[]>([])
-    
+
     useEffect(() => {
         // axios get 함수에는 Body를 담을 수 없어 post Method로 요청
         privateInstance.get(`${import.meta.env.VITE_SERVER_URL}/archive/all`)
         .then(function (response) {
-            setPosts(response.data)
+          setPosts(response.data.filter((elem) => elem.category === CATEGORY_MAP[props.category]));
         })
         .catch(function (error) {
             alert(error.response?.status === 404? "게시물을 불러오지 못하였습니다.(404 에러)" : error.message);
         }
+
       )}, [props.category])
 
   //예시 오브젝트
@@ -61,7 +71,7 @@ function Posts(props: IPageProps) {
   return (
     <S.TileContainer>
       <AddButton to="/archive/add" />
-      {posts.length === 0 ? <h1>게시글이 없습니다.</h1> : (posts.map((props: IPostsProps) => <Tile key={props.id} to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.author} description={props.description} />))}
+      {posts.length === 0 ? <h1>게시글이 없습니다.</h1> : (posts.map((props: IPostsProps) => <Tile key={props.id} to={props.id} thumbnail={props.thumbnail} title={props.title} author={props.teamname} description={props.content} />))}
     </S.TileContainer>
   )
 }

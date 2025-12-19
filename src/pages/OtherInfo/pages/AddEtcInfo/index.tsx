@@ -5,7 +5,6 @@ import {privateInstance} from "@/api/axiosInstance.ts";
 const handleSubmit: SubmitHandler<IFormInput> = (data) => {
     privateInstance.post(`${import.meta.env.VITE_SERVER_URL}/misc`, {
         title: data.title,
-        subTitle: data.subTitle,
         category: data.category,
         content: data.content,
     })
