@@ -4,16 +4,16 @@ import App from './App';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
 // Info 페이지
-import Info from '@/pages/info/pages/InfoView';
+import Info from '@/pages/info/pages/InfoView/index';
 import Detail from '@/pages/Archive/pages/Detail';
 import CategoryRoute from '@/pages/Archive/CategoryRoute';
 import AddArchive from '@/pages/Archive/pages/AddArchive';
 import EditArchive from '@/pages/Archive/pages/EditArchive';
 import Archive from '@/pages/Archive';
 import MajorResult from '@/pages/Major/Result/MajorResult';
-import InfoDetail from '@/pages/info/pages/InfoDetail';
+import InfoDetail from '@/pages/info/pages/InfoDetail/index';
 import { PageProvider } from '@/contexts/InfoPageContext';
-import AddInfo from '@/pages/info/add/AddInfo';
+import AddInfo from './pages/info/add/AddInfo';
 import AlterPage from '@/pages/info/pages/InfoAlter/AlterPages';
 
 // Major
@@ -37,7 +37,6 @@ import Profile from '@/pages/Profile/pages/Profile';
 import ProfilePosts from '@/pages/Profile/pages/Posts';
 import ProfileDetail from '@/pages/Profile/pages/ProfileDetail';
 import ProfileEdit from '@/pages/Profile/pages/ProfileEdit';
-import InfoView from '@/pages/info/pages/InfoView';
 import Competition_info from '@/pages/CompetitionInfo/Info';
 
 const router = createBrowserRouter([
