@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SERVER_URL } from '@/constants/api';
-import InfoAlter from '../InfoAlter';
+import InfoAlter from '.';
 import {privateInstance} from "@/api/axiosInstance.ts";
 
 export interface IFormInput {

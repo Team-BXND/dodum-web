@@ -4,7 +4,8 @@ import { useLocation } from 'react-router-dom';
 import ProfileImg from '@/assets/info/test.png';
 import Caption from '@/components/Text/Caption';
 import { SERVER_URL } from '@/constants/api';
-import {privateInstance} from "@/api/axiosInstance.ts";
+import { privateInstance } from '@/api/axiosInstance.ts';
+import { getUserRole } from '@/utils/cookie';
 const InfoDetail = () => {
   const location = useLocation();
 
@@ -21,6 +22,8 @@ const InfoDetail = () => {
   };
   const parentsProps = { ...state };
   const [Active, setActive] = useState(false);
+
+  const role = getUserRole();
 
   const handleApprovalClick = () => {
     privateInstance
@@ -51,8 +54,24 @@ const InfoDetail = () => {
   return (
     <S.Container>
       <S.ApprovalBox $visible={!parentsProps.isApproved}>
-        <S.ApprovalButton onClick={handleApprovalClick}>승인</S.ApprovalButton>
-        <S.RefuseButton onClick={handleRefuseClick}>거부</S.RefuseButton>
+        <S.ApprovalButton
+          onClick={handleApprovalClick}
+          style={{
+            visibility:
+              role === 'ADMIN' || role === 'TEACHER' ? 'visible' : 'hidden',
+          }}
+        >
+          승인
+        </S.ApprovalButton>
+        <S.RefuseButton
+          onClick={handleRefuseClick}
+          style={{
+            visibility:
+              role === 'ADMIN' || role === 'TEACHER' ? 'visible' : 'hidden',
+          }}
+        >
+          거부
+        </S.RefuseButton>
       </S.ApprovalBox>
       <S.MainDetail>
         <h1>{parentsProps.title}</h1>

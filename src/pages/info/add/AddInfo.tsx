@@ -1,8 +1,8 @@
-import AddInfoPost, { type IFormInput } from '@/pages/Info/add/AddInfoPost';
+import AddInfoPost, { type IFormInput } from '@/pages/info/add/AddInfoPost';
 import type { SubmitHandler } from 'react-hook-form';
 import { SERVER_URL } from '@/constants/api';
 import { useNavigate } from 'react-router-dom';
-import {privateInstance} from "@/api/axiosInstance.ts";
+import { privateInstance } from '@/api/axiosInstance.ts';
 
 function AddInfo() {
   const navigate = useNavigate();
