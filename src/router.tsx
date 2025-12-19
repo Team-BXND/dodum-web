@@ -13,8 +13,8 @@ import Archive from '@/pages/Archive';
 import MajorResult from '@/pages/Major/Result/MajorResult';
 import InfoDetail from '@/pages/info/pages/InfoDetail/index';
 import { PageProvider } from '@/contexts/InfoPageContext';
-import AddInfo from './pages/info/add/AddInfo';
-import AlterPage from '@/pages/info/pages/InfoAlter/AlterPages';
+import AddInfo from '@/pages/info/add/AddInfo'
+import AlterPage from '@/pages/info/pages/InfoAlter/AlterPages'
 
 // Major
 import Major from '@/pages/Major';
